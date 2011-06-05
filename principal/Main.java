@@ -8,7 +8,7 @@ public class Main {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		new JoglApplication(new Game(), "uhEducation", 800, 600, true);
+		new JoglApplication(new Game(), "uhEducation", 800, 600, false);
 
 	}
 
