@@ -26,7 +26,6 @@ public class Game implements ApplicationListener {
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,id=DCE.F51ADF82-611B-51BA-6356-81DF9613859A]
     // </editor-fold> 
-    private Texture textura;
 
 	@Override
 
