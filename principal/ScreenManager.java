@@ -1,5 +1,6 @@
 package principal;
 
+import java.util.HashMap;
 import java.util.Map;
 
 public class ScreenManager {
@@ -10,18 +11,13 @@ public class ScreenManager {
 	
 	
 	private ScreenManager(){
-		
+		screens = new HashMap<String, Screen>();
 	}
 	public static ScreenManager getScreenManager(){
 		if(getScreenManager==null){
 			getScreenManager=new ScreenManager();
 		}
 		return getScreenManager;
-	}
-	
-	{
-		getScreenManager = new ScreenManager();
-		
 	}
 
 	public Screen getCurrentScreen() {
