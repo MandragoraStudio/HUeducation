@@ -1,5 +1,7 @@
 package principal;
 
+import juegos.Juego;
+
 // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
 // #[regen=yes,id=DCE.5AA0BD7A-11E7-7E2A-4684-A7D375D55841]
 // </editor-fold> 
@@ -23,16 +25,12 @@ public class Menu extends Screen {
     public void Update () {
     }
 
-    // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
-    // #[regen=yes,id=DCE.6FBE175B-C71D-0BE9-CE9A-9440C012C467]
-    // </editor-fold> 
-    public void Unnamed () {
-    }
 
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,id=DCE.EE25A6A3-E22F-0AB1-AD49-35DB7B4F4B96]
     // </editor-fold> 
     private void inicializaJuego (Juego j) {
+    	
     }
 
 }

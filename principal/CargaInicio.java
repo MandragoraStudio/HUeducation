@@ -7,6 +7,9 @@ public class CargaInicio extends Thread {
 		ScreenManager sm = ScreenManager.getScreenManager;
 		
 		//Carga el menu principal aqui
+		sm.addScreen("esplash", new EducationSplash());
+		sm.addScreen("menu",new Menu());
+		
 		
 		//terminado
 		terminado = true;

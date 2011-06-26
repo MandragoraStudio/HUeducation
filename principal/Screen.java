@@ -1,16 +1,20 @@
 package principal;
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.scenes.scene2d.Stage;
 
 // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
 // #[regen=yes,id=DCE.17114D1B-93AA-7CCB-937E-8E4669A116D4]
 // </editor-fold> 
 public abstract class Screen {
-
+	
+	public Stage escena;
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,id=DCE.55119AF5-4E3C-81D9-1A09-972A553DBF56]
     // </editor-fold> 
     public Screen () {
+    	escena = new Stage(GameGlobals.ScreenWidth,GameGlobals.ScreenHeight,true);
+    	
     }
 
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 

@@ -1,4 +1,4 @@
-package principal;
+package juegos;
 
 // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
 // #[regen=yes,id=DCE.37252DC6-58B9-580A-76F4-FA6D4FAC47F4]

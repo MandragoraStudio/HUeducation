@@ -20,7 +20,7 @@ public class MandragoraSplash extends Screen {
 		
 		//finalmente pasamos a la pantalla EducationSplash
 		if(c.terminado){
-			ScreenManager.getScreenManager.setCurrentScreen("ESplash");
+			ScreenManager.getScreenManager.setCurrentScreen("esplash");
 		}
 	}
 

@@ -21,8 +21,8 @@ public class Game implements ApplicationListener {
     public void create () {
     	this.screenManager=ScreenManager.getScreenManager;
 
-    	screenManager.addScreen("MCS",new MandragoraSplash());
-    	screenManager.setCurrentScreen("MCS");
+    	screenManager.addScreen("mcs",new MandragoraSplash());
+    	screenManager.setCurrentScreen("mcs");
     	this.spriteBatch=new SpriteBatch();
     	
 	}

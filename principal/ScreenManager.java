@@ -22,6 +22,7 @@ public class ScreenManager {
 	}
 
 	public void setCurrentScreen(String screen) {
+		screen = screen.toLowerCase();
 		this.currentScreen = this.screens.get(screen);
 		this.currentScreen.Initialize();
 	}
@@ -35,6 +36,7 @@ public class ScreenManager {
 	}
 
 	public void addScreen(String cad, Screen s){
+		cad = cad.toLowerCase();
 		this.screens.put(cad, s);
 		s.Load();
 	}

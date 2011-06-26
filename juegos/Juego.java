@@ -1,4 +1,6 @@
-package principal;
+package juegos;
+
+import principal.Screen;
 
 
 public abstract class Juego extends Screen {

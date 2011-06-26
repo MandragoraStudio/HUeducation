@@ -9,6 +9,8 @@ public class GameGlobals {
     // #[regen=yes,id=DCE.E292EA6E-2B04-CBD3-6111-08E832C689F8]
     // </editor-fold> 
     public static int volumen;
+    public static int ScreenWidth= 800;
+    public static int ScreenHeight=600;
 
 }
 
