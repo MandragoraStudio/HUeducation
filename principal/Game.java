@@ -46,15 +46,13 @@ public class Game implements ApplicationListener {
 	    //Gdx.graphics.getGL10().glEnable(GL10.GL_TEXTURE_2D);
     	Gdx.gl.glClearColor(0,0,0,1);
     	Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-	    this.spriteBatch.begin();
     	ScreenManager.getScreenManager().currentScreen.Draw(this.spriteBatch);
     	ScreenManager.getScreenManager().currentScreen.Update();
-    	this.spriteBatch.end();
 	}
     
     public static void salir(){
     	//Cosas que quieras hacer antes de salir
-    	
+
     	//fin u.u
     	System.exit(0);
     	
