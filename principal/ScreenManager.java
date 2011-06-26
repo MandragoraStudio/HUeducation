@@ -4,12 +4,19 @@ import java.util.Map;
 
 public class ScreenManager {
 
-	public static ScreenManager getScreenManager;
+	private static ScreenManager getScreenManager;
 	public Screen currentScreen;
 	public Map<String,Screen> screens;
 	
+	
 	private ScreenManager(){
 		
+	}
+	public static ScreenManager getScreenManager(){
+		if(getScreenManager==null){
+			getScreenManager=new ScreenManager();
+		}
+		return getScreenManager;
 	}
 	
 	{

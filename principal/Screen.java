@@ -21,6 +21,7 @@ public abstract class Screen {
     // #[regen=yes,id=DCE.A7D2FB09-206C-828C-47B2-07590DAE4C81]
     // </editor-fold> 
     public void Draw (SpriteBatch spriteBatch) {
+    	escena.draw();
     }
 
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 

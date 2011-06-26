@@ -19,7 +19,7 @@ public class Game implements ApplicationListener {
     private SpriteBatch spriteBatch;
 
     public void create () {
-    	this.screenManager=ScreenManager.getScreenManager;
+    	this.screenManager=ScreenManager.getScreenManager();
 
     	screenManager.addScreen("mcs",new MandragoraSplash());
     	screenManager.setCurrentScreen("mcs");
@@ -44,8 +44,8 @@ public class Game implements ApplicationListener {
 	    //Gdx.gl.glClear(GL10.GL_COLOR_BUFFER_BIT);   
 	    //Gdx.graphics.getGL10().glEnable(GL10.GL_TEXTURE_2D);
 	    this.spriteBatch.begin();
-    	ScreenManager.getScreenManager.currentScreen.Draw(this.spriteBatch);
-    	ScreenManager.getScreenManager.currentScreen.Update();
+    	ScreenManager.getScreenManager().currentScreen.Draw(this.spriteBatch);
+    	ScreenManager.getScreenManager().currentScreen.Update();
     	this.spriteBatch.end();
 	}
 

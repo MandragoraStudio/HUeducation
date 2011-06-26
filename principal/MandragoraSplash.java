@@ -1,12 +1,18 @@
 package principal;
 
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.scenes.scene2d.actors.Image;
 
 public class MandragoraSplash extends Screen {
 
 	public boolean iniciado = false;
 	CargaInicio c;
 	
+	@Override
+	public void Initialize(){
+		Image i = new Image("imagen",new Texture("/imagenes/prueba.png"));
+		this.escena.addActor(i);
+	}
 	
 	@Override
 	public void Update() {
@@ -20,12 +26,9 @@ public class MandragoraSplash extends Screen {
 		
 		//finalmente pasamos a la pantalla EducationSplash
 		if(c.terminado){
-			ScreenManager.getScreenManager.setCurrentScreen("esplash");
+			ScreenManager.getScreenManager().setCurrentScreen("esplash");
 		}
 	}
 
-	@Override
-	public void Draw(SpriteBatch sb) {
-		
-	}
+	
 }
