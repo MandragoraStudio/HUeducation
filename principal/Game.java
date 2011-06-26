@@ -18,6 +18,8 @@ public class Game implements ApplicationListener {
 
     public void create () {
     	this.screenManager=ScreenManager.getScreenManager;
+    	screenManager.addScreen("MCS",new MandragoraSplash());
+    	screenManager.setCurrentScreen("MCS");
 	}
 
 	
