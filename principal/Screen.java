@@ -1,5 +1,7 @@
 package principal;
 
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+
 // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
 // #[regen=yes,id=DCE.17114D1B-93AA-7CCB-937E-8E4669A116D4]
 // </editor-fold> 
@@ -14,7 +16,7 @@ public abstract class Screen {
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,id=DCE.A7D2FB09-206C-828C-47B2-07590DAE4C81]
     // </editor-fold> 
-    public void Draw () {
+    public void Draw (SpriteBatch spriteBatch) {
     }
 
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
@@ -28,6 +30,7 @@ public abstract class Screen {
     
     public void Initialize () {
     }
+
 
 }
 
