@@ -8,17 +8,20 @@ import com.badlogic.gdx.scenes.scene2d.actors.Button;
 
 public class Menu extends Screen {
 
-
+	Button salir;
 	@Override
 	public void Initialize(){
 		super.Initialize();
-		Button b = new Button("Salir",new Texture("imagenes/salir.png"));
-		this.escena.addActor(b);
+		salir = new Button("salir",new Texture("imagenes/salir.png"));
+		
+		this.escena.addActor(salir);
 	}
 	
  
     public void Update () {
-    	
+    	if(salir.pressed){
+    		System.out.print("salir pulsado");
+    	}
     }
 
     private void inicializaJuego (Juego j) {
