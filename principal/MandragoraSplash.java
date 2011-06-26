@@ -10,8 +10,8 @@ public class MandragoraSplash extends Screen {
 	
 	@Override
 	public void Initialize(){
-		//Image i = new Image("imagen",new Texture("/imagenes/prueba.png"));
-		//this.escena.addActor(i);
+		Image i = new Image("imagen",new Texture("imagenes/badlogic.jpg"));
+		this.escena.addActor(i);
 	}
 	
 	@Override
