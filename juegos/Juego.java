@@ -10,10 +10,6 @@ public abstract class Juego extends Screen {
     }
 
 
-    public void Draw () {
-    }
-
-
     public void Update () {
     }
 

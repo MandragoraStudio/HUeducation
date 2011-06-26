@@ -42,5 +42,11 @@ public class MandragoraSplash extends Screen {
 			ScreenManager.getScreenManager().setCurrentScreen("esplash");
 		}
 	}
+	
+	@Override
+	public void Dispose(){
+		escena.removeActor(escena.findActor("imagen"));
+		super.Dispose();
+	}
 
 }
