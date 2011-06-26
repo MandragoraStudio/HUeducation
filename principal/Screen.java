@@ -3,7 +3,7 @@ package principal;
 // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
 // #[regen=yes,id=DCE.17114D1B-93AA-7CCB-937E-8E4669A116D4]
 // </editor-fold> 
-public class Screen {
+public abstract class Screen {
 
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,id=DCE.55119AF5-4E3C-81D9-1A09-972A553DBF56]
@@ -21,6 +21,12 @@ public class Screen {
     // #[regen=yes,id=DCE.2CEB3E76-734E-393E-9786-EEC8F9D2EC92]
     // </editor-fold> 
     public void Update () {
+    }
+    
+    public void Load () {
+    }
+    
+    public void Initialize () {
     }
 
 }

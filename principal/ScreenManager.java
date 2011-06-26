@@ -21,8 +21,9 @@ public class ScreenManager {
 		return currentScreen;
 	}
 
-	public void setCurrentScreen(Screen currentScreen) {
-		this.currentScreen = currentScreen;
+	public void setCurrentScreen(String screen) {
+		this.currentScreen = this.screens.get(screen);
+		this.currentScreen.Initialize();
 	}
 
 	public Map<String, Screen> getScreens() {
@@ -35,6 +36,7 @@ public class ScreenManager {
 
 	public void addScreen(String cad, Screen s){
 		this.screens.put(cad, s);
+		s.Load();
 	}
 	
 }
