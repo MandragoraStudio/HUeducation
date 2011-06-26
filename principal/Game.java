@@ -51,6 +51,14 @@ public class Game implements ApplicationListener {
     	ScreenManager.getScreenManager().currentScreen.Update();
     	this.spriteBatch.end();
 	}
+    
+    public static void salir(){
+    	//Cosas que quieras hacer antes de salir
+    	
+    	//fin u.u
+    	System.exit(0);
+    	
+    }
 
 
     public void resize (int arg0, int arg1) {

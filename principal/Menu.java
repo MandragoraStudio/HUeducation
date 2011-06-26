@@ -13,12 +13,15 @@ public class Menu extends Screen {
 	public void Initialize(){
 		super.Initialize();
 		salir = new Button("salir",new Texture("imagenes/salir.png"));
-		
 		this.escena.addActor(salir);
 	}
 	
  
     public void Update () {
+    	salir.rotation+=0.001;
+    	salir.touchable=true;
+    	salir.originY+=0.01;
+    	
     	if(salir.pressed){
     		System.out.print("salir pulsado");
     	}
