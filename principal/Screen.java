@@ -13,7 +13,6 @@ public abstract class Screen {
     // #[regen=yes,id=DCE.55119AF5-4E3C-81D9-1A09-972A553DBF56]
     // </editor-fold> 
     public Screen () {
-    	escena = new Stage(GameGlobals.ScreenWidth,GameGlobals.ScreenHeight,true);
     	
     }
 
@@ -34,6 +33,16 @@ public abstract class Screen {
     }
     
     public void Initialize () {
+    	escena = new Stage(GameGlobals.ScreenWidth,GameGlobals.ScreenHeight,true);
+    	
+    }
+    
+    public void Dispose(){
+    	escena.dispose();
+    }
+    
+    public void Unload(){
+    	
     }
 
 

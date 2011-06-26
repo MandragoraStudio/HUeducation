@@ -26,8 +26,15 @@ public class ScreenManager {
 
 	public void setCurrentScreen(String screen) {
 		screen = screen.toLowerCase();
+		if(currentScreen!=null)
+			this.currentScreen.Dispose();
 		this.currentScreen = this.screens.get(screen);
 		this.currentScreen.Initialize();
+	}
+	
+	public void unloadScreen(String screen){
+		screen=screen.toLowerCase();
+		screens.get(screen).Unload();
 	}
 
 	public Map<String, Screen> getScreens() {

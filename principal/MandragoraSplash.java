@@ -9,7 +9,8 @@ public class MandragoraSplash extends Screen {
 	CargaInicio c;
 
 	@Override
-	public void Initialize() {
+	public void Initialize(){
+		super.Initialize();
 
 		Image i = new Image("imagen", new Texture("imagenes/mandragora800.png"));
 
