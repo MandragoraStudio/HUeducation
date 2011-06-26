@@ -26,6 +26,6 @@ public class MandragoraSplash extends Screen {
 
 	@Override
 	public void Draw(SpriteBatch sb) {
-
+		
 	}
 }
