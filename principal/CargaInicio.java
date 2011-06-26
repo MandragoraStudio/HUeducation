@@ -12,6 +12,6 @@ public class CargaInicio extends Thread {
 		
 		
 		//terminado
-		//terminado = true;
+		terminado = true;
 	}
 }
