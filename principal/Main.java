@@ -15,7 +15,7 @@ public class Main {
     // #[regen=yes,id=DCE.DB06C017-8CD9-168B-4BD3-F6668C709F6A]
     // </editor-fold> 
     public static void main (String[] args) {
-		new JoglApplication(new Game(), "uhEducation", 800, 600, false);
+		new JoglApplication(new Game(), "uhEducation", 800, 600, true);
 
 	}
 
