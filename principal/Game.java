@@ -87,19 +87,19 @@ public class Game implements ApplicationListener, InputProcessor {
 
 	@Override
 	public boolean keyDown(int arg0) {
-		// TODO Auto-generated method stub
+		ScreenManager.getScreenManager().currentScreen.keyDown(arg0);
 		return false;
 	}
 
 	@Override
 	public boolean keyTyped(char arg0) {
-		// TODO Auto-generated method stub
+		ScreenManager.getScreenManager().currentScreen.keyTyped(arg0);
 		return false;
 	}
 
 	@Override
 	public boolean keyUp(int arg0) {
-		// TODO Auto-generated method stub
+		ScreenManager.getScreenManager().currentScreen.keyUp(arg0);
 		return false;
 	}
 
