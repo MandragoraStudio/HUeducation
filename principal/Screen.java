@@ -1,5 +1,6 @@
 package principal;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 
@@ -9,10 +10,6 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 public abstract class Screen {
 	
 	public Stage escena;
-     
-    public Screen () {
-    	
-    }
 
      
     public void Draw (SpriteBatch spriteBatch) {
@@ -21,7 +18,7 @@ public abstract class Screen {
 
     
     public void Update () {
-    	
+    	escena.act(Gdx.graphics.getDeltaTime());
     }
     
     public void Load () {
@@ -40,7 +37,27 @@ public abstract class Screen {
     public void Unload(){
     	
     }
+    
+    
+ public boolean touchDown (int x, int y, int pointer, int button) {
+        escena.touchDown(x, y, pointer, button);
+        return false;
+}
 
+ public boolean touchUp (int x, int y, int pointer, int button) {
+	 escena.touchUp(x, y, pointer, button);
+        return false;
+}
+
+ public boolean touchDragged (int x, int y, int pointer) {     
+	 escena.touchDragged(x, y, pointer);
+        return false;
+}
+
+ public boolean touchMoved (int x, int y) {
+	 escena.touchMoved(x, y);
+        return false;
+}
 
 }
 

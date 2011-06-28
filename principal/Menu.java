@@ -4,6 +4,7 @@ import juegos.Juego;
 
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.scenes.scene2d.actors.Button;
+import com.badlogic.gdx.scenes.scene2d.actors.Button.ClickListener;
 
 
 public class Menu extends Screen {
@@ -14,17 +15,19 @@ public class Menu extends Screen {
 		super.Initialize();
 		salir = new Button("salir",new Texture("imagenes/salir.png"));
 		this.escena.addActor(salir);
+		salir.clickListener=new ClickListener(){
+
+			public void clicked(Button arg0) {
+				salir.x+=10;
+			}
+			
+		};
+		salir.touchable=true;
 	}
 	
  
     public void Update () {
-    	salir.rotation+=0.001;
-    	salir.touchable=true;
-    	salir.originY+=0.01;
-    	
-    	if(salir.pressed){
-    		System.out.print("salir pulsado");
-    	}
+    	super.Update();
     }
 
     private void inicializaJuego (Juego j) {
