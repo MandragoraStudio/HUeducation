@@ -12,8 +12,7 @@ public class MandragoraSplash extends Screen {
 	private Calendar calendario;
 	private long tiempoini=0;
 	private long tiempoaux=0;
-	private long aux=0;
-	private long fin=5000;
+	private long fin=3000;
 
 	@Override
 	public void Initialize(){
@@ -36,9 +35,8 @@ public class MandragoraSplash extends Screen {
 		}
 		// aqui el update de la pantalla
 		tiempoaux = System.currentTimeMillis();
-		aux=tiempoaux-tiempoini;
 		// finalmente pasamos a la pantalla EducationSplash
-		if (c.terminado && fin<=aux) {
+		if (c.terminado && fin<=tiempoaux-tiempoini) {
 			ScreenManager.getScreenManager().setCurrentScreen("esplash");
 		}
 	}
