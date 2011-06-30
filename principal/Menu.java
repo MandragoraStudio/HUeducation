@@ -73,7 +73,7 @@ public class Menu extends Screen {
 	}
 	
 	private void Salir(){
-		
+		Game.salir();
 	}
 	private void JuegoCuento(){
 		inicializaJuego(new CuentoClasico());
