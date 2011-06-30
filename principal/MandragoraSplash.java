@@ -1,7 +1,6 @@
 package principal;
 
-import java.util.Calendar;
-
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.scenes.scene2d.actors.Image;
 
@@ -9,7 +8,7 @@ public class MandragoraSplash extends Screen {
 
 	private boolean iniciado = false;
 	CargaInicio c;
-	private Calendar calendario;
+	//private Calendar calendario;
 	private long tiempoini=0;
 	private long tiempoaux=0;
 	private long fin=3000;
@@ -19,7 +18,7 @@ public class MandragoraSplash extends Screen {
 		super.Initialize();
 
 		Image i = new Image("imagen", new Texture("imagenes/mandragora800.png"));
-		calendario = Calendar.getInstance();
+		//calendario = Calendar.getInstance();
 		this.escena.addActor(i);
 		
 		tiempoini=System.currentTimeMillis();
