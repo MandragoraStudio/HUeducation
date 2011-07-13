@@ -1,27 +1,72 @@
 package juegos;
 
-// <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
-// #[regen=yes,id=DCE.37252DC6-58B9-580A-76F4-FA6D4FAC47F4]
-// </editor-fold> 
+import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.scenes.scene2d.actors.Button;
+import com.badlogic.gdx.scenes.scene2d.actors.Button.ClickListener;
+import com.badlogic.gdx.scenes.scene2d.actors.Image;
+
+ 
 public class CuentoClasico extends Juego {
 
-    // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
-    // #[regen=yes,id=DCE.0A06FA5E-ADE0-0335-9DE8-E935911C3173]
-    // </editor-fold> 
+	private Button abrirCuento;
+	private Button opcionA;
+	private Button opcionB;
+	private Image cuentoAbierto;
+	
     public CuentoClasico () {
+    	
     }
-
-    // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
-    // #[regen=yes,id=DCE.62873B1B-AA29-1A16-8590-D6356517472D]
-    // </editor-fold> 
-    public void Draw () {
+    
+    public void Initialize(){
+    	super.Initialize();
+    	setButtons();
+    	cuentoAbierto=new Image("imagenes/cuento2.png");
     }
+    
+    public void load(){
+    	
+    } 
 
-    // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
-    // #[regen=yes,id=DCE.83CB77F8-F87C-41C1-B13C-2185021776C6]
-    // </editor-fold> 
-    public void Update () {
+    private void setButtons(){
+	abrirCuento = new Button("abrirCuento", new Texture("imagenes/cuento1.png"));
+	abrirCuento.x=0;
+	abrirCuento.y=0;
+	this.escena.addActor(abrirCuento);
+	abrirCuento.clickListener=new ClickListener(){
+	
+		public void clicked(Button arg0) {
+			AbreCuento();
+		}};
+		
+		
+		opcionA = new Button ("opcionA", new Texture("imagenes/opcionA.png"));
+		opcionA.x=400;
+		opcionA.y=0;
+		opcionA.clickListener=new ClickListener(){
+			
+			
+			public void clicked(Button arg0) {
+				;
+			}};
+			
+		
+		opcionB = new Button ("opcionB", new Texture("imagenes/opcionB.png"));
+		opcionB.x=opcionA.x+180;
+		opcionB.y=opcionA.y;
+		opcionB.clickListener=new ClickListener(){
+			
+			public void clicked(Button arg0) {
+		}
+		};
+		}
+    public void AbreCuento(){
+    	
+    	this.escena.removeActor(abrirCuento);
+    	this.cuentoAbierto.x=0;
+    	this.cuentoAbierto.y=0;
+    	this.escena.addActor(cuentoAbierto);
+    	this.escena.addActor(opcionA);
+    	this.escena.addActor(opcionB);
+    	
     }
-
-}
-
+    }
