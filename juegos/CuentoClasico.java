@@ -1,5 +1,7 @@
 package juegos;
 
+import principal.Game;
+
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.scenes.scene2d.actors.Button;
 import com.badlogic.gdx.scenes.scene2d.actors.Button.ClickListener;
@@ -20,7 +22,7 @@ public class CuentoClasico extends Juego {
     public void Initialize(){
     	super.Initialize();
     	setButtons();
-    	cuentoAbierto=new Image("imagenes/cuento2.png");
+    	cuentoAbierto=new Image("cuentoAbierto", new Texture("imagenes/cuento/cuento2.png"));
     }
     
     public void load(){
@@ -28,7 +30,7 @@ public class CuentoClasico extends Juego {
     } 
 
     private void setButtons(){
-	abrirCuento = new Button("abrirCuento", new Texture("imagenes/cuento1.png"));
+	abrirCuento = new Button("abrirCuento", new Texture("imagenes/cuento/cuento1.png"));
 	abrirCuento.x=0;
 	abrirCuento.y=0;
 	this.escena.addActor(abrirCuento);
@@ -46,7 +48,7 @@ public class CuentoClasico extends Juego {
 			
 			
 			public void clicked(Button arg0) {
-				;
+				Game.salir();
 			}};
 			
 		
@@ -56,6 +58,7 @@ public class CuentoClasico extends Juego {
 		opcionB.clickListener=new ClickListener(){
 			
 			public void clicked(Button arg0) {
+				Game.salir();
 		}
 		};
 		}
