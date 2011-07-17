@@ -1,7 +1,9 @@
-package juegos;
+package juegos.emocionesPintadas;
 
 import java.util.HashMap;
 import java.util.Map;
+
+import juegos.Juego;
 
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.scenes.scene2d.actors.Button;

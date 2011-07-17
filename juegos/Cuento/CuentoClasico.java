@@ -1,6 +1,9 @@
-package juegos.Cuento;
+  package juegos.Cuento;
 
+import java.util.LinkedList;
 import java.util.List;
+
+import principal.ScreenManager;
 
 import juegos.Juego;
 
@@ -13,7 +16,8 @@ import com.badlogic.gdx.scenes.scene2d.actors.Image;
 public class CuentoClasico extends Juego {
 
 	private Button abrirCuento;
-	private List <Pagina> paginas;
+	public static List <Pagina> paginas;
+	public static Pagina paginaActual;
 	/*private Button opcionA;
 	private Button opcionB;
 	private Image cuentoAbierto;*/
@@ -21,18 +25,27 @@ public class CuentoClasico extends Juego {
 	private Image fondo;
 	
     public CuentoClasico () {
-    	
+    	this.paginas = new LinkedList();
+    	load();
     }
     
     public void Initialize(){
     	super.Initialize();
-    	setButtons();
     	fondo = new Image("fondo", new Texture("imagenes/mandragora800.png"));
+    	this.escena.addActor(fondo);
+    	setButtons();
     	//cuentoAbierto=new Image("cuentoAbierto", new Texture("imagenes/cuento/cuento2.png"));
     }
     
     public void load(){
-    	//paginas.add(new Pagina());
+    	paginas.add(new Pagina(0, "A", new Image("hoja1", new Texture("imagenes/cuento/pagina1.png")), 
+    			new Texture("imagenes/cuento/opcionA.png"), new Texture("imagenes/cuento/opcionB.png"), this));
+    	paginas.add(new Pagina(1, "B", new Image("hoja2", new Texture("imagenes/cuento/pagina2.png")), 
+    			new Texture("imagenes/cuento/opcionA.png"), new Texture("imagenes/cuento/opcionB.png"), this));
+    	paginas.add(new Pagina(2, "B", new Image("hoja3", new Texture("imagenes/cuento/pagina3.png")), 
+    			new Texture("imagenes/cuento/opcionA.png"), new Texture("imagenes/cuento/opcionB.png"), this));
+    	
+    	paginaActual = paginas.get(0);
     } 
 
     private void setButtons(){
@@ -43,39 +56,29 @@ public class CuentoClasico extends Juego {
 	abrirCuento.clickListener=new ClickListener(){
 	
 		public void clicked(Button arg0) {
-			AbreCuento();
+			escena.removeActor(abrirCuento);
+			escena.removeActor(fondo);
+			dibujaPagina();
 		}};
-		
-		
-		/*opcionA = new Button ("opcionA", new Texture("imagenes/opcionA.png"));
-		opcionA.x=400;
-		opcionA.y=0;
-		opcionA.clickListener=new ClickListener(){
-			
-			
-			public void clicked(Button arg0) {
-				Game.salir();
-			}};
-			
-		
-		opcionB = new Button ("opcionB", new Texture("imagenes/opcionB.png"));
-		opcionB.x=opcionA.x+180;
-		opcionB.y=opcionA.y;
-		opcionB.clickListener=new ClickListener(){
-			
-			public void clicked(Button arg0) {
-				Game.salir();
-		}
-		};*/
-		}
-    public void AbreCuento(){
-    	
-    	/*this.escena.removeActor(abrirCuento);
-    	this.cuentoAbierto.x=0;
-    	this.cuentoAbierto.y=0;
-    	this.escena.addActor(cuentoAbierto);
-    	this.escena.addActor(opcionA);
-    	this.escena.addActor(opcionB);*/
-    	
     }
+    
+    public void dibujaPagina(){
+    	this.escena.addActor(paginaActual.getOpcA());
+    	this.escena.addActor(paginaActual.getOpcB());
+    	this.escena.addActor(paginaActual.getHoja());
+    }
+    public void eliminaPagina(){
+    	this.escena.removeActor(paginaActual.getOpcA());
+    	this.escena.removeActor(paginaActual.getOpcB());
+    	this.escena.removeActor(paginaActual.getHoja());
+    }
+    public void siguientePagina(){
+    	if(paginas.size()-1>paginaActual.getNumPPag()){
+    		paginaActual=paginas.get(paginaActual.getNumPPag()+1);
+    		eliminaPagina();
+    		dibujaPagina();    	
+    	}else{
+    		ScreenManager.getScreenManager().setCurrentScreen("menu");
+    	}
+    }   
     }
