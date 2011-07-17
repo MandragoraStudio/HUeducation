@@ -1,10 +1,10 @@
 package principal;
 
-import juegos.CuentoClasico;
 import juegos.EmocionesPintadas;
 import juegos.Juego;
 import juegos.MezclaColores;
 import juegos.Modificalo;
+import juegos.Cuento.CuentoClasico;
 
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.scenes.scene2d.actors.Button;
