@@ -16,7 +16,7 @@ public class MandragoraSplash extends Screen {
 	public void Initialize(){
 		super.Initialize();
 
-		Image i = new Image("imagen", new Texture("imagenes/mandragora800.png"));
+		Image i = new Image("imagen", new Texture("imagenes/mandragora1024.png"));
 		//calendario = Calendar.getInstance();
 		this.escena.addActor(i);
 		
