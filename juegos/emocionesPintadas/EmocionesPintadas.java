@@ -57,7 +57,7 @@ public class EmocionesPintadas extends Juego {
 	public void colocarBoton(Button b,int actual, int max){
 		max=max+1;
 		b.y=20;
-		b.x=((800.0f/max)*actual)-(b.width/2);
+		b.x=((1024.0f/max)*actual)-(b.width/2);
 	}
 	
 	@Override
@@ -72,8 +72,8 @@ public class EmocionesPintadas extends Juego {
 	}
 	public void loadImagen(String nombre){
 		cuadro=new Image("cuadro",new Texture("imagenes/emociones/"+nombre+".png"));
-		cuadro.height=400;
-		cuadro.width=600;
+		cuadro.height=450;
+		cuadro.width=800;
 		cuadro.x=100;
 		cuadro.y=100;
 		this.escena.addActor(cuadro);
