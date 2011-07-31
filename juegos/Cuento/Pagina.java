@@ -18,6 +18,7 @@ public class Pagina {
 	private CuentoClasico cuento;
 	
 	public Pagina(int numPPag, String opcCorrecta, Image hoja, Texture opcA, Texture opcB, CuentoClasico cuento) {
+		
 		this.numPPag = numPPag;
 		this.opcCorrecta = opcCorrecta;
 		this.hoja= hoja;
@@ -56,7 +57,7 @@ public class Pagina {
 			this.cuento.siguientePagina();
 		}else{
 			//mensaje error
-			Game.salir();
+			
 		}
 	}
 	public int getNumPPag() {

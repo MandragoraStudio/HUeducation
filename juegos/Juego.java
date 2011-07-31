@@ -10,6 +10,7 @@ public abstract class Juego extends Screen {
 
 
     public Juego () {
+    	super();
     }
 
 

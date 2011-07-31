@@ -9,6 +9,8 @@ public class Modificalo extends Juego {
     // #[regen=yes,id=DCE.252B2265-3581-5512-4A2B-C9A69A3DD5F2]
     // </editor-fold> 
     public Modificalo () {
+    	super();
+    	
     }
 
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
