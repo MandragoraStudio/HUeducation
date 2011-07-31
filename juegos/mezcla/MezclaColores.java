@@ -1,7 +1,6 @@
 package juegos.mezcla;
 
 import juegos.Juego;
-import juegos.emocionesPintadas.Paleta;
 
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.scenes.scene2d.actors.Image;

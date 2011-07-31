@@ -1,4 +1,4 @@
-package juegos.emocionesPintadas;
+package juegos.mezcla;
 
 import com.badlogic.gdx.scenes.scene2d.Group;
 import com.badlogic.gdx.scenes.scene2d.actors.Button;
