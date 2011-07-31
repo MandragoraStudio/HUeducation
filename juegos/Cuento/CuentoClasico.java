@@ -31,7 +31,7 @@ public class CuentoClasico extends Juego {
     
     public void Initialize(){
     	super.Initialize();
-    	fondo = new Image("fondo", new Texture("imagenes/mandragora800.png"));
+    	fondo = new Image("fondo", new Texture("imagenes/mandragora1024.png"));
     	this.escena.addActor(fondo);
     	setButtons();
     	//cuentoAbierto=new Image("cuentoAbierto", new Texture("imagenes/cuento/cuento2.png"));
