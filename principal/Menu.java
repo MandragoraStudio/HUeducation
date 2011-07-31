@@ -3,10 +3,10 @@ package principal;
 
 import juegos.Juego;
 import juegos.Modificalo;
-import juegos.Museo;
 import juegos.Cuento.CuentoClasico;
 import juegos.emocionesPintadas.EmocionesPintadas;
 import juegos.mezcla.MezclaColores;
+import juegos.museo.Museo;
 
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.scenes.scene2d.actors.Button;
@@ -16,7 +16,6 @@ import com.badlogic.gdx.scenes.scene2d.actors.Image;
 
 public class Menu extends Screen {
 
-	Button salir;
 	Button BCuento;
 	Button BPintar;
 	Button BMezcla;
@@ -32,15 +31,7 @@ public class Menu extends Screen {
 	}
 	
 	private void setButtons(){
-		salir = new Button("salir",new Texture("imagenes/salir.png"));
-		this.escena.addActor(salir);
-		salir.clickListener=new ClickListener(){
 
-			public void clicked(Button arg0) {
-				Salir();
-			}
-			
-		};
 		BCuento = new Button("bcuento",new Texture("imagenes/botonescolor/cuento.png"));
 		BCuento.x=30;
 		BCuento.y=175;
