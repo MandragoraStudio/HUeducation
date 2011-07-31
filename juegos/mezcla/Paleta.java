@@ -3,14 +3,18 @@ package juegos.mezcla;
 import com.badlogic.gdx.graphics.Pixmap;
 import com.badlogic.gdx.graphics.Pixmap.Format;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.Group;
+import com.badlogic.gdx.scenes.scene2d.actions.MoveBy;
 import com.badlogic.gdx.scenes.scene2d.actors.Button;
 import com.badlogic.gdx.scenes.scene2d.actors.Button.ClickListener;
 import com.badlogic.gdx.scenes.scene2d.actors.Image;
 
 //Esta clase debe extender de la clase Grupo de Actores, e incluir todos los subactores necesarios para crear la paleta. Soy un genio
 public class Paleta extends Group {
-
+	
+	
+	
 	Image Fondo = new Image("fondo", new Texture(
 			"imagenes/mezcla/fondopaleta.png"));
 
@@ -30,6 +34,10 @@ public class Paleta extends Group {
 	Button colorP4 = new Button("CP4");
 	Button colorP5 = new Button("CP5");
 	Button colorP6 = new Button("CP6");
+	
+	Button sacaMezclador = new Button("sacaMezclador",new TextureRegion(new Texture("imagenes/mezcla/pruebaboton.png"),20,20,20,20),new TextureRegion(new Texture("imagenes/mezcla/pruebaboton.png")));
+	
+	MezcladorBasico mezcladorBasico = new MezcladorBasico();
 	
 	ClickListener evento = new ClickListener(){
 
@@ -98,6 +106,19 @@ public class Paleta extends Group {
 		colorP5.clickListener=evento;
 		this.addActor(colorP6);
 		colorP6.clickListener=evento;
+		this.addActor(sacaMezclador);
+		sacaMezclador.height=100;
+		sacaMezclador.width=100;
+		sacaMezclador.clickListener=new ClickListener(){
+			@Override
+			public void clicked(Button boton) {
+				sacaMezclador.action(new MoverA(200,500));
+			}
+			
+		};
+		this.addActor(mezcladorBasico);
+		mezcladorBasico.x=-100;
+		//mezcladorBasico.y=600;
 		this.touchable = true;
 	}
 

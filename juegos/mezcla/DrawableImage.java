@@ -30,6 +30,7 @@ public class DrawableImage extends Image {
 			return false;
 		}
 		textura.draw(pincel,(int) X-5,textura.getHeight()-((int) Y)-5);
+		
 		return true;
 	}
 

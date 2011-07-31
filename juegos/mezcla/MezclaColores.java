@@ -14,6 +14,8 @@ public class MezclaColores extends Juego {
 	Paleta paleta;
 	
 	
+	
+	
     public MezclaColores () {
     }
 
