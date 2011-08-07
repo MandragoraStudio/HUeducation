@@ -33,9 +33,9 @@ public class Menu extends Screen {
 	
 	private void setButtons(){
 
-		BCuento = new Button("bcuento",new TextureRegion(new Texture("imagenes2/Menu/TexturesBotonesMenu.png"), 24, 5, 212, 187));
-		BCuento.x=39;
-		BCuento.y=189;
+		BCuento = new Button("bcuento",new TextureRegion(new Texture("imagenes2/Menu/TexturesBotonesMenu.png"), 24, 0, 213-24, 185));
+		BCuento.x=37;
+		BCuento.y=184;
 		this.escena.addActor(BCuento);
 		BCuento.clickListener=new ClickListener(){
 			public void clicked(Button b){
@@ -62,7 +62,7 @@ public class Menu extends Screen {
 		};
 		BModifica=new Button("bmodifica",new TextureRegion(new Texture("imagenes2/Menu/TexturesBotonesMenu.png"), 634, 11, 871-634, 284-11));
 		BModifica.x=307;
-		BModifica.y=-5;
+		BModifica.y=-9;
 		this.escena.addActor(BModifica);
 		BModifica.clickListener=new ClickListener(){
 			public void clicked(Button b){
@@ -72,7 +72,7 @@ public class Menu extends Screen {
 		
 		BMuseo=new Button("bmuseo",new TextureRegion(new Texture("imagenes2/Menu/TexturesBotonesMenu.png"), 872, 8, 1007-872, 231-8));
 		BMuseo.x=780;
-		BMuseo.y=370;
+		BMuseo.y=373;
 		this.escena.addActor(BMuseo);
 		BMuseo.clickListener=new ClickListener(){
 			public void clicked(Button b){
