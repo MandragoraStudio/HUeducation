@@ -33,7 +33,7 @@ public class Menu extends Screen {
 	
 	private void setButtons(){
 
-		BCuento = new Button("bcuento",new Texture("imagenes/botonescolor/cuento.png"));
+		BCuento = new Button("bcuento",new TextureRegion(new Texture("imagenes2/botonescolor/botonescolor.png"), 0, 0, 200, 200));
 		BCuento.x=30;
 		BCuento.y=175;
 		this.escena.addActor(BCuento);
@@ -42,7 +42,7 @@ public class Menu extends Screen {
 				JuegoCuento();
 			}
 		};
-		BPintar= new Button("bpintar",new Texture("imagenes/botonescolor/emocionespintadas.png"));
+		BPintar= new Button("bpintar",new TextureRegion(new Texture("imagenes2/botonescolor/botonescolor.png"), 200, 0, 230, 185));
 		BPintar.x=640;
 		BPintar.y=140;
 		this.escena.addActor(BPintar);
@@ -51,7 +51,7 @@ public class Menu extends Screen {
 				JuegoPintar();
 			}
 		};
-		BMezcla=new Button("bmezcla",new Texture("imagenes/botonescolor/mezcla.png"));
+		BMezcla=new Button("bmezcla",new TextureRegion(new Texture("imagenes2/botonescolor/botonescolor.png"), 430, 0, 185, 200));
 		BMezcla.x=349;
 		BMezcla.y=391;
 		this.escena.addActor(BMezcla);
@@ -60,7 +60,7 @@ public class Menu extends Screen {
 				JuegoMezcla();
 			}
 		};
-		BModifica=new Button("bmodifica",new Texture("imagenes/botonescolor/modificalo.png"));
+		BModifica=new Button("bmodifica",new TextureRegion(new Texture("imagenes2/botonescolor/botonescolor.png"), 615, 0, 240, 280));
 		BModifica.x=307;
 		BModifica.y=-5;
 		this.escena.addActor(BModifica);
@@ -70,7 +70,7 @@ public class Menu extends Screen {
 			}
 		};
 		
-		BMuseo=new Button("bmuseo",new Texture("imagenes/botonescolor/museo.png"));
+		BMuseo=new Button("bmuseo",new TextureRegion(new Texture("imagenes2/botonescolor/botonescolor.png"), 855, 0, 135, 230));
 		BMuseo.x=780;
 		BMuseo.y=370;
 		this.escena.addActor(BMuseo);
