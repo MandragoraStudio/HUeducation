@@ -1,9 +1,6 @@
 package juegos.Cuento;
 
-import principal.Game;
-
-import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.actors.Button;
 import com.badlogic.gdx.scenes.scene2d.actors.Button.ClickListener;
 import com.badlogic.gdx.scenes.scene2d.actors.Image;
@@ -17,7 +14,7 @@ public class Pagina {
 	private Image hoja;
 	private CuentoClasico cuento;
 	
-	public Pagina(int numPPag, String opcCorrecta, Image hoja, Texture opcA, Texture opcB, CuentoClasico cuento) {
+	public Pagina(int numPPag, String opcCorrecta, Image hoja, TextureRegion opcA, TextureRegion opcB, CuentoClasico cuento) {
 		
 		this.numPPag = numPPag;
 		this.opcCorrecta = opcCorrecta;
