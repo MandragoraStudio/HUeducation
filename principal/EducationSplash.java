@@ -25,7 +25,7 @@ public class EducationSplash extends Screen {
 	public void Initialize(){
 		super.Initialize();
 		
-		Image i = new Image("img",new TextureRegion(new Texture("imagenes2/esplash.png"), 0, 0, 1024, 600));
+		Image i = new Image("img",new TextureRegion(new Texture("imagenes2/splash/esplash.png"), 0, 0, 1024, 600));
 		this.escena.addActor(i);
 		tiempoini=System.currentTimeMillis();
 	}
