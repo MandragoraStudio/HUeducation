@@ -1,16 +1,13 @@
-package juegos;
+package juegos.modificalo;
 
+import juegos.Juego;
 import principal.Arrastable;
-import principal.GameGlobals;
-import principal.ScreenManager;
 
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.Group;
-import com.badlogic.gdx.scenes.scene2d.actions.MoveBy;
 import com.badlogic.gdx.scenes.scene2d.actions.MoveTo;
-import com.badlogic.gdx.scenes.scene2d.actions.Sequence;
 import com.badlogic.gdx.scenes.scene2d.actors.Button;
 import com.badlogic.gdx.scenes.scene2d.actors.Button.ClickListener;
 import com.badlogic.gdx.scenes.scene2d.actors.Image;
@@ -44,28 +41,28 @@ public class Modificalo extends Juego {
 	Boolean pelus_visi = false;
 	Boolean gafas_visi = false;
 	Boolean bigos_visi = false;
-	
-	int pX;
-	int pY;
-	int i = 0;
+
+	int pos_ini_1 = 450;
+	int pos_ini_2 = 340;
+	int pos_ini_3 = 230;
 	
    
    @Override
 	public void Load(){
-	    cuadro = new Image("cuadro",new Texture("imagenes/gio.png"));
+	    cuadro = new Image("cuadro",new Texture("imagenes/modificalo/gio.png"));
 	    menu_modif = new Group("menu_modif");
 	    modif_gafas = new Group("modif_gafas");
 	   
     	salir = new Button("sa",new Texture("imagenes/salir.png"));
-    	siguiente = new Button("si",new Texture("imagenes/pintar.png"));
+    	siguiente = new Button("si",new Texture("imagenes/salir.png"));
     	
-    	pelucas = new Button("btn_pelu",new Texture("imagenes/peluca.png"));
-    	gafas = new Button("btn_gafa",new Texture("imagenes/gafas.png"));
-    	bigotes = new Button("btn_bigo",new Texture("imagenes/bigote.png"));
+    	pelucas = new Button("btn_pelu",new Texture("imagenes/modificalo/peluca.png"));
+    	gafas = new Button("btn_gafa",new Texture("imagenes/modificalo/gafas.png"));
+    	bigotes = new Button("btn_bigo",new Texture("imagenes/modificalo/bigote.png"));
     	
-    	gafa1 = new Arrastable("gafa1",new Texture("imagenes/gafas/gafa1.png"));
-    	gafa2 = new Arrastable("gafa2",new Texture("imagenes/gafas/gafa2.png"));
-    	gafa3 = new Arrastable("gafa3",new Texture("imagenes/gafas/gafa3.png"));
+    	gafa1 = new Arrastable("gafa1",new Texture("imagenes/modificalo/gafas/gafa1.png"));
+    	gafa2 = new Arrastable("gafa2",new Texture("imagenes/modificalo/gafas/gafa2.png"));
+    	gafa3 = new Arrastable("gafa3",new Texture("imagenes/modificalo/gafas/gafa3.png"));
     	
     	chivato = new Label("c",new BitmapFont(),"chivato");
     	
@@ -109,9 +106,9 @@ public class Modificalo extends Juego {
 		bigotes.x = 470;
 		bigotes.y = 0;
 		
-		gafa1.y = 450;
-		gafa2.y = 340;
-		gafa3.y = 230;
+		gafa1.y = pos_ini_1;
+		gafa2.y = pos_ini_2;
+		gafa3.y = pos_ini_3;
 		
 		
 		siguiente.x = 600;
@@ -138,33 +135,104 @@ public class Modificalo extends Juego {
 
 	@Override
 	public boolean touchDragged(int x, int y, int pointer) {
-		//menu_modif.x++;
 		return super.touchDragged(x, y, pointer);
 		
 	}
 
 	@Override
 	public boolean touchUp(int x, int y, int pointer, int button) {
-		chivato.setText("x = " + x + " y = " + (y - GameGlobals.ScreenHeight));
+		Actor act;
+		
+		if (gafa1.pressed) {
+			act = gafa1;
+		}
+		
+		
 		if (gafa1.pressed) {
 			if ((gafa1.x > 350 && gafa1.x < 450) && (gafa1.y > 420 && gafa1.y < 520)) {
 				gafa1.action(MoveTo.$(350,450,1));
 				if(modif_gafas.getActors().contains(gafa1)) {
-
+					recolocar("gafa");
 					modif_gafas.removeActor(gafa1);
 					escena.addActor(gafa1);
-					modif_gafas.focus(gafa2, 0);
-	
+					gafa1.pressed=false;
+					modif_gafas.focus(null, 0);
 				}
 			} else if (gafa1.pressed) {
-				gafa1.action(MoveTo.$(0,450,1));
+				reubicarElemento(gafa1);
 				if(!modif_gafas.getActors().contains(gafa1)) {
 					modif_gafas.addActor(gafa1);
 					escena.removeActor(gafa1);
 				}
 			}
 		}
+		
+		if (gafa2.pressed) {
+			if ((gafa2.x > 350 && gafa2.x < 450) && (gafa2.y > 420 && gafa2.y < 520)) {
+				gafa2.action(MoveTo.$(350,450,1));
+				if(modif_gafas.getActors().contains(gafa2)) {
+					recolocar("gafa");
+					modif_gafas.removeActor(gafa2);
+					escena.addActor(gafa2);
+					gafa2.pressed=false;
+					modif_gafas.focus(null, 0);
+				}
+			} else if (gafa2.pressed) {
+				reubicarElemento(gafa2);
+				if(!modif_gafas.getActors().contains(gafa2)) {
+					modif_gafas.addActor(gafa2);
+					escena.removeActor(gafa2);
+				}
+			}
+		}
+		
+		if (gafa3.pressed) {
+			if ((gafa3.x > 350 && gafa3.x < 450) && (gafa3.y > 420 && gafa3.y < 520)) {
+				gafa3.action(MoveTo.$(350,450,1));
+				if(modif_gafas.getActors().contains(gafa3)) {
+					recolocar("gafa");
+					modif_gafas.removeActor(gafa3);
+					escena.addActor(gafa3);
+					gafa3.pressed=false;
+					modif_gafas.focus(null, 0);
+				}
+			} else if (gafa3.pressed) {
+				reubicarElemento(gafa3);
+				if(!modif_gafas.getActors().contains(gafa3)) {
+					modif_gafas.addActor(gafa3);
+					escena.removeActor(gafa3);
+				}
+			}
+		}
+		
 		return super.touchUp(x, y, pointer, button);
+	}
+	
+	public void recolocar(String nombre) {
+		String nombre_F;
+		Actor actor;
+		int i;
+			for(i = 1; i <= 3; i++) {
+			nombre_F =  nombre  + i;
+			actor = escena.findActor(nombre_F);
+			if(!modif_gafas.getActors().contains(actor)) {
+				modif_gafas.addActor(actor);
+				escena.removeActor(actor);
+				reubicarElemento(actor);
+			}
+		}
+	}
+	
+	public void reubicarElemento(Actor actor) {
+		if (actor.equals(gafa1)) {
+			gafa1.action(MoveTo.$(0,450,1));
+		}
+		if (actor.equals(gafa2)) {
+			gafa2.action(MoveTo.$(0,340,1));
+		}
+		if (actor.equals(gafa3)) {
+			gafa3.action(MoveTo.$(0,230,1));
+		}
 	}
 }
 
