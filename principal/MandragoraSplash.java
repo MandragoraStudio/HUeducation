@@ -1,6 +1,7 @@
 package principal;
 
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.actors.Image;
 
 public class MandragoraSplash extends Screen {
@@ -16,7 +17,7 @@ public class MandragoraSplash extends Screen {
 	public void Initialize(){
 		super.Initialize();
 
-		Image i = new Image("imagen", new Texture("imagenes/mandragora1024.png"));
+		Image i = new Image("imagen", new TextureRegion(new Texture("imagenes2/mandragora1024.png"), 0, 0, 1024, 600));
 		//calendario = Calendar.getInstance();
 		this.escena.addActor(i);
 		
