@@ -2,10 +2,10 @@ package principal;
 
 
 import juegos.Juego;
-import juegos.Modificalo;
 import juegos.Cuento.CuentoClasico;
 import juegos.emocionesPintadas.EmocionesPintadas;
 import juegos.mezcla.MezclaColores;
+import juegos.modificalo.Modificalo;
 import juegos.museo.Museo;
 
 import com.badlogic.gdx.graphics.Texture;
