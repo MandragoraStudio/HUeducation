@@ -70,9 +70,7 @@ public class Modificalo extends Juego {
     	chivato = new Label("c",new BitmapFont(),"chivato");
     	
     	gafas.clickListener=new ClickListener(){
-
-			public void clicked(Button arg0) {
-				
+			public void clicked(Button arg0) {	
 				if (gafas_visi == false) {
 					modif_gafas.action(MoveTo.$(0,0,1));
 					gafas_visi = true;
@@ -81,15 +79,6 @@ public class Modificalo extends Juego {
 					gafas_visi = false;
 				}
 			}
-			
-		};
-		
-		salir.clickListener=new ClickListener(){
-
-			public void clicked(Button arg0) {
-				ScreenManager.getScreenManager().setCurrentScreen("menu");
-			}
-			
 		};
     }
     
@@ -161,7 +150,7 @@ public class Modificalo extends Juego {
 			if ((gafa1.x > 350 && gafa1.x < 450) && (gafa1.y > 420 && gafa1.y < 520)) {
 				gafa1.action(MoveTo.$(350,450,1));
 				if(modif_gafas.getActors().contains(gafa1)) {
-					modif_gafas.
+
 					modif_gafas.removeActor(gafa1);
 					escena.addActor(gafa1);
 					modif_gafas.focus(gafa2, 0);

@@ -26,18 +26,18 @@ public class CuentoClasico extends Juego {
 	
     public CuentoClasico () {
     	this.paginas = new LinkedList();
-    	load();
     }
     
+    @Override
     public void Initialize(){
     	super.Initialize();
-    	fondo = new Image("fondo", new Texture("imagenes/mandragora800.png"));
+    	fondo = new Image("fondo", new Texture("imagenes/mandragora1024.png"));
     	this.escena.addActor(fondo);
     	setButtons();
     	//cuentoAbierto=new Image("cuentoAbierto", new Texture("imagenes/cuento/cuento2.png"));
     }
-    
-    public void load(){
+    @Override
+    public void Load(){
     	paginas.add(new Pagina(0, "A", new Image("hoja1", new Texture("imagenes/cuento/pagina1.png")), 
     			new Texture("imagenes/cuento/opcionA.png"), new Texture("imagenes/cuento/opcionB.png"), this));
     	paginas.add(new Pagina(1, "B", new Image("hoja2", new Texture("imagenes/cuento/pagina2.png")), 
