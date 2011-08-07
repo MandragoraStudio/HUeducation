@@ -23,6 +23,7 @@ public class MezclaColores extends Juego {
     }
 
     public void Update () {
+    	super.Update();
     }
     
     public void Load(){
