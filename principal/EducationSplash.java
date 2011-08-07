@@ -1,6 +1,7 @@
 package principal;
 
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.actors.Image;
 
 public class EducationSplash extends Screen {
@@ -23,7 +24,8 @@ public class EducationSplash extends Screen {
 	@Override
 	public void Initialize(){
 		super.Initialize();
-		Image i = new Image("img",new Texture("imagenes/esplash.png"));
+		
+		Image i = new Image("img",new TextureRegion(new Texture("imagenes2/splash/esplash.png"), 0, 0, 1024, 600));
 		this.escena.addActor(i);
 		tiempoini=System.currentTimeMillis();
 	}

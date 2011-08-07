@@ -5,7 +5,6 @@ import com.badlogic.gdx.graphics.Pixmap.Format;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.Group;
-import com.badlogic.gdx.scenes.scene2d.actions.MoveBy;
 import com.badlogic.gdx.scenes.scene2d.actors.Button;
 import com.badlogic.gdx.scenes.scene2d.actors.Button.ClickListener;
 import com.badlogic.gdx.scenes.scene2d.actors.Image;
@@ -112,13 +111,17 @@ public class Paleta extends Group {
 		sacaMezclador.clickListener=new ClickListener(){
 			@Override
 			public void clicked(Button boton) {
-				sacaMezclador.action(new MoverA(200,500));
+				mezcladorBasico.setColor1(1, 1, 0, 1);
+				mezcladorBasico.setColor2(0, 0, 1, 1);
+				mezcladorBasico.setColorObjetivo(0, 1, 0, 1);
+				mezcladorBasico.x=-600;
+				mezcladorBasico.y=0;
 			}
 			
 		};
 		this.addActor(mezcladorBasico);
-		mezcladorBasico.x=-100;
-		//mezcladorBasico.y=600;
+		mezcladorBasico.x=-600;
+		mezcladorBasico.y=-this.y-1024;
 		this.touchable = true;
 	}
 
