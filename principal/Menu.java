@@ -9,6 +9,7 @@ import juegos.mezcla.MezclaColores;
 import juegos.museo.Museo;
 
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.actors.Button;
 import com.badlogic.gdx.scenes.scene2d.actors.Button.ClickListener;
 import com.badlogic.gdx.scenes.scene2d.actors.Image;
@@ -25,7 +26,7 @@ public class Menu extends Screen {
 	@Override
 	public void Initialize(){
 		super.Initialize();
-		fondo = new Image("fondo", new Texture("imagenes/fondoMenu.png"));
+		fondo = new Image("fondo", new TextureRegion(new Texture("imagenes2/fondoMenu.png"), 0, 0, 1024, 600));
     	this.escena.addActor(fondo);
 		setButtons();
 	}
