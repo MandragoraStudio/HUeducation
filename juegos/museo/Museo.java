@@ -33,7 +33,7 @@ public class Museo extends Juego {
 	public void Initialize() {
 		super.Initialize();
 		fondo = new Image("fondo", new TextureRegion(new Texture(
-				"imagenes/museo/TexturesMuseo.png"), 0, 0, 1024, 600));
+				"imagenes2/museo/TexturesMuseo.png"), 0, 0, 1024, 600));
 		this.escena.addActor(fondo);
 		this.pinacotecas.put("pinacoteca1", new Pinacoteca2(this.escena));
 		this.pinacotecas.get("pinacoteca1").Initialize();
@@ -42,7 +42,7 @@ public class Museo extends Juego {
 
 	private void setButtons() {
 		derecha = new Button("derecha", new TextureRegion(new Texture(
-				"imagenes/museo/TexturesMuseo.png"), 0, 600, 101, 110));
+				"imagenes2/museo/TexturesMuseo.png"), 0, 600, 101, 110));
 		derecha.x = 1024-10-this.derecha.width;
 		derecha.y = 270;
 		this.escena.addActor(derecha);
@@ -54,7 +54,7 @@ public class Museo extends Juego {
 		};
 
 		izquierda = new Button("izquierda", new TextureRegion(new Texture(
-				"imagenes/museo/TexturesMuseo.png"), 101, 600, 98, 110));
+				"imagenes2/museo/TexturesMuseo.png"), 101, 600, 98, 110));
 		izquierda.x = 10;
 		izquierda.y = 270;
 		this.escena.addActor(izquierda);

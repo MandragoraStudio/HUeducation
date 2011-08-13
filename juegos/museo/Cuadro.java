@@ -12,13 +12,13 @@ public class Cuadro extends Button {
 	private Image pintura;
 	
 	public Cuadro(){
-		super("cuadro",new TextureRegion(new Texture("imagenes/museo/TexturesMuseo.png"), 199, 600, 385, 305));
+		super("cuadro",new TextureRegion(new Texture("imagenes2/museo/TexturesMuseo.png"), 199, 600, 385, 305));
 		
 	}
 	
 	public void Initialize(){
-		this.fondo = new Image ("fondoCuadro", new TextureRegion(new Texture("imagenes/museo/TexturesMuseo.png"), 199, 600, 385, 305));
-		this.pintura = new Image ("pintura", new TextureRegion(new Texture("imagenes/museo/TexturesMuseo.png"), 214, 613, 555-214, 868-613));
+		this.fondo = new Image ("fondoCuadro", new TextureRegion(new Texture("imagenes2/museo/TexturesMuseo.png"), 199, 600, 385, 305));
+		this.pintura = new Image ("pintura", new TextureRegion(new Texture("imagenes2/museo/TexturesMuseo.png"), 214, 613, 555-214, 868-613));
 		
 	}
 	

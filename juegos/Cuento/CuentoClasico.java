@@ -3,11 +3,11 @@
 import java.util.LinkedList;
 import java.util.List;
 
+import juegos.Juego;
 import principal.ScreenManager;
 
-import juegos.Juego;
-
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.actors.Button;
 import com.badlogic.gdx.scenes.scene2d.actors.Button.ClickListener;
 import com.badlogic.gdx.scenes.scene2d.actors.Image;
@@ -31,25 +31,25 @@ public class CuentoClasico extends Juego {
     @Override
     public void Initialize(){
     	super.Initialize();
-    	fondo = new Image("fondo", new Texture("imagenes/mandragora1024.png"));
+    	fondo = new Image("fondo", new TextureRegion(new Texture("imagenes2/splash/mandragora1024.png"), 0,0,1024,600));
     	this.escena.addActor(fondo);
     	setButtons();
     	//cuentoAbierto=new Image("cuentoAbierto", new Texture("imagenes/cuento/cuento2.png"));
     }
     @Override
     public void Load(){
-    	paginas.add(new Pagina(0, "A", new Image("hoja1", new Texture("imagenes/cuento/pagina1.png")), 
-    			new Texture("imagenes/cuento/opcionA.png"), new Texture("imagenes/cuento/opcionB.png"), this));
-    	paginas.add(new Pagina(1, "B", new Image("hoja2", new Texture("imagenes/cuento/pagina2.png")), 
-    			new Texture("imagenes/cuento/opcionA.png"), new Texture("imagenes/cuento/opcionB.png"), this));
-    	paginas.add(new Pagina(2, "B", new Image("hoja3", new Texture("imagenes/cuento/pagina3.png")), 
-    			new Texture("imagenes/cuento/opcionA.png"), new Texture("imagenes/cuento/opcionB.png"), this));
+    	paginas.add(new Pagina(0, "A", new Image("hoja1", new TextureRegion(new Texture("imagenes2/cuento/TextureCuento1.png"),0,0,340,500)), 
+    			new TextureRegion(new Texture("imagenes2/cuento/TextureCuento1.png"),0,520,170,500), new TextureRegion(new Texture("imagenes2/cuento/TextureCuento1.png"),170,520,170,500), this));
+    	paginas.add(new Pagina(1, "B", new Image("hoja2", new TextureRegion(new Texture("imagenes2/cuento/TextureCuento1.png"),340,0,340,500)), 
+    			new TextureRegion(new Texture("imagenes2/cuento/TextureCuento1.png"),0,520,170,500), new TextureRegion(new Texture("imagenes2/cuento/TextureCuento1.png"),170,520,170,500), this));
+    	paginas.add(new Pagina(2, "B", new Image("hoja3", new TextureRegion(new Texture("imagenes2/cuento/TextureCuento1.png"),680,0,340,500)), 
+    			new TextureRegion(new Texture("imagenes2/cuento/TextureCuento1.png"),0,520,170,500), new TextureRegion(new Texture("imagenes2/cuento/TextureCuento1.png"),170,520,170,500), this));
     	
     	paginaActual = paginas.get(0);
     } 
 
     private void setButtons(){
-	abrirCuento = new Button("abrirCuento", new Texture("imagenes/cuento/cuento1.png"));
+	abrirCuento = new Button("abrirCuento", new TextureRegion(new Texture("imagenes2/cuento/TextureCuento2.png"),0,0,360,540));
 	abrirCuento.x=400;
 	abrirCuento.y=25;
 	this.escena.addActor(abrirCuento);
