@@ -141,12 +141,6 @@ public class Modificalo extends Juego {
 
 	@Override
 	public boolean touchUp(int x, int y, int pointer, int button) {
-		Actor act;
-		
-		if (gafa1.pressed) {
-			act = gafa1;
-		}
-		
 		
 		if (gafa1.pressed) {
 			if ((gafa1.x > 350 && gafa1.x < 450) && (gafa1.y > 420 && gafa1.y < 520)) {
