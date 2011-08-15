@@ -33,7 +33,8 @@ public class Pinacoteca2 {
 		cuadro1.clickListener = new ClickListener() {
 
 			public void clicked(Button arg0) {
-
+				borrarPinacoteca();
+				
 			}
 		};
 
