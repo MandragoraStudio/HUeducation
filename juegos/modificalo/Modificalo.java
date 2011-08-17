@@ -1,7 +1,7 @@
 package juegos.modificalo;
 
 import juegos.Juego;
-import principal.Arrastable;
+import principal.Arrastrable;
 
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
@@ -34,9 +34,9 @@ public class Modificalo extends Juego {
 	
 	//Esto debe ser un array
 	
-	Arrastable gafa1;
-	Arrastable gafa2;
-	Arrastable gafa3;
+	Arrastrable gafa1;
+	Arrastrable gafa2;
+	Arrastrable gafa3;
 	
 	Boolean pelus_visi = false;
 	Boolean gafas_visi = false;
@@ -60,9 +60,9 @@ public class Modificalo extends Juego {
     	gafas = new Button("btn_gafa",new Texture("imagenes/modificalo/gafas.png"));
     	bigotes = new Button("btn_bigo",new Texture("imagenes/modificalo/bigote.png"));
     	
-    	gafa1 = new Arrastable("gafa1",new Texture("imagenes/modificalo/gafas/gafa1.png"));
-    	gafa2 = new Arrastable("gafa2",new Texture("imagenes/modificalo/gafas/gafa2.png"));
-    	gafa3 = new Arrastable("gafa3",new Texture("imagenes/modificalo/gafas/gafa3.png"));
+    	gafa1 = new Arrastrable("gafa1",new Texture("imagenes/modificalo/gafas/gafa1.png"));
+    	gafa2 = new Arrastrable("gafa2",new Texture("imagenes/modificalo/gafas/gafa2.png"));
+    	gafa3 = new Arrastrable("gafa3",new Texture("imagenes/modificalo/gafas/gafa3.png"));
     	
     	chivato = new Label("c",new BitmapFont(),"chivato");
     	
