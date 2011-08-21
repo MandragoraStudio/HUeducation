@@ -4,21 +4,21 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.scenes.scene2d.Group;
 import com.badlogic.gdx.scenes.scene2d.actors.Button;
 
-public class Arrastable extends Button {
+public class Arrastrable extends Button {
 	Group Padre;
 	float Yinicial;
 	float Xinicial;
 	boolean visible;
 	boolean colocado;
 
-	public Arrastable(String name, Texture texture,Group padre) {
+	public Arrastrable(String name, Texture texture,Group padre) {
 		super(name, texture);
 		//if (padre == null)throw new IllegalArgumentException("El padre no pude ser null");
 		this.Padre=padre;
 		// TODO Auto-generated constructor stub
 	}
 	
-	public Arrastable(String name, Texture texture) {
+	public Arrastrable(String name, Texture texture) {
 		super(name, texture);
 		// TODO Auto-generated constructor stub
 	}
