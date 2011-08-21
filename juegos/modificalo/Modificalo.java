@@ -46,10 +46,22 @@ public class Modificalo extends Juego {
 	int pos_ini_2 = 340;
 	int pos_ini_3 = 230;
 	
+	int num_cuadro;
+	
+	PCuadro pCuadro;
+	
    
    @Override
 	public void Load(){
-	    cuadro = new Image("cuadro",new Texture("imagenes/modificalo/gio.png"));
+	   	if (num_cuadro == 1) {
+	   		cuadro = new Image("cuadro",new Texture("imagenes/modificalo/gio.png"));
+	   	}
+		if (num_cuadro == 2) {
+	   		cuadro = new Image("cuadro",new Texture("imagenes/modificalo/mano.jpg"));
+	   	}
+		
+   		pCuadro = new PCuadro(num_cuadro);
+	    
 	    menu_modif = new Group("menu_modif");
 	    modif_gafas = new Group("modif_gafas");
 	   
@@ -79,10 +91,16 @@ public class Modificalo extends Juego {
 		};
     }
     
-   public Modificalo () {
-   	super();
+   public Modificalo (int c) {
+	   super();
+	   this.num_cuadro = c;
    }
  
+   public Modificalo () {
+	   super();
+   }
+
+   
    public void Update () {
    	super.Update(); 
    }
@@ -94,6 +112,8 @@ public class Modificalo extends Juego {
 		
 		chivato.x = 0;
 		chivato.y = 590;
+		
+		chivato.setText(num_cuadro + "");
 		
 		cuadro.x = 250;
 		cuadro.y = 140;
@@ -141,10 +161,10 @@ public class Modificalo extends Juego {
 
 	@Override
 	public boolean touchUp(int x, int y, int pointer, int button) {
-		
+				
 		if (gafa1.pressed) {
-			if ((gafa1.x > 350 && gafa1.x < 450) && (gafa1.y > 420 && gafa1.y < 520)) {
-				gafa1.action(MoveTo.$(350,450,1));
+			if ((gafa1.x > pCuadro.uGafa.mx1 && gafa1.x < pCuadro.uGafa.mx2) && (gafa1.y > pCuadro.uGafa.my1 && gafa1.y < pCuadro.uGafa.my2)) {
+				gafa1.action(MoveTo.$(pCuadro.uGafa.xF,pCuadro.uGafa.yF,1));
 				if(modif_gafas.getActors().contains(gafa1)) {
 					recolocar("gafa");
 					modif_gafas.removeActor(gafa1);
@@ -162,8 +182,8 @@ public class Modificalo extends Juego {
 		}
 		
 		if (gafa2.pressed) {
-			if ((gafa2.x > 350 && gafa2.x < 450) && (gafa2.y > 420 && gafa2.y < 520)) {
-				gafa2.action(MoveTo.$(350,450,1));
+			if ((gafa2.x > pCuadro.uGafa.mx1 && gafa2.x < pCuadro.uGafa.mx2) && (gafa2.y > pCuadro.uGafa.my1 && gafa2.y < pCuadro.uGafa.my2)) {
+				gafa2.action(MoveTo.$(pCuadro.uGafa.xF,pCuadro.uGafa.yF,1));
 				if(modif_gafas.getActors().contains(gafa2)) {
 					recolocar("gafa");
 					modif_gafas.removeActor(gafa2);
@@ -181,8 +201,8 @@ public class Modificalo extends Juego {
 		}
 		
 		if (gafa3.pressed) {
-			if ((gafa3.x > 350 && gafa3.x < 450) && (gafa3.y > 420 && gafa3.y < 520)) {
-				gafa3.action(MoveTo.$(350,450,1));
+			if ((gafa3.x > pCuadro.uGafa.mx1 && gafa3.x < pCuadro.uGafa.mx2) && (gafa3.y > pCuadro.uGafa.my1 && gafa3.y < pCuadro.uGafa.my2)) {
+				gafa3.action(MoveTo.$(pCuadro.uGafa.xF,pCuadro.uGafa.yF,1));
 				if(modif_gafas.getActors().contains(gafa3)) {
 					recolocar("gafa");
 					modif_gafas.removeActor(gafa3);
