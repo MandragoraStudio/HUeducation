@@ -143,8 +143,8 @@ public class Paleta extends Group {
 	public void eligeColores(){
 		switch(coloresDisponibles){
 		case 0:
-			colores[0][0]=1;
-			colores[0][1]=0;
+			colores[0][0]=0;
+			colores[0][1]=1;
 			colores[0][2]=1;
 			colores[1][0]=1;
 			colores[1][1]=1;
