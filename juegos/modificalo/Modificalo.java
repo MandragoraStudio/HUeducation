@@ -18,14 +18,15 @@ public class Modificalo extends Juego {
 	
 	Image cuadro;
 	//Botones ocultos.
+	
 	Group menu_modif;
 	//Group modif_pelucas;
 	Group modif_gafas;
 	//Group modif_bigotes;
+	Group modif_bigos;
 	
 	//Botones principales
 	Button salir;
-	Button siguiente;
 	
 	//Botones modificadores cuadro.
 	Button pelucas;
@@ -37,6 +38,10 @@ public class Modificalo extends Juego {
 	Arrastrable gafa1;
 	Arrastrable gafa2;
 	Arrastrable gafa3;
+	
+	Arrastrable bigote1;
+	Arrastrable bigote2;
+	Arrastrable bigote3;
 	
 	Boolean pelus_visi = false;
 	Boolean gafas_visi = false;
@@ -64,9 +69,9 @@ public class Modificalo extends Juego {
 	    
 	    menu_modif = new Group("menu_modif");
 	    modif_gafas = new Group("modif_gafas");
+	    modif_bigos = new Group("modif_bigos");
 	   
     	salir = new Button("sa",new Texture("imagenes/salir.png"));
-    	siguiente = new Button("si",new Texture("imagenes/salir.png"));
     	
     	pelucas = new Button("btn_pelu",new Texture("imagenes/modificalo/peluca.png"));
     	gafas = new Button("btn_gafa",new Texture("imagenes/modificalo/gafas.png"));
@@ -76,9 +81,25 @@ public class Modificalo extends Juego {
     	gafa2 = new Arrastrable("gafa2",new Texture("imagenes/modificalo/gafas/gafa2.png"));
     	gafa3 = new Arrastrable("gafa3",new Texture("imagenes/modificalo/gafas/gafa3.png"));
     	
+    	bigote1 = new Arrastrable("bigo1",new Texture("imagenes/modificalo/bigotes/bigote1.png"));
+    	bigote2 = new Arrastrable("bigo2",new Texture("imagenes/modificalo/bigotes/bigote2.png"));
+    	bigote3 = new Arrastrable("bigo3",new Texture("imagenes/modificalo/bigotes/bigote3.png"));
+    	
     	chivato = new Label("c",new BitmapFont(),"chivato");
     	
-    	gafas.clickListener=new ClickListener(){
+    	bigotes.clickListener=new ClickListener(){
+			public void clicked(Button arg0) {	
+				if (bigos_visi == false) {
+					modif_bigos.action(MoveTo.$(0,0,1));
+					bigos_visi = true;
+				} else {
+					modif_bigos.action(MoveTo.$(-150,0,1));
+					bigos_visi = false;
+				}
+			}
+		};
+		
+		gafas.clickListener=new ClickListener(){
 			public void clicked(Button arg0) {	
 				if (gafas_visi == false) {
 					modif_gafas.action(MoveTo.$(0,0,1));
@@ -130,26 +151,30 @@ public class Modificalo extends Juego {
 		gafa2.y = pos_ini_2;
 		gafa3.y = pos_ini_3;
 		
-		
-		siguiente.x = 600;
-		siguiente.y = 0;
+		bigote1.y = pos_ini_1;
+		bigote2.y = pos_ini_2;
+		bigote3.y = pos_ini_3;
 		
 		modif_gafas.addActor(gafa1);
 		modif_gafas.addActor(gafa2);
 		modif_gafas.addActor(gafa3);
 		
+		modif_bigos.addActor(bigote1);
+		modif_bigos.addActor(bigote2);
+		modif_bigos.addActor(bigote3);
+		
 		modif_gafas.x = -150;
+		modif_bigos.x = -150;
 		
 		menu_modif.addActor(pelucas);
 		menu_modif.addActor(gafas);
 		menu_modif.addActor(bigotes);
 		
-		this.escena.addActor(chivato);
 		this.escena.addActor(cuadro);
 		this.escena.addActor(modif_gafas);
+		this.escena.addActor(modif_bigos);
 		this.escena.addActor(menu_modif);
 		this.escena.addActor(salir);
-		this.escena.addActor(siguiente);
 		
 	}
 
