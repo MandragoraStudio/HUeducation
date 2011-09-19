@@ -8,6 +8,7 @@ import juegos.mezcla.MezclaColores;
 import juegos.modificalo.SeleccionCuadro;
 import juegos.museo.Museo;
 
+import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.actors.Button;
@@ -127,11 +128,16 @@ public class Menu extends Screen {
     public void Update () {
     	super.Update();
     }
-
+    @Override
+    public boolean keyDown(int arg0) {
+    	if(arg0== Input.Keys.BACK){
+    		System.exit(0);
+    	}
+		return false;
+	}
     private void inicializaJuego (Juego j) {
     	ScreenManager.getScreenManager().addScreen("juego", j);
     	ScreenManager.getScreenManager().setCurrentScreen("juego");
     }
 
 }
-
