@@ -5,51 +5,89 @@ import com.badlogic.gdx.graphics.Pixmap.Format;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.Group;
+import com.badlogic.gdx.scenes.scene2d.actions.MoveTo;
+import com.badlogic.gdx.scenes.scene2d.actors.Button;
+import com.badlogic.gdx.scenes.scene2d.actors.Button.ClickListener;
 import com.badlogic.gdx.scenes.scene2d.actors.Image;
 
 public class MezcladorBasico extends Group {
 
+	
+	Paleta paleta;
 	Texture Fondo = MezcladorBasico.getColoredTexture(1024, 600, 0.2f, 0.2f,
 			0.2f, 0.5f);
 	Image Color1;
 	Image Color2;
 	Texture ColorObjetivo;
-	Image imagenObjetivo;
+	Button imagenObjetivo;
+	Image mesa = new Image("mesa",new Texture("imagenes/mezcla/mesa.png"));
+	Image mancha1 = new Image("mesa",new Texture("imagenes/mezcla/mancha.png"));
+	Image mancha2 = new Image("mesa",new Texture("imagenes/mezcla/mancha.png"));
+	int colorcorrecto;
+	ClickListener comprobador = new ClickListener(){
+		public void clicked(Button button) {
+			if(compruebaColor(Integer.parseInt(button.name.substring(1)))){
+				//TODO: el niño ha acertado el color, mostrar animacion o audio de acierto
+				
+				action(MoveTo.$(-600,-600,2));
+				paleta.colorAcertado();
+			}else{
+				//TODO: Mostrar animacion de la Ardilla diciendo que ese color no era
+			}
+		}
+		
+	};
 
-	Image i1 = new Image("i1", MezcladorBasico.getColoredTexture(100, 100,
+	Button i1 = new Button("i1", MezcladorBasico.getColoredTexture(100, 100,
 			(float) Math.random(), (float) Math.random(),
 			(float) Math.random(), 1));
-	Image i2 = new Image("i2", MezcladorBasico.getColoredTexture(100, 100,
+	Button i2 = new Button("i2", MezcladorBasico.getColoredTexture(100, 100,
 			(float) Math.random(), (float) Math.random(),
 			(float) Math.random(), 1));
-	Image i3 = new Image("i3", MezcladorBasico.getColoredTexture(100, 100,
+	Button i3 = new Button("i3", MezcladorBasico.getColoredTexture(100, 100,
 			(float) Math.random(), (float) Math.random(),
 			(float) Math.random(), 1));
-	Image i4 = new Image("i4", MezcladorBasico.getColoredTexture(100, 100,
+	Button i4 = new Button("i4", MezcladorBasico.getColoredTexture(100, 100,
 			(float) Math.random(), (float) Math.random(),
 			(float) Math.random(), 1));
-	Image i5 = new Image("i5", MezcladorBasico.getColoredTexture(100, 100,
+	Button i5 = new Button("i5", MezcladorBasico.getColoredTexture(100, 100,
 			(float) Math.random(), (float) Math.random(),
 			(float) Math.random(), 1));
-	Image i6 = new Image("i6", MezcladorBasico.getColoredTexture(100, 100,
+	Button i6 = new Button("i6", MezcladorBasico.getColoredTexture(100, 100,
 			(float) Math.random(), (float) Math.random(),
 			(float) Math.random(), 1));
 
-	public MezcladorBasico() {
+	
+	public MezcladorBasico(Paleta padre) {
 		super("mezclador");
-
+		paleta = padre;
+		i1.clickListener=comprobador;
+		i2.clickListener=comprobador;
+		i3.clickListener=comprobador;
+		i4.clickListener=comprobador;
+		i5.clickListener=comprobador;
+		i6.clickListener=comprobador;
+		
 		this.addActor(new Image("fondo", Fondo));
-		Color1 = new Image("color1", MezcladorBasico.getColoredTexture(100,
-				200, 1, 1, 0, 1));
+		this.addActor(mesa);
+		Color1 = new Image("color1", MezcladorBasico.getColoredTexture(120,
+				250, 1, 1, 0, 1));
 		this.addActor(Color1);
-		Color2 = new Image("color2", MezcladorBasico.getColoredTexture(100,
-				200, 1, 0, 1, 1));
+		this.addActor(mancha1);
+		Color2 = new Image("color2", MezcladorBasico.getColoredTexture(120,
+				250, 1, 0, 1, 1));
 		this.addActor(Color2);
+		this.addActor(mancha2);
 		this.findActor("color1").x = 350;
 		this.findActor("color1").y = 200;
 		this.findActor("color2").x = 600;
 		this.findActor("color2").y = 200;
-
+		mancha1.x=this.findActor("color1").x;
+		mancha1.y=this.findActor("color1").y;
+		mancha2.x=this.findActor("color2").x;
+		mancha2.y=this.findActor("color2").y;
+		mesa.x=250;
+		mesa.y=50;
 		this.addActor(i1);
 		this.addActor(i2);
 		this.addActor(i3);
@@ -72,6 +110,14 @@ public class MezcladorBasico extends Group {
 		i6.y = 150;
 
 	}
+	
+	public boolean compruebaColor(int i){
+		if(i==colorcorrecto){
+			return true;
+		}else{
+			return false;
+		}
+	}
 
 	public void setColor1(float r, float g, float b, float a) {
 		Color1.region = new TextureRegion(MezcladorBasico.getColoredTexture(
@@ -85,12 +131,15 @@ public class MezcladorBasico extends Group {
 
 	public void setColorObjetivo(float r, float g, float b, float a) {
 		ColorObjetivo = MezcladorBasico.getColoredTexture(100, 100, r, g, b, a);
-		Image cambio = null;
+		Button cambio = null;
 		int i = (int) (Math.random() * 6);
 		i++;
+		this.colorcorrecto=i;
 		try {
-			imagenObjetivo=((Image) this.findActor("i" + i));
-			imagenObjetivo.region = new TextureRegion(
+			imagenObjetivo=((Button) this.findActor("i" + i));
+			imagenObjetivo.unpressedRegion = new TextureRegion(
+					MezcladorBasico.getColoredTexture(100, 100, r, g, b, a));
+			imagenObjetivo.pressedRegion = new TextureRegion(
 					MezcladorBasico.getColoredTexture(100, 100, r, g, b, a));
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -114,6 +163,39 @@ public class MezcladorBasico extends Group {
 	@Override
 	protected void act(float delta) {
 		super.act(delta);
+	}
+	
+	public void aleatorizaColores(){
+		Texture aux1 = MezcladorBasico.getColoredTexture(100, 100,
+				(float) Math.random(), (float) Math.random(),
+				(float) Math.random(), 1);
+		i1.pressedRegion =new TextureRegion(aux1);
+		i1.unpressedRegion=new TextureRegion(aux1);
+		Texture aux2 = MezcladorBasico.getColoredTexture(100, 100,
+				(float) Math.random(), (float) Math.random(),
+				(float) Math.random(), 1);
+		i2.pressedRegion =new TextureRegion(aux2);
+		i2.unpressedRegion=new TextureRegion(aux2);
+		Texture aux3 = MezcladorBasico.getColoredTexture(100, 100,
+				(float) Math.random(), (float) Math.random(),
+				(float) Math.random(), 1);
+		i3.pressedRegion =new TextureRegion(aux3);
+		i3.unpressedRegion=new TextureRegion(aux3);
+		Texture aux4 = MezcladorBasico.getColoredTexture(100, 100,
+				(float) Math.random(), (float) Math.random(),
+				(float) Math.random(), 1);
+		i4.pressedRegion =new TextureRegion(aux4);
+		i4.unpressedRegion=new TextureRegion(aux4);
+		Texture aux5 = MezcladorBasico.getColoredTexture(100, 100,
+				(float) Math.random(), (float) Math.random(),
+				(float) Math.random(), 1);
+		i5.pressedRegion =new TextureRegion(aux5);
+		i5.unpressedRegion=new TextureRegion(aux5);
+		Texture aux6 = MezcladorBasico.getColoredTexture(100, 100,
+				(float) Math.random(), (float) Math.random(),
+				(float) Math.random(), 1);
+		i6.pressedRegion =new TextureRegion(aux6);
+		i6.unpressedRegion=new TextureRegion(aux6);
 	}
 
 }

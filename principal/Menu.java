@@ -6,6 +6,7 @@ import juegos.Cuento.CuentoClasico;
 import juegos.emocionesPintadas.EmocionesPintadas;
 import juegos.mezcla.MezclaColores;
 import juegos.modificalo.Modificalo;
+import juegos.modificalo.SeleccionCuadro;
 import juegos.museo.Museo;
 
 import com.badlogic.gdx.graphics.Texture;
@@ -66,7 +67,7 @@ public class Menu extends Screen {
 		this.escena.addActor(BModifica);
 		BModifica.clickListener=new ClickListener(){
 			public void clicked(Button b){
-				JuegoModifica();
+				SeleccionCuadro();
 			}
 		};
 		
@@ -94,14 +95,12 @@ public class Menu extends Screen {
 	private void JuegoMezcla(){
 		inicializaJuego(new MezclaColores());
 	}
-	private void JuegoModifica(){
-		inicializaJuego(new Modificalo());
+	private void SeleccionCuadro(){
+		inicializaJuego(new SeleccionCuadro());
 	}
 	private void JuegoMuseo(){
 		inicializaJuego(new Museo());
 	}
-	
- 
     public void Update () {
     	super.Update();
     }
