@@ -34,6 +34,7 @@ public class Menu extends Screen {
 	
 	private void setButtons(){
 
+		
 		BCuento = new Button("bcuento",new TextureRegion(new Texture("imagenes2/Menu/TexturesBotonesMenu.png"), 24, 0, 213-24, 185));
 		BCuento.x=37;
 		BCuento.y=184;

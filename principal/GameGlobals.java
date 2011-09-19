@@ -11,6 +11,10 @@ public class GameGlobals {
     public static int volumen;
     public static int ScreenWidth= 1024;
     public static int ScreenHeight=600;
-
+    public static boolean cuentoFinished =false;
+    public static boolean emocionesFinished =false;
+    public static boolean mezclaFinished =false;
+    public static boolean MuseoFinished =false;
+    public static boolean ModificaFinished =false;
 }
 
