@@ -25,6 +25,14 @@ public abstract class Juego extends Screen {
     	}
 		return false;
 	}
+    
+    @Override
+    public boolean keyDown(int arg0) {
+    	if(arg0== Input.Keys.BACK){
+    		ScreenManager.getScreenManager().setCurrentScreen("menu");
+    	}
+		return false;
+	}
 
 }
 

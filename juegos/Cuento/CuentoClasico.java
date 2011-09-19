@@ -80,5 +80,5 @@ public class CuentoClasico extends Juego {
     	}else{
     		ScreenManager.getScreenManager().setCurrentScreen("menu");
     	}
-    }   
+    }
     }
