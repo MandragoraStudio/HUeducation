@@ -5,10 +5,10 @@ import juegos.Juego;
 import juegos.Cuento.CuentoClasico;
 import juegos.emocionesPintadas.EmocionesPintadas;
 import juegos.mezcla.MezclaColores;
-import juegos.modificalo.Modificalo;
 import juegos.modificalo.SeleccionCuadro;
 import juegos.museo.Museo;
 
+import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.actors.Button;
@@ -109,6 +109,14 @@ public class Menu extends Screen {
     	ScreenManager.getScreenManager().addScreen("juego", j);
     	ScreenManager.getScreenManager().setCurrentScreen("juego");
     }
+    
+    @Override
+    public boolean keyDown(int arg0) {
+    	if(arg0== Input.Keys.BACK){
+    		System.exit(0);
+    	}
+		return false;
+	}
 
 }
 

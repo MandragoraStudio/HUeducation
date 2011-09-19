@@ -17,19 +17,18 @@ public class Pinacoteca2 extends Group {
 		super(nombre);
 	}
 
-	public void Initialize() {
-
-		this.cuadro1 = new Cuadro();
-		this.cuadro1.Initialize();
-
-		this.cuadro2 = new Cuadro();
-		this.cuadro2.Initialize();
-		
+	public void Initialize() {		
 		this.cuadro1XL = new CuadroXL();
 		this.cuadro1XL.Initialize();
 
 		this.cuadro2XL = new CuadroXL();
 		this.cuadro2XL.Initialize();
+
+		this.cuadro1 = new Cuadro(this.cuadro1XL);
+		this.cuadro1.Initialize();
+
+		this.cuadro2 = new Cuadro(this.cuadro2XL);
+		this.cuadro2.Initialize();
 
 		this.setButtons();
 	}
