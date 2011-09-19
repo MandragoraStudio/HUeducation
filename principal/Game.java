@@ -21,6 +21,7 @@ public class Game implements ApplicationListener, InputProcessor {
 		screenManager.setCurrentScreen("mcs");
 		this.spriteBatch = new SpriteBatch();
 		Gdx.input.setInputProcessor(this);
+		Gdx.input.setCatchBackKey(true);
 
 	}
 
