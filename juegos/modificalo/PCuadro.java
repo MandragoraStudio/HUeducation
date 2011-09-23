@@ -9,18 +9,24 @@ public class PCuadro {
 	public int yF;
 	Ubicacion uGafa;
 	Ubicacion uBigote;
-	Ubicacion uPelo;
+	Ubicacion uPeluca;
+	Ubicacion uCollar;
+	Ubicacion uObjeto;
 	
 	public PCuadro (int c) {
 		if (c == 1) {
 			uGafa = new Ubicacion("gafa", 350, 450, 50);
 			uBigote = new Ubicacion("bigote", 350, 450, 50);
-			uPelo = new Ubicacion("pelo", 350, 450, 50);
+			uPeluca = new Ubicacion("peluca", 350, 450, 50);
+			uCollar = new Ubicacion("collar", 350, 300, 50);
+			uObjeto = new Ubicacion("objeto", 350, 200, 50);
 		}
 		if (c == 2) {
 			uGafa = new Ubicacion("gafa", 350, 450, 50);
 			uBigote = new Ubicacion("bigote", 350, 450, 50);
-			uPelo = new Ubicacion("pelo", 350, 450, 50);
+			uPeluca = new Ubicacion("peluca", 350, 500, 50);
+			uCollar = new Ubicacion("collar", 350, 300, 50);
+			uObjeto = new Ubicacion("objeto", 350, 200, 50);
 		}
 	}
 }
