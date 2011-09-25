@@ -19,8 +19,8 @@ public class Pagina {
 		this.numPPag = numPPag;
 		this.opcCorrecta = opcCorrecta;
 		this.hoja= hoja;
-		this.hoja.x=50;
-		this.hoja.y=40;
+		this.hoja.x=90;
+		this.hoja.y=70;
 		this.opcA=new Button("opcionA", opcA);
 		this.opcB=new Button("opcionB", opcB);
 		this.cuento = cuento;
@@ -28,8 +28,8 @@ public class Pagina {
 	}
 	
 	private void setButtons(){
-		opcA.x=400;
-		opcA.y=40;
+		opcA.x=460;
+		opcA.y=70;
 		opcA.clickListener=new ClickListener(){
 		
 			public void clicked(Button arg0) {
