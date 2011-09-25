@@ -24,11 +24,12 @@ public class Menu extends Screen {
 	Button BModifica;
 	Button BMuseo;
 	Image fondo;
+	
 	@Override
 	public void Initialize(){
 		super.Initialize();
 		fondo = new Image("fondo", new TextureRegion(new Texture("imagenes2/Menu/fondoMenu.png"), 0, 0, 1024, 600));
-    	this.escena.addActor(fondo);
+		this.escena.addActor(fondo);
 		setButtons();
 	}
 	
@@ -63,7 +64,7 @@ public class Menu extends Screen {
 		if(GameGlobals.mezclaFinished){
 			BMezcla=new Button("bmezcla",new TextureRegion(new Texture("imagenes2/Menu/TexturesBotonesMenu.png"), 459, 1, 628-459, 199-1), new TextureRegion(new Texture("imagenes2/Menu/TexturesBotonesMenu.png"), 460, 400, 623-460, 600-400));
 		}else{
-			BMezcla=new Button("bmezcla",new TextureRegion(new Texture("imagenes2/Menu/TexturesBotonesMenu.png"), 456, 198, 630-456, 400-198),new TextureRegion(new Texture("imagenes2/Menu/TexturesBotonesMenu.png"), 455, 600, 805-455, 400-600));
+			BMezcla=new Button("bmezcla",new TextureRegion(new Texture("imagenes2/Menu/TexturesBotonesMenu.png"), 456, 198, 630-456, 400-198),new TextureRegion(new Texture("imagenes2/Menu/TexturesBotonesMenu.png"), 455, 602, 623-455, 802-602));
 			
 		}
 		BMezcla.x=358;
@@ -92,7 +93,7 @@ public class Menu extends Screen {
 		if(GameGlobals.MuseoFinished){
 		BMuseo=new Button("bmuseo",new TextureRegion(new Texture("imagenes2/Menu/TexturesBotonesMenu.png"), 872, 8, 1007-872, 231-8),new TextureRegion(new Texture("imagenes2/Menu/TexturesBotonesMenu.png"), 880, 481, 1015-880, 706-481));
 		}else{
-			BMuseo=new Button("bmuseo",new TextureRegion(new Texture("imagenes2/Menu/TexturesBotonesMenu.png"), 880, 230, 1012-880, 454-230),new TextureRegion(new Texture("imagenes2/Menu/TexturesBotonesMenu.png"), 877, 736, 1014-880, 960-230));
+			BMuseo=new Button("bmuseo",new TextureRegion(new Texture("imagenes2/Menu/TexturesBotonesMenu.png"), 880, 230, 1012-880, 454-230),new TextureRegion(new Texture("imagenes2/Menu/TexturesBotonesMenu.png"), 876, 736, 1015-876, 960-736));
 				
 		}
 		
