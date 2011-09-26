@@ -112,19 +112,19 @@ public class Menu extends Screen {
 		Game.salir();
 	}
 	private void JuegoCuento(){
-		inicializaJuego(new CuentoClasico());
+		inicializaJuego("cuentoClasico", new CuentoClasico());
 	}
 	private void JuegoPintar(){
-		inicializaJuego(new EmocionesPintadas());
+		inicializaJuego("emocionesPinatadas", new EmocionesPintadas());
 	}
 	private void JuegoMezcla(){
-		inicializaJuego(new MezclaColores());
+		inicializaJuego("mezclaColores", new MezclaColores());
 	}
 	private void SeleccionCuadro(){
-		inicializaJuego(new SeleccionCuadro());
+		inicializaJuego("selecccionCuadro", new SeleccionCuadro());
 	}
 	private void JuegoMuseo(){
-		inicializaJuego(new Museo());
+		inicializaJuego("museo", new Museo());
 	}
     public void Update () {
     	super.Update();
@@ -136,9 +136,9 @@ public class Menu extends Screen {
     	}
 		return false;
 	}
-    private void inicializaJuego (Juego j) {
-    	ScreenManager.getScreenManager().addScreen("juego", j);
-    	ScreenManager.getScreenManager().setCurrentScreen("juego");
+    private void inicializaJuego (String name, Juego j) {
+    	ScreenManager.getScreenManager().addScreen(name, j);
+    	ScreenManager.getScreenManager().setCurrentScreen(name);
     }
 
 }
