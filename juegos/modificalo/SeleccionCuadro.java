@@ -1,8 +1,8 @@
 package juegos.modificalo;
 
 import principal.ScreenManager;
-
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.actors.Button;
 import com.badlogic.gdx.scenes.scene2d.actors.Button.ClickListener;
 
@@ -15,13 +15,13 @@ public class SeleccionCuadro extends Juego{
 	
 	@Override
 	public void Load(){
-		p1 = new Button("btn1",new Texture("imagenes/modificalo/cuadro1.png"));
+		p1 = new Button("btn1",new TextureRegion(new Texture("imagenes2/modificalo/elemCuadro2.png"),0,0,318,484));
 		p1.clickListener=new ClickListener(){
 			public void clicked(Button arg0) {	
 				inicializaJuego(new Modificalo(1));
 			}
 		};
-		p2 = new Button("btn2",new Texture("imagenes/modificalo/cuadro2.png"));
+		p2 = new Button("btn2",new TextureRegion(new Texture("imagenes2/modificalo/elemCuadro2.png"),318,0,318,484));
 		p2.clickListener=new ClickListener(){
 			public void clicked(Button arg0) {	
 				inicializaJuego(new Modificalo(2));

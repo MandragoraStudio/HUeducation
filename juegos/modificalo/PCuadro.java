@@ -15,11 +15,11 @@ public class PCuadro {
 	
 	public PCuadro (int c) {
 		if (c == 1) {
-			uGafa = new Ubicacion("gafa", 350, 450, 50);
-			uBigote = new Ubicacion("bigote", 350, 450, 50);
-			uPeluca = new Ubicacion("peluca", 350, 450, 50);
-			uCollar = new Ubicacion("collar", 350, 300, 50);
-			uObjeto = new Ubicacion("objeto", 350, 200, 50);
+			uGafa = new Ubicacion("gafa", 334, 382, 50);
+			uBigote = new Ubicacion("bigote", 338, 348, 50);
+			uPeluca = new Ubicacion("peluca", 353, 349, 50);
+			uCollar = new Ubicacion("collar", 360, 300, 50);
+			uObjeto = new Ubicacion("objeto", 260, 70, 50);
 		}
 		if (c == 2) {
 			uGafa = new Ubicacion("gafa", 350, 450, 50);
