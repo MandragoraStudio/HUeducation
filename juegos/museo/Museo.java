@@ -98,14 +98,13 @@ public class Museo extends Juego {
 		};
 		
 		// Marco de las imagenes grande
-		marcoGrande = new Button("marcoGrande",new TextureRegion(new Texture("imagenes2/museo/TexturesMuseo2.png"), 0, 0, 800, 540));
+		marcoGrande = new Button("marcoGrande",new TextureRegion(new Texture("imagenes2/museo/TexturesMuseo2.png"), 0, 0, 803, 538));
 		marcoGrande.x = 115;
 		marcoGrande.y = 30;
 		marcoGrande.touchable = false;
 		
 		// Marco de las imagenes chico
-		marcoChico = new TextureRegion(new Texture("imagenes2/museo/TexturesMuseo.png"), 199, 600, 371, 286);
-		
+		marcoChico = new TextureRegion(new Texture("imagenes2/museo/TexturesMuseo.png"), 199, 600, 371, 285);
 		// Factor de reduccion
 		// Esta variable se usa para escalar los cuadros al mostrarlos pequeños
 		factorDeReduccionX = marcoChico.getRegionWidth()/marcoGrande.width;
@@ -117,8 +116,9 @@ public class Museo extends Juego {
 		
 		// Se añade a la escena el marco chico y el cuadro
 		for(Cuadro cuadro:cuadros){
+			
 			this.escena.addActor(cuadro.getMarco());
-			this.escena.addActor(cuadro.getCuadro());			
+			this.escena.addActor(cuadro.getCuadro());	
 		}
 	}
 
@@ -135,7 +135,7 @@ public class Museo extends Juego {
 		while(!finalizado){
 			try{
 			boton = new Button("cuadro" + Integer.toString(i), 
-					new TextureRegion(new Texture("imagenes2/museo/cuadro" + Integer.toString(i) + ".png"), 0, 0, 737, 483));
+					new TextureRegion(new Texture("imagenes2/museo/cuadro" + Integer.toString(i) + ".png"), 0, 0, 737, 484));
 			
 				cuadros.add(new Cuadro(boton, marcoChico,(i%2 == 0? this.cuadro1Pos: this.cuadro2Pos) + GameGlobals.ScreenWidth*(i/2), 170, this.factorDeReduccionX, this.factorDeReduccionY));
 				i++;

@@ -33,7 +33,7 @@ public class Cuadro {
 		
 		// Se coloca el cuadro dentro del marco chico
 		cuadro.x = marco.x + (marco.width - cuadro.width)/2;
-		cuadro.y = marco.y + (marco.height - cuadro.height)/2;
+		cuadro.y = marco.y + ((marco.height - cuadro.height)/2)+1;
 		
 		this.Xreducida = cuadro.x;
 		this.Yreducida = cuadro.y;

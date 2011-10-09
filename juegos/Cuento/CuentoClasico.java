@@ -70,9 +70,7 @@ public class CuentoClasico extends Juego {
 	private void setButtons() {
 		//creo el boton a abrir cuento (portada) y lo coloco
 		abrirCuento = new Button("abrirCuento", new TextureRegion(new Texture(
-				"imagenes2/cuento/TextureCuento2.png"), 0, 0, 360, 540));
-		abrirCuento.x = 400;
-		abrirCuento.y = 25;
+				"imagenes2/cuento/cerrado.png"), 0, 0, 1024, 600));
 		this.escena.addActor(abrirCuento);
 		abrirCuento.clickListener = new ClickListener() {
 
