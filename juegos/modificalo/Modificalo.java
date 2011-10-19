@@ -17,7 +17,10 @@ import com.badlogic.gdx.scenes.scene2d.actors.Label;
 public class Modificalo extends Juego {
 	Label chivato;
 	
+	Image fondo;
 	Image cuadro;
+	Image sub_menu;
+	Image panel;
 	//Botones ocultos.
 	
 	Group menu_modif;
@@ -129,7 +132,11 @@ public class Modificalo extends Juego {
 	    	
 	   	}
 		
+		fondo = new Image("fondo",new TextureRegion(new Texture("imagenes2/modificalo/elemCuadro3.png"),0,0,1024,600));
    		pCuadro = new PCuadro(num_cuadro);
+   		
+   		sub_menu = new Image("sub_menu",new TextureRegion(new Texture("imagenes2/modificalo/elemCuadro2.png"),636,0,260,600));
+   		panel = new Image("panel",new TextureRegion(new Texture("imagenes2/modificalo/elemCuadro2.png"),10,486,308,295));
 	    
 	    menu_modif = new Group("menu_modif");
 	    modif_gafas = new Group("modif_gafas");
@@ -140,11 +147,11 @@ public class Modificalo extends Juego {
 	   
     	salir = new Button("sa",new Texture("imagenes/salir.png"));
     	
-    	pelucas = new Button("btn_pelu",new Texture("imagenes/modificalo/peluca.png"));
-    	gafas = new Button("btn_gafa",new Texture("imagenes/modificalo/gafas.png"));
-    	bigotes = new Button("btn_bigo",new Texture("imagenes/modificalo/bigote.png"));
-    	collares = new Button("btn_collar",new Texture("imagenes/modificalo/collar.jpg"));
-    	objetos = new Button("btn_objto",new Texture("imagenes/modificalo/objeto.jpg"));
+    	pelucas = new Button("btn_pelu",new TextureRegion(new Texture("imagenes2/modificalo/elemCuadro2.png"),648,616,104,150));
+    	gafas = new Button("btn_gafa",new TextureRegion(new Texture("imagenes2/modificalo/elemCuadro2.png"),412,488,85,36));
+    	bigotes = new Button("btn_bigo",new TextureRegion(new Texture("imagenes2/modificalo/elemCuadro2.png"),322,525,77,36));
+    	collares = new Button("btn_collar",new TextureRegion(new Texture("imagenes2/modificalo/elemCuadro2.png"),328,562,57,36));
+    	objetos = new Button("btn_objto",new TextureRegion(new Texture("imagenes2/modificalo/elemCuadro2.png"),509,492,113,150));
     	
     	chivato = new Label("c",new BitmapFont(),"chivato");
     	
@@ -211,7 +218,7 @@ public class Modificalo extends Juego {
    
    public void esconderGrupos(String nom) {
 	   if (nom == "gafas") {
-		   modif_gafas.action(MoveTo.$(0,0,1));
+		   modif_gafas.action(MoveTo.$(50,0,1));
 		   modif_bigos.action(MoveTo.$(-180,0,1));
 		   modif_pelucas.action(MoveTo.$(-180,0,1));
 		   modif_collares.action(MoveTo.$(-180,0,1));
@@ -222,7 +229,7 @@ public class Modificalo extends Juego {
 		   objetos_visi = false;
 	   }
 	   if (nom == "bigos") {
-		   modif_bigos.action(MoveTo.$(0,0,1));
+		   modif_bigos.action(MoveTo.$(50,0,1));
 		   modif_gafas.action(MoveTo.$(-180,0,1));
 		   modif_pelucas.action(MoveTo.$(-180,0,1));
 		   modif_collares.action(MoveTo.$(-180,0,1));
@@ -233,7 +240,7 @@ public class Modificalo extends Juego {
 		   objetos_visi = false;
 	   }
 	   if (nom == "pelucas") {
-		   modif_pelucas.action(MoveTo.$(0,0,1));
+		   modif_pelucas.action(MoveTo.$(50,0,1));
 		   modif_gafas.action(MoveTo.$(-180,0,1));
 		   modif_bigos.action(MoveTo.$(-180,0,1));
 		   modif_collares.action(MoveTo.$(-180,0,1));
@@ -244,7 +251,7 @@ public class Modificalo extends Juego {
 		   objetos_visi = false;
 	   }
 	   if (nom == "collares") {
-		   modif_collares.action(MoveTo.$(0,0,1));
+		   modif_collares.action(MoveTo.$(50,0,1));
 		   modif_gafas.action(MoveTo.$(-180,0,1));
 		   modif_bigos.action(MoveTo.$(-180,0,1));
 		   modif_pelucas.action(MoveTo.$(-180,0,1));
@@ -255,7 +262,7 @@ public class Modificalo extends Juego {
 		   pelus_visi = false;
 	   }
 	   if (nom == "objetos") {
-		   modif_objetos.action(MoveTo.$(0,0,1));
+		   modif_objetos.action(MoveTo.$(50,0,1));
 		   modif_gafas.action(MoveTo.$(-180,0,1));
 		   modif_bigos.action(MoveTo.$(-180,0,1));
 		   modif_pelucas.action(MoveTo.$(-180,0,1));
@@ -286,22 +293,32 @@ public class Modificalo extends Juego {
 		
 		super.Initialize();
 		
+		panel.x = 690;
+		panel.y = 200;
+		
+		fondo.x = 0;
+		fondo.y = 0;
+		
 		cuadro.x = 270;
 		cuadro.y = 115;
 		
 		salir.x = 824;
 		salir.y = 0;
 		
-		pelucas.x = 240;
-		pelucas.y = 0;
-		gafas.x = 355;
-		gafas.y = 0;
-		bigotes.x = 470;
-		bigotes.y = 0;
-		collares.x = 585;
-		collares.y = 0;
-		objetos.x = 700;
-		objetos.y = 0;
+		pelucas.x = 720;
+		pelucas.y = 330;
+		
+		bigotes.x = 720;
+		bigotes.y = 240;
+		
+		collares.x = 810;
+		collares.y = 240;
+		
+		gafas.x = 880;
+		gafas.y = 240;
+		
+		objetos.x = 860;
+		objetos.y = 330;
 		
 		gafa1.y = pos_ini_1;
 		gafa2.y = pos_ini_2;
@@ -349,12 +366,18 @@ public class Modificalo extends Juego {
 		modif_collares.x = -180;
 		modif_objetos.x = -180;
 		
+		sub_menu.x = 0;
+		sub_menu.y = -5;
+		
 		menu_modif.addActor(pelucas);
 		menu_modif.addActor(gafas);
 		menu_modif.addActor(bigotes);
 		menu_modif.addActor(collares);
 		menu_modif.addActor(objetos);
 		
+		this.escena.addActor(fondo);
+		this.escena.addActor(panel);
+		this.escena.addActor(sub_menu);
 		this.escena.addActor(cuadro);
 		this.escena.addActor(modif_gafas);
 		this.escena.addActor(modif_bigos);
