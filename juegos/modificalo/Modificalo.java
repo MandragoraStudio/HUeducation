@@ -147,11 +147,11 @@ public class Modificalo extends Juego {
 	   
     	salir = new Button("sa",new Texture("imagenes/salir.png"));
     	
-    	pelucas = new Button("btn_pelu",new TextureRegion(new Texture("imagenes2/modificalo/elemCuadro2.png"),648,616,104,150));
-    	gafas = new Button("btn_gafa",new TextureRegion(new Texture("imagenes2/modificalo/elemCuadro2.png"),412,488,85,36));
-    	bigotes = new Button("btn_bigo",new TextureRegion(new Texture("imagenes2/modificalo/elemCuadro2.png"),322,525,77,36));
-    	collares = new Button("btn_collar",new TextureRegion(new Texture("imagenes2/modificalo/elemCuadro2.png"),328,562,57,36));
-    	objetos = new Button("btn_objto",new TextureRegion(new Texture("imagenes2/modificalo/elemCuadro2.png"),509,492,113,150));
+    	pelucas = new Button("btn_pelu",new TextureRegion(new Texture("imagenes2/modificalo/elemCuadro2.png"),648,616,104,150),new TextureRegion(new Texture("imagenes2/modificalo/elemCuadro2.png"),765,616,104,150));
+    	gafas = new Button("btn_gafa",new TextureRegion(new Texture("imagenes2/modificalo/elemCuadro2.png"),412,488,85,36),new TextureRegion(new Texture("imagenes2/modificalo/elemCuadro2.png"),408,524,89,40));
+    	bigotes = new Button("btn_bigo",new TextureRegion(new Texture("imagenes2/modificalo/elemCuadro2.png"),322,525,77,36),new TextureRegion(new Texture("imagenes2/modificalo/elemCuadro2.png"),319,485,80,38));
+    	collares = new Button("btn_collar",new TextureRegion(new Texture("imagenes2/modificalo/elemCuadro2.png"),328,562,56,36),new TextureRegion(new Texture("imagenes2/modificalo/elemCuadro2.png"),328,598,60,39));
+    	objetos = new Button("btn_objto",new TextureRegion(new Texture("imagenes2/modificalo/elemCuadro2.png"),509,492,113,150),new TextureRegion(new Texture("imagenes2/modificalo/elemCuadro2.png"),525,645,108,150));
     	
     	chivato = new Label("c",new BitmapFont(),"chivato");
     	
