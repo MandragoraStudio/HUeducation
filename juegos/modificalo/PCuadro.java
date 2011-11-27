@@ -22,11 +22,9 @@ public class PCuadro {
 			uObjeto = new Ubicacion("objeto", 300, 112, 80);
 		}
 		if (c == 2) {
-			uGafa = new Ubicacion("gafa", 350, 450, 50);
-			uBigote = new Ubicacion("bigote", 350, 450, 50);
-			uPeluca = new Ubicacion("peluca", 350, 500, 50);
-			uCollar = new Ubicacion("collar", 350, 300, 50);
-			uObjeto = new Ubicacion("objeto", 350, 200, 50);
+			uGafa = new Ubicacion("gafa", 388, 400, 50);
+			uPeluca = new Ubicacion("peluca", 398, 288, 80);
+			uObjeto = new Ubicacion("objeto", 399, 118, 80);
 		}
 	}
 }

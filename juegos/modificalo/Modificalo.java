@@ -127,25 +127,39 @@ public class Modificalo extends Juego {
 		if (num_cuadro == 2) {
 	   		cuadro = new Image("cuadro",new TextureRegion(new Texture("imagenes2/modificalo/elemCuadro2.png"),318,0,318,484));
 	   		
-	   		gafa1 = new Arrastrable("gafa1",new TextureRegion(new Texture("imagenes2/modificalo/elemCuadro1.png"),170,0,165,215));
-	    	gafa2 = new Arrastrable("gafa2",new TextureRegion(new Texture("imagenes2/modificalo/elemCuadro1.png"),170,215,165,215));
-	    	gafa3 = new Arrastrable("gafa3",new TextureRegion(new Texture("imagenes2/modificalo/elemCuadro1.png"),170,430,165,215));
+	   		gafa1 = new Arrastrable("gafa1",new TextureRegion(new Texture("imagenes2/modificalo/elemCuadro1.png"),509,280,169,54));
+	    	gafa2 = new Arrastrable("gafa2",new TextureRegion(new Texture("imagenes2/modificalo/elemCuadro1.png"),681,280,169,54));
+	    	gafa3 = new Arrastrable("gafa3",new TextureRegion(new Texture("imagenes2/modificalo/elemCuadro1.png"),852,280,169,54));
 	    	
-	    	bigote1 = new Arrastrable("bigote1",new TextureRegion(new Texture("imagenes2/modificalo/elemCuadro1.png"),510,0,165,215));
-	    	bigote2 = new Arrastrable("bigote2",new TextureRegion(new Texture("imagenes2/modificalo/elemCuadro1.png"),510,215,165,215));
-	    	bigote3 = new Arrastrable("bigote3",new TextureRegion(new Texture("imagenes2/modificalo/elemCuadro1.png"),510,430,165,215));
+	    	objeto1 = new Arrastrable("objeto1",new TextureRegion(new Texture("imagenes2/modificalo/elemCuadro1.png"),511,334,171,196));
+	    	objeto2 = new Arrastrable("objeto2",new TextureRegion(new Texture("imagenes2/modificalo/elemCuadro1.png"),680,334,171,196));
+	    	objeto3 = new Arrastrable("objeto3",new TextureRegion(new Texture("imagenes2/modificalo/elemCuadro1.png"),852,334,171,196));
+
+	    	peluca1 = new Arrastrable("peluca1",new TextureRegion(new Texture("imagenes2/modificalo/elemCuadro1.png"),508,0,171,259));
+	    	peluca2 = new Arrastrable("peluca2",new TextureRegion(new Texture("imagenes2/modificalo/elemCuadro1.png"),681,0,171,259));
+	    	peluca3 = new Arrastrable("peluca3",new TextureRegion(new Texture("imagenes2/modificalo/elemCuadro1.png"),852,0,171,259));
 	    	
-	    	peluca1 = new Arrastrable("peluca1",new TextureRegion(new Texture("imagenes2/modificalo/elemCuadro1.png"),672,0,178,215));
-	    	peluca2 = new Arrastrable("peluca2",new TextureRegion(new Texture("imagenes2/modificalo/elemCuadro1.png"),672,215,178,215));
-	    	peluca3 = new Arrastrable("peluca3",new TextureRegion(new Texture("imagenes2/modificalo/elemCuadro1.png"),672,430,178,215));
 	    	
 	    	collar1 = new Arrastrable("collar1",new TextureRegion(new Texture("imagenes2/modificalo/elemCuadro1.png"),340,0,178,215));
 	    	collar2 = new Arrastrable("collar2",new TextureRegion(new Texture("imagenes2/modificalo/elemCuadro1.png"),340,215,178,215));
 	    	collar3 = new Arrastrable("collar3",new TextureRegion(new Texture("imagenes2/modificalo/elemCuadro1.png"),340,430,178,215));
 	    	
-	    	objeto1 = new Arrastrable("objeto1",new TextureRegion(new Texture("imagenes2/modificalo/elemCuadro1.png"),0,0,178,215));
-	    	objeto2 = new Arrastrable("objeto2",new TextureRegion(new Texture("imagenes2/modificalo/elemCuadro1.png"),0,215,178,215));
-	    	objeto3 = new Arrastrable("objeto3",new TextureRegion(new Texture("imagenes2/modificalo/elemCuadro1.png"),0,480,180,240));
+	    	bigote1 = new Arrastrable("bigote1",new TextureRegion(new Texture("imagenes2/modificalo/elemCuadro1.png"),510,0,165,215));
+	    	bigote2 = new Arrastrable("bigote2",new TextureRegion(new Texture("imagenes2/modificalo/elemCuadro1.png"),510,215,165,215));
+	    	bigote3 = new Arrastrable("bigote3",new TextureRegion(new Texture("imagenes2/modificalo/elemCuadro1.png"),510,430,165,215));
+	    	
+	    	pos_ini_1_p = 325;
+	    	pos_ini_2_p = 170;
+	    	pos_ini_3_p = 15;
+	    	
+	    	pos_ini_1_g = 460;
+	    	pos_ini_2_g = 280;
+	    	pos_ini_3_g = 90;
+	    	
+	    	pos_ini_1_o = 430;
+	    	pos_ini_2_o = 230;
+	    	pos_ini_3_o = 40;
+	    	
 	    	
 	   	}
 		
@@ -274,7 +288,11 @@ public class Modificalo extends Juego {
 		collares.x = 810;
 		collares.y = 240;
 		gafas.x = 880;
+		if (num_cuadro == 2){
+			gafas.x = 800;
+		}
 		gafas.y = 240;
+		
 		objetos.x = 860;
 		objetos.y = 330;
 		
@@ -329,9 +347,12 @@ public class Modificalo extends Juego {
 		
 		menu_modif.addActor(pelucas);
 		menu_modif.addActor(gafas);
-		menu_modif.addActor(bigotes);
-		menu_modif.addActor(collares);
 		menu_modif.addActor(objetos);
+		if (num_cuadro == 1) {
+			menu_modif.addActor(bigotes);
+			menu_modif.addActor(collares);
+		}
+	
 		
 		this.escena.addActor(fondo);
 		this.escena.addActor(panel);
@@ -707,7 +728,11 @@ public class Modificalo extends Juego {
 	
 	public void esconderGrupos(String nom) {
 		   if (nom == "gafas") {
-			   modif_gafas.action(MoveTo.$(70,0,1));
+			   if (num_cuadro == 2) {
+			   modif_gafas.action(MoveTo.$(40,0,1));
+			   } else {
+				   modif_gafas.action(MoveTo.$(70,0,1));
+			   }
 			   modif_bigos.action(MoveTo.$(-180,0,1));
 			   modif_pelucas.action(MoveTo.$(-180,0,1));
 			   modif_collares.action(MoveTo.$(-180,0,1));
@@ -764,7 +789,7 @@ public class Modificalo extends Juego {
 	   }
 	
 	//Recoloca los elementos en su posicion original.
-	//Cuando una vez puestos en el cuadro sol cambiados por otro de mismo tipo
+	//Cuando una vez puestos en el cuadro son cambiados por otro de mismo tipo
 	public void reubicarElemento(Actor actor) {
 		
 		//elementos gafas
