@@ -16,7 +16,7 @@ public class PCuadro {
 	public PCuadro (int c) {
 		if (c == 1) {
 			uGafa = new Ubicacion("gafa", 384, 437, 80);
-			uBigote = new Ubicacion("bigote", 410, 390, 80);
+			uBigote = new Ubicacion("bigote", 410, 397, 100);
 			uPeluca = new Ubicacion("peluca", 387, 312, 80);
 			uCollar = new Ubicacion("collar", 405, 295, 80);
 			uObjeto = new Ubicacion("objeto", 300, 112, 80);
