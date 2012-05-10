@@ -3,6 +3,7 @@ package juegos.mezcla;
 import com.badlogic.gdx.graphics.Pixmap;
 import com.badlogic.gdx.graphics.Pixmap.Format;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.Group;
 import com.badlogic.gdx.scenes.scene2d.actions.MoveTo;
@@ -16,13 +17,13 @@ public class MezcladorBasico extends Group {
 	Paleta paleta;
 	Texture Fondo = MezcladorBasico.getColoredTexture(1024, 600, 0.2f, 0.2f,
 			0.2f, 0.5f);
-	Image Color1;
-	Image Color2;
+	//Image Color1;
+	//Image Color2;
 	Texture ColorObjetivo;
 	Button imagenObjetivo;
 	Image mesa = new Image("mesa",new Texture("imagenes/mezcla/mesa.png"));
-	Image mancha1 = new Image("mesa",new Texture("imagenes/mezcla/mancha.png"));
-	Image mancha2 = new Image("mesa",new Texture("imagenes/mezcla/mancha.png"));
+	Image mancha1 = new Image("mesa",new Sprite(new Texture("imagenes/mezcla/mancha.png")));
+	Image mancha2 = new Image("mesa",new Sprite(new Texture("imagenes/mezcla/mancha.png")));
 	int colorcorrecto;
 	ClickListener comprobador = new ClickListener(){
 		public void clicked(Button button) {
@@ -70,22 +71,26 @@ public class MezcladorBasico extends Group {
 		
 		this.addActor(new Image("fondo", Fondo));
 		this.addActor(mesa);
-		Color1 = new Image("color1", MezcladorBasico.getColoredTexture(120,
-				250, 1, 1, 0, 1));
-		this.addActor(Color1);
+		//Color1 = new Image("color1", MezcladorBasico.getColoredTexture(120,
+		//		250, 1, 1, 0, 1));
+		//this.addActor(Color1);
 		this.addActor(mancha1);
-		Color2 = new Image("color2", MezcladorBasico.getColoredTexture(120,
-				250, 1, 0, 1, 1));
-		this.addActor(Color2);
+		//Color2 = new Image("color2", MezcladorBasico.getColoredTexture(120,
+		//		250, 1, 0, 1, 1));
+		//this.addActor(Color2);
 		this.addActor(mancha2);
-		this.findActor("color1").x = 350;
-		this.findActor("color1").y = 200;
-		this.findActor("color2").x = 600;
-		this.findActor("color2").y = 200;
-		mancha1.x=this.findActor("color1").x;
-		mancha1.y=this.findActor("color1").y;
-		mancha2.x=this.findActor("color2").x;
-		mancha2.y=this.findActor("color2").y;
+		//this.findActor("color1").x = 350;
+		//this.findActor("color1").y = 200;
+		//this.findActor("color2").x = 600;
+		//this.findActor("color2").y = 200;
+		//mancha1.x=this.findActor("color1").x;
+		//mancha1.y=this.findActor("color1").y;
+		//mancha2.x=this.findActor("color2").x;
+		//mancha2.y=this.findActor("color2").y;
+		mancha1.x=350;
+		mancha1.y=200;
+		mancha2.x=600;
+		mancha2.y=200;
 		mesa.x=250;
 		mesa.y=50;
 		this.addActor(i1);
@@ -120,13 +125,17 @@ public class MezcladorBasico extends Group {
 	}
 
 	public void setColor1(float r, float g, float b, float a) {
-		Color1.region = new TextureRegion(MezcladorBasico.getColoredTexture(
-				100, 200, r, g, b, a));
+		//Color1.region = new TextureRegion(MezcladorBasico.getColoredTexture(
+		//		100, 200, r, g, b, a));
+		((Sprite)mancha1.region).setColor(r, g, b, a);
+		
 	}
 
 	public void setColor2(float r, float g, float b, float a) {
-		Color2.region = new TextureRegion(MezcladorBasico.getColoredTexture(
-				100, 200, r, g, b, a));
+		//Color2.region = new TextureRegion(MezcladorBasico.getColoredTexture(
+		//		100, 200, r, g, b, a));
+		((Sprite)mancha2.region).setColor(r, g, b, a);
+		
 	}
 
 	public void setColorObjetivo(float r, float g, float b, float a) {
