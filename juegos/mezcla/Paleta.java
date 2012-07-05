@@ -1,5 +1,7 @@
 package juegos.mezcla;
 
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.Pixmap;
 import com.badlogic.gdx.graphics.Pixmap.Format;
 import com.badlogic.gdx.graphics.Texture;
@@ -16,7 +18,7 @@ public class Paleta extends Group {
 	public int coloresDisponibles = 0;
 	
 	Image Fondo = new Image("fondo", new Texture(
-			"imagenes/mezcla/fondopaleta.png"));
+			"imagenes2/mezcla/Paleta.png"));
 
 	Button colorCyan = new Button("CCyan", Paleta.getColoredTexture(0, 1, 1, 1));
 	Button colorMagenta = new Button("CMagenta", Paleta.getColoredTexture(1, 0,
