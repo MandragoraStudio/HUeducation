@@ -1,5 +1,11 @@
 package juegos.mezcla;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.Pixmap;
 import com.badlogic.gdx.graphics.Pixmap.Format;
 import com.badlogic.gdx.graphics.Texture;
@@ -32,6 +38,14 @@ public class DrawableImage extends Image {
 		textura.draw(pincel,(int) X-5,textura.getHeight()-((int) Y)-5);
 		
 		return true;
+	}
+	
+	public void guardarCuadro(){
+		Date date = Calendar.getInstance().getTime();
+		  SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd.hhmmss");
+		  String nombre = sdf.format(date);
+		FileHandle f = Gdx.files.external("/campamentomandrilla/cuadros/"+nombre+".png");
+		textura.
 	}
 
 }
