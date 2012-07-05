@@ -23,7 +23,7 @@ public class Menu extends Screen {
 	Button BMezcla;
 	Button BModifica;
 	Button BMuseo;
-	Button BSalir;
+	//Button BSalir;
 	Image fondo;
 	
 	@Override
@@ -109,7 +109,15 @@ public class Menu extends Screen {
 			}
 		};
 		
-		//BSalir = new Button("salir",new Texture)
+		/*BSalir = new Button("salir",new TextureRegion(new Texture("imagenes2/Menu/atras sin pulsar.png")),new TextureRegion(new Texture("imagenes2/Menu/atras pulsado.png")));
+		BSalir.x = 0;
+		BSalir.y = 0;
+		this.escena.addActor(BSalir);
+		BSalir.clickListener=new ClickListener(){
+			public void clicked(Button b){
+				Salir();
+			}
+		};*/
 		
 	}
 	

@@ -1,17 +1,22 @@
 package juegos.mezcla;
 
+import principal.ScreenManager;
 import juegos.Juego;
 
 import com.badlogic.gdx.graphics.Pixmap;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.Pixmap.Format;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.badlogic.gdx.scenes.scene2d.actors.Button;
 import com.badlogic.gdx.scenes.scene2d.actors.Image;
+import com.badlogic.gdx.scenes.scene2d.actors.Button.ClickListener;
 
 public class MezclaColores extends Juego {
 
 	Image fondo;
 	static DrawableImage lienzo;
 	Paleta paleta;
+	private Button BAtras;
 	
 	
 	
@@ -48,6 +53,16 @@ public class MezclaColores extends Juego {
     	this.escena.addActor(lienzo);
     	this.escena.addActor(paleta);
     	
+		// Boton atras
+		BAtras = new Button("salir",new TextureRegion(new Texture("imagenes2/Menu/atras sin pulsar.png")),new TextureRegion(new Texture("imagenes2/Menu/atras pulsado.png")));
+		BAtras.x = this.escena.width() - BAtras.width -20;
+		BAtras.y = this.escena.height() - BAtras.height -20;
+		this.escena.addActor(BAtras);
+		BAtras.clickListener=new ClickListener(){
+			public void clicked(Button b){
+				ScreenManager.getScreenManager().setCurrentScreen("menu");
+			}
+		};   	
     	
     }
     
