@@ -48,7 +48,8 @@ public class Menu extends Screen {
 				JuegoCuento();
 			}
 		};
-		if(GameGlobals.emocionesFinished){
+		
+		/*if(GameGlobals.emocionesFinished){
 			BPintar= new Button("bpintar",new TextureRegion(new Texture("imagenes2/Menu/TexturesBotonesMenu.png"), 226, 10, 437-226, 180-10), new TextureRegion(new Texture("imagenes2/Menu/TexturesBotonesMenu.png"), 235, 379, 438-235, 549-379));
 		}else{
 			BPintar= new Button("bpintar",new TextureRegion(new Texture("imagenes2/Menu/TexturesBotonesMenu.png"), 232, 192, 442-232, 363-192), new TextureRegion(new Texture("imagenes2/Menu/TexturesBotonesMenu.png"), 228, 569, 430-228, 738-569));
@@ -60,7 +61,8 @@ public class Menu extends Screen {
 			public void clicked(Button b){
 				JuegoPintar();
 			}
-		};
+		};*/
+		
 		if(GameGlobals.mezclaFinished){
 			BMezcla=new Button("bmezcla",new TextureRegion(new Texture("imagenes2/Menu/TexturesBotonesMenu.png"), 459, 1, 628-459, 199-1), new TextureRegion(new Texture("imagenes2/Menu/TexturesBotonesMenu.png"), 460, 400, 623-460, 600-400));
 		}else{
@@ -114,9 +116,9 @@ public class Menu extends Screen {
 	private void JuegoCuento(){
 		inicializaJuego("cuentoClasico", new CuentoClasico());
 	}
-	private void JuegoPintar(){
-		inicializaJuego("emocionesPinatadas", new EmocionesPintadas());
-	}
+	/*private void JuegoPintar(){
+		inicializaJuego("emocionesPintadas", new EmocionesPintadas());
+	}*/
 	private void JuegoMezcla(){
 		inicializaJuego("mezclaColores", new MezclaColores());
 	}

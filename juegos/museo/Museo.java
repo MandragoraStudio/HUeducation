@@ -1,10 +1,14 @@
 package juegos.museo;
 
+import java.io.File;
+import java.nio.file.Files;
 import java.util.ArrayList;
 
 import principal.GameGlobals;
 import juegos.Juego;
 
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.actions.MoveTo;
@@ -128,23 +132,18 @@ public class Museo extends Juego {
 	}
 	
 	public void cargarCuadros(){
+		FileHandle carpeta = Gdx.files.external("/campamentomandrilla/cuadros");
 		int i = 0;
-		boolean finalizado = false;
 		Button boton;
 		
-		while(!finalizado){
-			try{
+		for(FileHandle c: carpeta.list()){
+			System.out.print(c);
 			boton = new Button("cuadro" + Integer.toString(i), 
-					new TextureRegion(new Texture("imagenes2/museo/cuadro" + Integer.toString(i) + ".png"), 0, 0, 737, 484));
+					new TextureRegion(new Texture(c), 0, 0, 737, 484));
 			
 				cuadros.add(new Cuadro(boton, marcoChico,(i%2 == 0? this.cuadro1Pos: this.cuadro2Pos) + GameGlobals.ScreenWidth*(i/2), 170, this.factorDeReduccionX, this.factorDeReduccionY));
 				i++;
-			}catch(Exception e){
-				finalizado = true;
-			}
 		}
-		
-		
 	}
 	
 	public void mostrarMarcoGrande(){
