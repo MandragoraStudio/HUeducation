@@ -2,6 +2,7 @@ package juegos.modificalo;
 
 import juegos.Juego;
 import principal.Arrastrable;
+import principal.ScreenManager;
 
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
@@ -95,6 +96,8 @@ public class Modificalo extends Juego {
 	int num_cuadro;
 	
 	PCuadro pCuadro;
+	
+	private Button BAtras;
 	
    
    @Override
@@ -365,6 +368,17 @@ public class Modificalo extends Juego {
 		this.escena.addActor(modif_objetos);
 		this.escena.addActor(menu_modif);
 		this.escena.addActor(guardar);
+		
+		// Boton atras
+		BAtras = new Button("salir",new TextureRegion(new Texture("imagenes2/Menu/atras sin pulsar.png")),new TextureRegion(new Texture("imagenes2/Menu/atras pulsado.png")));
+		BAtras.x = 824-BAtras.width - 50;
+		BAtras.y = 0;
+		this.escena.addActor(BAtras);
+		BAtras.clickListener=new ClickListener(){
+			public void clicked(Button b){
+				ScreenManager.getScreenManager().setCurrentScreen("menu");
+			}
+		};
 		
 	}
 

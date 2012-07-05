@@ -5,6 +5,7 @@ import java.nio.file.Files;
 import java.util.ArrayList;
 
 import principal.GameGlobals;
+import principal.ScreenManager;
 import juegos.Juego;
 
 import com.badlogic.gdx.Gdx;
@@ -23,6 +24,7 @@ public class Museo extends Juego {
 	private Button derecha;
 	private TextureRegion marcoChico;
 	private Button marcoGrande;
+	private Button BAtras;
 	private float factorDeReduccionX;
 	private float factorDeReduccionY;
 	private float cuadro1Pos = 120;
@@ -124,6 +126,17 @@ public class Museo extends Juego {
 			this.escena.addActor(cuadro.getMarco());
 			this.escena.addActor(cuadro.getCuadro());	
 		}
+		
+		// Boton atras
+		BAtras = new Button("salir",new TextureRegion(new Texture("imagenes2/Menu/atras sin pulsar.png")),new TextureRegion(new Texture("imagenes2/Menu/atras pulsado.png")));
+		BAtras.x = this.escena.width() - BAtras.width -20;
+		BAtras.y = this.escena.height() - BAtras.height -20;
+		this.escena.addActor(BAtras);
+		BAtras.clickListener=new ClickListener(){
+			public void clicked(Button b){
+				ScreenManager.getScreenManager().setCurrentScreen("menu");
+			}
+		};
 	}
 
 	public void Update() {
@@ -137,7 +150,6 @@ public class Museo extends Juego {
 		Button boton;
 		
 		for(FileHandle c: carpeta.list()){
-			System.out.print(c);
 			boton = new Button("cuadro" + Integer.toString(i), 
 					new TextureRegion(new Texture(c), 0, 0, 737, 484));
 			

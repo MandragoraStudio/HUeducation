@@ -29,6 +29,7 @@ public class EmocionesPintadas extends Juego {
 	Button miedo;
 	Button sorpresa;
 	String codigoActual;
+	private Button BAtras;
 	
 	public EmocionesPintadas(){
 		super();
@@ -88,6 +89,17 @@ public class EmocionesPintadas extends Juego {
 		sorpresa.clickListener= new ClickListener(){
 			public void clicked(Button b){
 				resultado(evaluarRespuesta(codigoActual,b.name));
+			}
+		};
+		
+		// Boton atras
+		BAtras = new Button("salir",new TextureRegion(new Texture("imagenes2/Menu/atras sin pulsar.png")),new TextureRegion(new Texture("imagenes2/Menu/atras pulsado.png")));
+		BAtras.x = 0;
+		BAtras.y = 0;
+		this.escena.addActor(BAtras);
+		BAtras.clickListener=new ClickListener(){
+			public void clicked(Button b){
+				ScreenManager.getScreenManager().setCurrentScreen("menu");
 			}
 		};
 		
