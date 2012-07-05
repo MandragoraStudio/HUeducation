@@ -10,6 +10,14 @@ public class EducationSplash extends Screen {
 
 	private long tiempoini=0;
 	private long tiempoEspera=3000;
+	
+	// Ardilla Hablando
+	
+	private Image A1;
+	private Image A2;
+	private Image A3;
+	
+	
 
 	@Override
 	public void Update(){
