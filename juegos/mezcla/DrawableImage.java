@@ -1,5 +1,7 @@
 package juegos.mezcla;
 
+import java.io.IOException;
+import java.io.OutputStream;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
@@ -14,11 +16,14 @@ import com.badlogic.gdx.scenes.scene2d.actors.Image;
 public class DrawableImage extends Image {
 
 	public Pixmap pincel = new Pixmap(10,10,Format.RGBA8888);
+
+	Pixmap pm;
 	Texture textura;
 
 	public DrawableImage(String name, Texture text){
 		super(name,text);
 		textura=text;
+		pm=new Pixmap(textura.getWidth(),textura.getHeight(),textura.getFormat());
 		init();
 	}
 	/*public DrawableImage(String name, TextureRegion region) {
@@ -35,8 +40,9 @@ public class DrawableImage extends Image {
 		if(!(X>0&&X<textura.getWidth()&&Y>0&&Y<textura.getHeight())){
 			return false;
 		}
-		textura.draw(pincel,(int) X-5,textura.getHeight()-((int) Y)-5);
-		
+		pm.drawPixmap(pincel,(int) X-5,textura.getHeight()-((int) Y)-5,0,0,pincel.getWidth(),pincel.getHeight());
+		textura.draw(pm,0,0);
+		//guardarCuadro();
 		return true;
 	}
 	
@@ -44,8 +50,16 @@ public class DrawableImage extends Image {
 		Date date = Calendar.getInstance().getTime();
 		  SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd.hhmmss");
 		  String nombre = sdf.format(date);
-		FileHandle f = Gdx.files.external("/campamentomandrilla/cuadros/"+nombre+".png");
-		textura.
+		FileHandle f = Gdx.files.external("campamentomandrilla/cuadros/"+nombre+".png");
+		f.parent().mkdirs();
+		OutputStream os = f.write(true);
+		try {
+			byte[] data =pm.getPixels().array();
+			os.write(data);
+			os.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 
 }
