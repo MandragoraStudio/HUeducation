@@ -125,16 +125,16 @@ public class MezcladorBasico extends Group {
 	}
 
 	public void setColor1(float r, float g, float b, float a) {
-		//Color1.region = new TextureRegion(MezcladorBasico.getColoredTexture(
-		//		100, 200, r, g, b, a));
-		((Sprite)mancha1.region).setColor(r, g, b, a);
+		mancha1.region = new TextureRegion(MezcladorBasico.getColoredTexture(
+				100, 200, r, g, b, a));
+		//((Sprite)mancha1.region).setColor(r, g, b, a);
 		
 	}
 
 	public void setColor2(float r, float g, float b, float a) {
-		//Color2.region = new TextureRegion(MezcladorBasico.getColoredTexture(
-		//		100, 200, r, g, b, a));
-		((Sprite)mancha2.region).setColor(r, g, b, a);
+		mancha2.region = new TextureRegion(MezcladorBasico.getColoredTexture(
+				100, 200, r, g, b, a));
+		//((Sprite)mancha2.region).setColor(r, g, b, a);
 		
 	}
 
