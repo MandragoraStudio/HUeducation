@@ -3,6 +3,7 @@ package juegos.mezcla;
 import principal.ScreenManager;
 import juegos.Juego;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Pixmap;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.Pixmap.Format;
@@ -32,7 +33,7 @@ public class MezclaColores extends Juego {
     }
     
     public void Load(){
-    	fondo =new Image("fondo",new Texture("imagenes/mezcla/fondo.png"));
+    	fondo =new Image("fondo",new Texture("imagenes2/mezcla/fondo.png"));
     	Texture papel = new Texture(550,500,Format.RGBA8888);
     	Pixmap blanco = new Pixmap(550,500,Format.RGBA8888);
     	blanco.setColor(1,1,1,1);

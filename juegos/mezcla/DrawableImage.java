@@ -2,6 +2,7 @@ package juegos.mezcla;
 
 import java.io.IOException;
 import java.io.OutputStream;
+import java.nio.ByteBuffer;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
@@ -24,6 +25,8 @@ public class DrawableImage extends Image {
 		super(name,text);
 		textura=text;
 		pm=new Pixmap(textura.getWidth(),textura.getHeight(),textura.getFormat());
+		pm.setColor(1,1,1,1);
+		pm.fill();
 		init();
 	}
 	/*public DrawableImage(String name, TextureRegion region) {
@@ -33,6 +36,7 @@ public class DrawableImage extends Image {
 	
 	public void init(){
 		this.touchable=true;
+		
 	}
 	
 	@Override
@@ -42,7 +46,7 @@ public class DrawableImage extends Image {
 		}
 		pm.drawPixmap(pincel,(int) X-5,textura.getHeight()-((int) Y)-5,0,0,pincel.getWidth(),pincel.getHeight());
 		textura.draw(pm,0,0);
-		//guardarCuadro();
+		//guardarCuadro();			//pasar texturas a archivos, un mito
 		return true;
 	}
 	
@@ -54,7 +58,9 @@ public class DrawableImage extends Image {
 		f.parent().mkdirs();
 		OutputStream os = f.write(true);
 		try {
-			byte[] data =pm.getPixels().array();
+			
+			ByteBuffer bb = pm.getPixels();
+			byte[] data =bb.array();
 			os.write(data);
 			os.close();
 		} catch (IOException e) {
