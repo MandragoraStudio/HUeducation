@@ -87,11 +87,11 @@ public class MezcladorBasico extends Group {
 		//mancha1.y=this.findActor("color1").y;
 		//mancha2.x=this.findActor("color2").x;
 		//mancha2.y=this.findActor("color2").y;
-		mancha1.x=350;
+		mancha1.x=110;
 		mancha1.y=200;
-		mancha2.x=600;
+		mancha2.x=360;
 		mancha2.y=200;
-		mesa.x=250;
+		mesa.x=50;
 		mesa.y=50;
 		this.addActor(i1);
 		this.addActor(i2);
@@ -100,12 +100,12 @@ public class MezcladorBasico extends Group {
 		this.addActor(i5);
 		this.addActor(i6);
 
-		i1.x = 800;
-		i2.x = 800;
-		i3.x = 800;
-		i4.x = 920;
-		i5.x = 920;
-		i6.x = 920;
+		i1.x = 600;
+		i2.x = 600;
+		i3.x = 600;
+		i4.x = 720;
+		i5.x = 720;
+		i6.x = 720;
 
 		i1.y = 450;
 		i4.y = 450;

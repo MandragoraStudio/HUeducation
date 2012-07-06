@@ -25,6 +25,8 @@ public class DrawableImage extends Image {
 		super(name,text);
 		textura=text;
 		pm=new Pixmap(textura.getWidth(),textura.getHeight(),textura.getFormat());
+		pm.setColor(1,1,1,1);
+		pm.fill();
 		init();
 	}
 	/*public DrawableImage(String name, TextureRegion region) {
