@@ -57,20 +57,20 @@ public class EducationSplash extends Screen {
 				case 3:
 					break;
 				case 5:
-					cuento.scaleX = 1.5f;
-					cuento.scaleY = 1.5f;
+					cuento.scaleX = 1.2f;
+					cuento.scaleY = 1.2f;
 					break;
 				case 6:
-					mezcla.scaleX = 1.5f;
-					mezcla.scaleY = 1.5f;
+					mezcla.scaleX = 1.2f;
+					mezcla.scaleY = 1.2f;
 					break;
 				case 7:
-					modificalo.scaleX = 1.5f;
-					modificalo.scaleY = 1.5f;
+					modificalo.scaleX = 1.2f;
+					modificalo.scaleY = 1.2f;
 					break;
 				case 8:
-					museo.scaleX = 1.5f;
-					museo.scaleY = 1.5f;
+					museo.scaleX = 1.2f;
+					museo.scaleY = 1.2f;
 					break;
 				}
 				take[indice].play();

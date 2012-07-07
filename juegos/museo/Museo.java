@@ -40,6 +40,12 @@ public class Museo extends Juego {
 	private Music[] take = new Music[2];
 	int indice = 0;
 	int MAXtakes = 2;
+	int Xardilla = GameGlobals.posXardilla;
+	int Yardilla = GameGlobals.posYardilla;
+	
+	private long tiempoSalida = 700;
+	private boolean saliendo = false;
+	
 	boolean reproducir = true;
 
 	public Museo() {
@@ -54,23 +60,6 @@ public class Museo extends Juego {
 	@Override
 	public void Initialize() {
 		super.Initialize();
-		
-		// Ardilla
-		GameGlobals.ultimotiempo=System.currentTimeMillis();
-		// Imagenes de las ardillas hablando
-		this.escena.addActor(GameGlobals.A[0]);
-		this.escena.addActor(GameGlobals.A[1]);
-		this.escena.addActor(GameGlobals.A[2]);
-		GameGlobals.A[0].x = GameGlobals.posXardilla;
-		GameGlobals.A[0].y = GameGlobals.posYardilla;
-		// La 2 y la 3 aparecen inicialmente invisibles
-		GameGlobals.A[1].x = this.escena.width();
-		GameGlobals.A[1].y = this.escena.height();
-		GameGlobals.A[2].x = this.escena.width();
-		GameGlobals.A[2].y = this.escena.height();
-		// Sonidos de la ardilla hablando
-		take[0] = Gdx.audio.newMusic(Gdx.files.internal("sonido/vocesdemandrilla/takesMuseo/Take 1.wav"));
-		take[1] = Gdx.audio.newMusic(Gdx.files.internal("sonido/vocesdemandrilla/takesMuseo/Take 2.wav"));
 		
 		// Imagen de fondo
 		fondo = new Image("fondo", new TextureRegion(new Texture(
@@ -164,19 +153,37 @@ public class Museo extends Juego {
 				ScreenManager.getScreenManager().setCurrentScreen("menu");
 			}
 		};
+		
+		
+		// Ardilla
+		GameGlobals.ultimotiempo=System.currentTimeMillis();
+		// Imagenes de las ardillas hablando
+		GameGlobals.A[0].x = GameGlobals.posXardilla;
+		GameGlobals.A[0].y = GameGlobals.posYardilla;
+		// La 2 y la 3 aparecen inicialmente invisibles
+		GameGlobals.A[1].x = this.escena.width();
+		GameGlobals.A[1].y = this.escena.height();
+		GameGlobals.A[2].x = this.escena.width();
+		GameGlobals.A[2].y = this.escena.height();
+		this.escena.addActor(GameGlobals.A[0]);
+		this.escena.addActor(GameGlobals.A[1]);
+		this.escena.addActor(GameGlobals.A[2]);
+		// Sonidos de la ardilla hablando
+		take[0] = Gdx.audio.newMusic(Gdx.files.internal("sonido/vocesdemandrilla/takesMuseo/Take 1.wav"));
+		take[1] = Gdx.audio.newMusic(Gdx.files.internal("sonido/vocesdemandrilla/takesMuseo/Take 2.wav"));
 	}
 
 	public void Update() {
 		
 		// Animacion ardilla
-				if(System.currentTimeMillis() - GameGlobals.ultimotiempo >= GameGlobals.changetime){
+				if(System.currentTimeMillis() - GameGlobals.ultimotiempo >= GameGlobals.changetime && !saliendo && Yardilla > -GameGlobals.A[0].height){
 					GameGlobals.ultimotiempo = System.currentTimeMillis();
 					i++;
 					if(i >= GameGlobals.MAXimages){
 						i = 0;
 					}
-					GameGlobals.A[i].x = GameGlobals.posXardilla;
-					GameGlobals.A[i].y = GameGlobals.posYardilla;
+					GameGlobals.A[i].x = Xardilla;
+					GameGlobals.A[i].y = Yardilla;
 					// El resto aparecen invisibles
 					for(j = 0; j < i; j++){
 						GameGlobals.A[j].x = this.escena.width();
@@ -188,10 +195,24 @@ public class Museo extends Juego {
 					}
 				}
 				
+				// Animacion de la ardilla haciendose llendose
+				if(saliendo){
+					for(Image img: GameGlobals.A){
+						img.y -= img.height/this.tiempoSalida;
+						
+						if(img.y <= -img.height){
+							saliendo = false;
+						}
+					}
+					Yardilla = (int) GameGlobals.A[0].y;
+					Xardilla = (int) GameGlobals.A[0].x;
+				}
+				
 				// Se van reproduciendo los takes (uno detras de otro)
 				// Si se pulsa escape o en la pantalla (click) se salta el splash
 				if(indice >= MAXtakes){
 					// La ardilla se va
+					saliendo = true;
 				}else{
 					if(reproducir == true){
 						take[indice].play();
@@ -205,9 +226,11 @@ public class Museo extends Juego {
 				}
 				if(Gdx.input.isTouched() || Gdx.input.isKeyPressed(Input.Keys.ESCAPE)){
 					if(indice < MAXtakes){
+						reproducir = false;
 						take[indice].stop();
 					}
 					// La ardilla se va
+					saliendo = true;
 				}
 		super.Update();
 
