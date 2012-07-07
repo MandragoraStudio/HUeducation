@@ -40,6 +40,9 @@ public class Paleta extends Group {
 	Button colorP5 = new Button("CP5");
 	Button colorP6 = new Button("CP6");
 	
+	
+	Button bGuardar = new Button("Guardar", new Texture("imagenes2/modificalo.png"));
+	
 	int[][] colores = new int[3][3];
 	
 	Button sacaMezclador = new Button("sacaMezclador",new TextureRegion(new Texture("imagenes/mezcla/pruebaboton.png"),20,20,20,20),new TextureRegion(new Texture("imagenes/mezcla/pruebaboton.png")));
@@ -104,8 +107,22 @@ public class Paleta extends Group {
 		colorAmarillo.y = 393;
 		colorAmarillo.clickListener=evento;
 		this.addActor(colorRojo);
+		bGuardar.x=00;
+		bGuardar.y=00;
+		bGuardar.clickListener=new ClickListener(){
 
+			@Override
+			public void clicked(Button arg0) {
+				MezclaColores.lienzo.guardarCuadro();
+				
+			}
+			
+		};
+		this.addActor(bGuardar);
+
+		
 		this.addActor(Fondo);
+		Fondo.touchable=false;
 		/*
 		colorRojo.clickListener=evento;
 		this.addActor(colorVerde);
@@ -128,6 +145,8 @@ public class Paleta extends Group {
 		this.addActor(sacaMezclador);
 		sacaMezclador.height=100;
 		sacaMezclador.width=100;
+		sacaMezclador.x=190;
+		sacaMezclador.y=100;
 		sacaMezclador.clickListener=new ClickListener(){
 			@Override
 			public void clicked(Button boton) {
@@ -225,5 +244,14 @@ public class Paleta extends Group {
 		debugVariable.x=272;
 		debugVariable.y=393;
 	}
+	
+	/*@Override
+	public boolean touchUp(float a,float b, int c){
+		return false;
+	}
+	@Override
+	public boolean touchDown(float a,float b, int c){
+		return false;
+	}*/
 
 }
