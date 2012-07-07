@@ -8,7 +8,9 @@ import juegos.mezcla.MezclaColores;
 import juegos.modificalo.SeleccionCuadro;
 import juegos.museo.Museo;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
+import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.actors.Button;
@@ -26,11 +28,32 @@ public class Menu extends Screen {
 	//Button BSalir;
 	Image fondo;
 	
+	private long ultimavez=0;
+	private long ardillatime=30000;
+	private boolean reproducir = true;
+	private int i = 0;
+	private int j = 0;
+	Music takeR;
+	
 	@Override
 	public void Initialize(){
 		super.Initialize();
 		fondo = new Image("fondo", new TextureRegion(new Texture("imagenes2/Menu/fondoMenu.png"), 0, 0, 1024, 600));
 		this.escena.addActor(fondo);
+		ultimavez=System.currentTimeMillis();
+		// Imagenes de las ardillas hablando
+		this.escena.addActor(GameGlobals.A[0]);
+		this.escena.addActor(GameGlobals.A[1]);
+		this.escena.addActor(GameGlobals.A[2]);
+		GameGlobals.A[0].x = GameGlobals.posXardilla;
+		GameGlobals.A[0].y = GameGlobals.posYardilla;
+		// La 2 y la 3 aparecen inicialmente invisibles
+		GameGlobals.A[1].x = this.escena.width();
+		GameGlobals.A[1].y = this.escena.height();
+		GameGlobals.A[2].x = this.escena.width();
+		GameGlobals.A[2].y = this.escena.height();
+		takeR = Gdx.audio.newMusic(Gdx.files.internal("sonido/vocesdemandrilla/takesdelinicio/Take R.wav"));
+		
 		setButtons();
 	}
 	
@@ -140,6 +163,47 @@ public class Menu extends Screen {
 		inicializaJuego("museo", new Museo());
 	}
     public void Update () {
+    	if(System.currentTimeMillis() - ultimavez >= ardillatime){
+    		if(reproducir){
+    			takeR.play();
+    			reproducir = false;
+    			
+    		}
+
+    		// mientras la ardilla hable se reproduce la animacion
+    		if(System.currentTimeMillis() - GameGlobals.ultimotiempo >= GameGlobals.changetime){
+    			GameGlobals.ultimotiempo = System.currentTimeMillis();
+    			i++;
+    			if(i >= GameGlobals.MAXimages){
+    				i = 0;
+    			}
+    			GameGlobals.A[i].x = GameGlobals.posXardilla;
+    			GameGlobals.A[i].y = GameGlobals.posYardilla;
+    			// El resto aparecen invisibles
+    			for(j = 0; j < i; j++){
+    				GameGlobals.A[j].x = this.escena.width();
+    				GameGlobals.A[j].y = this.escena.height();
+    			}
+    			for(j = i+1; j < GameGlobals.MAXimages; j++){
+    				GameGlobals.A[j].x = this.escena.width();
+    				GameGlobals.A[j].y = this.escena.height();
+    			}
+    		}
+    		
+    		// Cuando deja de hablar se para la animacion y se guarda el momento en el que esto sucede
+    		if(!takeR.isPlaying()){
+    			ultimavez = System.currentTimeMillis();
+    			reproducir = true;
+    			// La ardilla se deja = k al principio
+    			GameGlobals.A[0].x = GameGlobals.posXardilla;
+    			GameGlobals.A[0].y = GameGlobals.posYardilla;
+    			// La 2 y la 3 aparecen inicialmente invisibles
+    			GameGlobals.A[1].x = this.escena.width();
+    			GameGlobals.A[1].y = this.escena.height();
+    			GameGlobals.A[2].x = this.escena.width();
+    			GameGlobals.A[2].y = this.escena.height();
+    		}
+    	}
     	super.Update();
     }
     @Override
