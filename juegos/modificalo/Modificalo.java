@@ -8,6 +8,7 @@ import principal.ScreenManager;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.audio.Music;
+import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
@@ -117,6 +118,8 @@ public class Modificalo extends Juego {
 	private boolean saliendo = false;
 	
 	boolean reproducir = true;
+	
+	private Music genial;
 
    
    @Override
@@ -444,6 +447,13 @@ public class Modificalo extends Juego {
 		this.escena.addActor(modif_objetos);
 		this.escena.addActor(menu_modif);
 		this.escena.addActor(guardar);
+		guardar.clickListener=new ClickListener(){
+			public void clicked(Button b){
+				if(!genial.isPlaying()){
+					genial.play();
+				}
+			}
+		};
 		
 		// Boton atras
 		BAtras = new Button("salir",new TextureRegion(new Texture("imagenes2/Menu/atras sin pulsar.png")),new TextureRegion(new Texture("imagenes2/Menu/atras pulsado.png")));
@@ -476,6 +486,7 @@ public class Modificalo extends Juego {
 		take[3] = Gdx.audio.newMusic(Gdx.files.internal("sonido/vocesdemandrilla/takesmodificalo/Take 4.wav"));
 		take[4] = Gdx.audio.newMusic(Gdx.files.internal("sonido/vocesdemandrilla/takesmodificalo/Take 5.wav"));
 		take[5] = Gdx.audio.newMusic(Gdx.files.internal("sonido/vocesdemandrilla/takesmodificalo/Take 6.wav"));
+		genial = Gdx.audio.newMusic(Gdx.files.internal("sonido/vocesdemandrilla/takesdeacciones/genial.wav"));
 				
 		
 	}

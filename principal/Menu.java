@@ -27,6 +27,7 @@ public class Menu extends Screen {
 	Button BMuseo;
 	//Button BSalir;
 	Image fondo;
+	Image contador;
 	
 	private long ultimavez=0;
 	private long ardillatime=30000;
@@ -53,8 +54,12 @@ public class Menu extends Screen {
 		GameGlobals.A[2].x = this.escena.width();
 		GameGlobals.A[2].y = this.escena.height();
 		takeR = Gdx.audio.newMusic(Gdx.files.internal("sonido/vocesdemandrilla/takesdelinicio/Take R.wav"));
-		
 		setButtons();
+		// Imagen del contador
+		contador = new Image("contador", new TextureRegion(new Texture("imagenes2/Menu/contador.png")));
+		this.escena.addActor(contador);
+		contador.x = this.escena.width() - contador.width;
+		contador.y = this.escena.height() - contador.height;
 	}
 	
 	private void setButtons(){

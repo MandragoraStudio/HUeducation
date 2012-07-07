@@ -2,6 +2,7 @@ package juegos.mezcla;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
+import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.graphics.Pixmap;
 import com.badlogic.gdx.graphics.Pixmap.Format;
 import com.badlogic.gdx.graphics.Texture;
@@ -19,6 +20,12 @@ public class Paleta extends Group {
 	public static Button debugVariable;
 	
 	public int coloresDisponibles = 0;
+	public int MAXcolores = 3;		// Cambialo antonio
+	
+	// Musica reproducida cuando se consigue un nuevo color
+	private Music genial = Gdx.audio.newMusic(Gdx.files.internal("sonido/vocesdemandrilla/takesdeacciones/genial.wav"));
+	// Sonido reproducido cuando se tienen todos los colores
+	private Music take6 = Gdx.audio.newMusic(Gdx.files.internal("sonido/vocesdemandrilla/takesmezcladecolor/Take 6.wav"));
 	
 	Image Fondo = new Image("fondo", new Texture(
 			"imagenes2/mezcla/Paleta.png"));
@@ -235,6 +242,11 @@ public class Paleta extends Group {
 			break;
 		}
 		coloresDisponibles++;
+		if(coloresDisponibles == MAXcolores){
+			take6.play();
+		}else{
+			genial.play();
+		}
 	}
 	
 	@Override
