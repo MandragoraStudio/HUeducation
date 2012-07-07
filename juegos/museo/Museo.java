@@ -8,6 +8,8 @@ import principal.ScreenManager;
 import juegos.Juego;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Input;
+import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
@@ -30,6 +32,15 @@ public class Museo extends Juego {
 	private float cuadro2Pos = 530;
 	
 	private ArrayList<Cuadro> cuadros;
+	
+	// Ardilla
+	private int i = 0;
+	private int j = 0;
+
+	private Music[] take = new Music[2];
+	int indice = 0;
+	int MAXtakes = 2;
+	boolean reproducir = true;
 
 	public Museo() {
 		super();
@@ -43,6 +54,23 @@ public class Museo extends Juego {
 	@Override
 	public void Initialize() {
 		super.Initialize();
+		
+		// Ardilla
+		GameGlobals.ultimotiempo=System.currentTimeMillis();
+		// Imagenes de las ardillas hablando
+		this.escena.addActor(GameGlobals.A[0]);
+		this.escena.addActor(GameGlobals.A[1]);
+		this.escena.addActor(GameGlobals.A[2]);
+		GameGlobals.A[0].x = GameGlobals.posXardilla;
+		GameGlobals.A[0].y = GameGlobals.posYardilla;
+		// La 2 y la 3 aparecen inicialmente invisibles
+		GameGlobals.A[1].x = this.escena.width();
+		GameGlobals.A[1].y = this.escena.height();
+		GameGlobals.A[2].x = this.escena.width();
+		GameGlobals.A[2].y = this.escena.height();
+		// Sonidos de la ardilla hablando
+		take[0] = Gdx.audio.newMusic(Gdx.files.internal("sonido/vocesdemandrilla/takesMuseo/Take 1.wav"));
+		take[1] = Gdx.audio.newMusic(Gdx.files.internal("sonido/vocesdemandrilla/takesMuseo/Take 2.wav"));
 		
 		// Imagen de fondo
 		fondo = new Image("fondo", new TextureRegion(new Texture(
@@ -139,6 +167,48 @@ public class Museo extends Juego {
 	}
 
 	public void Update() {
+		
+		// Animacion ardilla
+				if(System.currentTimeMillis() - GameGlobals.ultimotiempo >= GameGlobals.changetime){
+					GameGlobals.ultimotiempo = System.currentTimeMillis();
+					i++;
+					if(i >= GameGlobals.MAXimages){
+						i = 0;
+					}
+					GameGlobals.A[i].x = GameGlobals.posXardilla;
+					GameGlobals.A[i].y = GameGlobals.posYardilla;
+					// El resto aparecen invisibles
+					for(j = 0; j < i; j++){
+						GameGlobals.A[j].x = this.escena.width();
+						GameGlobals.A[j].y = this.escena.height();
+					}
+					for(j = i+1; j < GameGlobals.MAXimages; j++){
+						GameGlobals.A[j].x = this.escena.width();
+						GameGlobals.A[j].y = this.escena.height();
+					}
+				}
+				
+				// Se van reproduciendo los takes (uno detras de otro)
+				// Si se pulsa escape o en la pantalla (click) se salta el splash
+				if(indice >= MAXtakes){
+					// La ardilla se va
+				}else{
+					if(reproducir == true){
+						take[indice].play();
+						reproducir = false;
+					}
+					
+					if(!take[indice].isPlaying()){
+						reproducir = true;
+							indice++;
+					}
+				}
+				if(Gdx.input.isTouched() || Gdx.input.isKeyPressed(Input.Keys.ESCAPE)){
+					if(indice < MAXtakes){
+						take[indice].stop();
+					}
+					// La ardilla se va
+				}
 		super.Update();
 
 	}
