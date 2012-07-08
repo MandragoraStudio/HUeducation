@@ -21,6 +21,7 @@ public abstract class Juego extends Screen {
     @Override
     public boolean keyUp(int arg0) {
     	if(arg0== Input.Keys.ESCAPE){
+    		
     		ScreenManager.getScreenManager().setCurrentScreen("menu");
     	}
 		return false;

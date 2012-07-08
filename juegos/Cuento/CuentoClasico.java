@@ -22,6 +22,7 @@ public class CuentoClasico extends Juego {
 
 	private Image fondo;
 	private Image fondoCuento;
+	private Button BAtras;
 
 	public CuentoClasico() {
 		this.paginas = new LinkedList();
@@ -78,6 +79,17 @@ public class CuentoClasico extends Juego {
 				escena.removeActor(abrirCuento);
 				escena.addActor(fondoCuento);
 				dibujaPagina();
+			}
+		};
+		
+		// Boton atras
+		BAtras = new Button("salir",new TextureRegion(new Texture("imagenes2/Menu/atras sin pulsar.png")),new TextureRegion(new Texture("imagenes2/Menu/atras pulsado.png")));
+		BAtras.x = this.escena.width() - BAtras.width;
+		BAtras.y = this.escena.height() - BAtras.height -20;
+		this.escena.addActor(BAtras);
+		BAtras.clickListener=new ClickListener(){
+			public void clicked(Button b){
+				ScreenManager.getScreenManager().setCurrentScreen("menu");
 			}
 		};
 	}

@@ -1,5 +1,8 @@
 package juegos.mezcla;
 
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Input;
+import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.graphics.Pixmap;
 import com.badlogic.gdx.graphics.Pixmap.Format;
 import com.badlogic.gdx.graphics.Texture;
@@ -13,10 +16,19 @@ import com.badlogic.gdx.scenes.scene2d.actors.Image;
 //Esta clase debe extender de la clase Grupo de Actores, e incluir todos los subactores necesarios para crear la paleta. Soy un genio
 public class Paleta extends Group {
 	
+	
+	public static Button debugVariable;
+	
 	public int coloresDisponibles = 0;
+	public int MAXcolores = 3;		// Cambialo antonio
+	
+	// Musica reproducida cuando se consigue un nuevo color
+	private Music genial = Gdx.audio.newMusic(Gdx.files.internal("sonido/vocesdemandrilla/takesdeacciones/genial.wav"));
+	// Sonido reproducido cuando se tienen todos los colores
+	private Music take6 = Gdx.audio.newMusic(Gdx.files.internal("sonido/vocesdemandrilla/takesmezcladecolor/Take 6.wav"));
 	
 	Image Fondo = new Image("fondo", new Texture(
-			"imagenes/mezcla/fondopaleta.png"));
+			"imagenes2/mezcla/Paleta.png"));
 
 	Button colorCyan = new Button("CCyan", Paleta.getColoredTexture(0, 1, 1, 1));
 	Button colorMagenta = new Button("CMagenta", Paleta.getColoredTexture(1, 0,
@@ -34,6 +46,9 @@ public class Paleta extends Group {
 	Button colorP4 = new Button("CP4");
 	Button colorP5 = new Button("CP5");
 	Button colorP6 = new Button("CP6");
+	
+	
+	Button bGuardar = new Button("Guardar", new Texture("imagenes2/modificalo.png"));
 	
 	int[][] colores = new int[3][3];
 	
@@ -70,10 +85,11 @@ public class Paleta extends Group {
 	};
 
 	public static Texture getColoredTexture(float r, float g, float b, float a) {
-		Texture dev = new Texture(50, 50, Format.RGBA8888);
-		Pixmap p = new Pixmap(50, 50, Format.RGBA8888);
+		Texture dev = new Texture(66, 66, Format.RGBA8888);
+		Pixmap p = new Pixmap(66, 66, Format.RGBA8888);
 		p.setColor(r, g, b, a);
-		p.fill();
+		p.fillCircle(33, 33, 33);
+		//p.fill();
 		try {
 			dev.draw(p, 0, 0);
 		} catch (Exception e) {
@@ -85,20 +101,35 @@ public class Paleta extends Group {
 	public Paleta(String name) {
 		super(name);
 		mezcladorBasico = new MezcladorBasico(this);
-		this.addActor(Fondo);
 		this.addActor(colorCyan);
-		colorCyan.x = 20;
-		colorCyan.y = 300;
+		colorCyan.x = 192;
+		colorCyan.y = 433;
 		colorCyan.clickListener=evento;
 		this.addActor(colorMagenta);
-		colorMagenta.x = 130;
-		colorMagenta.y = 300;
+		colorMagenta.x = 108;
+		colorMagenta.y = 421;
 		colorMagenta.clickListener=evento;
 		this.addActor(colorAmarillo);
-		colorAmarillo.x = 250;
-		colorAmarillo.y = 300;
+		colorAmarillo.x = 272;
+		colorAmarillo.y = 393;
 		colorAmarillo.clickListener=evento;
 		this.addActor(colorRojo);
+		bGuardar.x=00;
+		bGuardar.y=00;
+		bGuardar.clickListener=new ClickListener(){
+
+			@Override
+			public void clicked(Button arg0) {
+				MezclaColores.lienzo.guardarCuadro();
+				
+			}
+			
+		};
+		this.addActor(bGuardar);
+
+		
+		this.addActor(Fondo);
+		Fondo.touchable=false;
 		/*
 		colorRojo.clickListener=evento;
 		this.addActor(colorVerde);
@@ -121,6 +152,8 @@ public class Paleta extends Group {
 		this.addActor(sacaMezclador);
 		sacaMezclador.height=100;
 		sacaMezclador.width=100;
+		sacaMezclador.x=190;
+		sacaMezclador.y=100;
 		sacaMezclador.clickListener=new ClickListener(){
 			@Override
 			public void clicked(Button boton) {
@@ -186,7 +219,7 @@ public class Paleta extends Group {
 			colorVerde.x=30;
 			colorVerde.y=240;
 			colorVerde.clickListener=evento;
-			this.addActorBefore(mezcladorBasico,colorVerde);
+			this.addActorBefore(Fondo,colorVerde);
 			break;
 		case 1:
 			colorRojo=new Button("CRojo", Paleta.getColoredTexture(1,
@@ -194,7 +227,7 @@ public class Paleta extends Group {
 			colorRojo.x=190;
 			colorRojo.y=240;
 			colorRojo.clickListener=evento;
-			this.addActorBefore(mezcladorBasico,colorRojo);
+			this.addActorBefore(Fondo,colorRojo);
 			break;
 		case 2:
 			colorAzul=new Button("CAzul", Paleta.getColoredTexture(0,
@@ -202,13 +235,35 @@ public class Paleta extends Group {
 			colorAzul.x=300;
 			colorAzul.y=240;
 			colorAzul.clickListener=evento;
-			this.addActorBefore(mezcladorBasico,colorAzul);
+			this.addActorBefore(Fondo,colorAzul);
 			break;
 		default:
 			coloresDisponibles--;
 			break;
 		}
 		coloresDisponibles++;
+		if(coloresDisponibles == MAXcolores){
+			take6.play();
+		}else{
+			genial.play();
+		}
 	}
+	
+	@Override
+	public void act(float delta){
+		super.act(delta);
+		debugVariable=this.colorAmarillo;
+		debugVariable.x=272;
+		debugVariable.y=393;
+	}
+	
+	/*@Override
+	public boolean touchUp(float a,float b, int c){
+		return false;
+	}
+	@Override
+	public boolean touchDown(float a,float b, int c){
+		return false;
+	}*/
 
 }

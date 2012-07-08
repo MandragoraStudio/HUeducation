@@ -8,7 +8,9 @@ import juegos.mezcla.MezclaColores;
 import juegos.modificalo.SeleccionCuadro;
 import juegos.museo.Museo;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
+import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.actors.Button;
@@ -23,14 +25,41 @@ public class Menu extends Screen {
 	Button BMezcla;
 	Button BModifica;
 	Button BMuseo;
+	//Button BSalir;
 	Image fondo;
+	Image contador;
+	
+	private long ultimavez=0;
+	private long ardillatime=30000;
+	private boolean reproducir = true;
+	private int i = 0;
+	private int j = 0;
+	Music takeR;
 	
 	@Override
 	public void Initialize(){
 		super.Initialize();
 		fondo = new Image("fondo", new TextureRegion(new Texture("imagenes2/Menu/fondoMenu.png"), 0, 0, 1024, 600));
 		this.escena.addActor(fondo);
+		ultimavez=System.currentTimeMillis();
+		// Imagenes de las ardillas hablando
+		this.escena.addActor(GameGlobals.A[0]);
+		this.escena.addActor(GameGlobals.A[1]);
+		this.escena.addActor(GameGlobals.A[2]);
+		GameGlobals.A[0].x = GameGlobals.posXardilla;
+		GameGlobals.A[0].y = GameGlobals.posYardilla;
+		// La 2 y la 3 aparecen inicialmente invisibles
+		GameGlobals.A[1].x = this.escena.width();
+		GameGlobals.A[1].y = this.escena.height();
+		GameGlobals.A[2].x = this.escena.width();
+		GameGlobals.A[2].y = this.escena.height();
+		takeR = Gdx.audio.newMusic(Gdx.files.internal("sonido/vocesdemandrilla/takesdelinicio/Take R.wav"));
 		setButtons();
+		// Imagen del contador
+		contador = new Image("contador", new TextureRegion(new Texture("imagenes2/Menu/contador.png")));
+		this.escena.addActor(contador);
+		contador.x = this.escena.width() - contador.width;
+		contador.y = this.escena.height() - contador.height;
 	}
 	
 	private void setButtons(){
@@ -48,7 +77,8 @@ public class Menu extends Screen {
 				JuegoCuento();
 			}
 		};
-		if(GameGlobals.emocionesFinished){
+		
+		/*if(GameGlobals.emocionesFinished){
 			BPintar= new Button("bpintar",new TextureRegion(new Texture("imagenes2/Menu/TexturesBotonesMenu.png"), 226, 10, 437-226, 180-10), new TextureRegion(new Texture("imagenes2/Menu/TexturesBotonesMenu.png"), 235, 379, 438-235, 549-379));
 		}else{
 			BPintar= new Button("bpintar",new TextureRegion(new Texture("imagenes2/Menu/TexturesBotonesMenu.png"), 232, 192, 442-232, 363-192), new TextureRegion(new Texture("imagenes2/Menu/TexturesBotonesMenu.png"), 228, 569, 430-228, 738-569));
@@ -60,7 +90,8 @@ public class Menu extends Screen {
 			public void clicked(Button b){
 				JuegoPintar();
 			}
-		};
+		};*/
+		
 		if(GameGlobals.mezclaFinished){
 			BMezcla=new Button("bmezcla",new TextureRegion(new Texture("imagenes2/Menu/TexturesBotonesMenu.png"), 459, 1, 628-459, 199-1), new TextureRegion(new Texture("imagenes2/Menu/TexturesBotonesMenu.png"), 460, 400, 623-460, 600-400));
 		}else{
@@ -106,6 +137,16 @@ public class Menu extends Screen {
 			}
 		};
 		
+		/*BSalir = new Button("salir",new TextureRegion(new Texture("imagenes2/Menu/atras sin pulsar.png")),new TextureRegion(new Texture("imagenes2/Menu/atras pulsado.png")));
+		BSalir.x = 0;
+		BSalir.y = 0;
+		this.escena.addActor(BSalir);
+		BSalir.clickListener=new ClickListener(){
+			public void clicked(Button b){
+				Salir();
+			}
+		};*/
+		
 	}
 	
 	private void Salir(){
@@ -114,9 +155,9 @@ public class Menu extends Screen {
 	private void JuegoCuento(){
 		inicializaJuego("cuentoClasico", new CuentoClasico());
 	}
-	private void JuegoPintar(){
-		inicializaJuego("emocionesPinatadas", new EmocionesPintadas());
-	}
+	/*private void JuegoPintar(){
+		inicializaJuego("emocionesPintadas", new EmocionesPintadas());
+	}*/
 	private void JuegoMezcla(){
 		inicializaJuego("mezclaColores", new MezclaColores());
 	}
@@ -127,6 +168,47 @@ public class Menu extends Screen {
 		inicializaJuego("museo", new Museo());
 	}
     public void Update () {
+    	if(System.currentTimeMillis() - ultimavez >= ardillatime){
+    		if(reproducir){
+    			takeR.play();
+    			reproducir = false;
+    			
+    		}
+
+    		// mientras la ardilla hable se reproduce la animacion
+    		if(System.currentTimeMillis() - GameGlobals.ultimotiempo >= GameGlobals.changetime){
+    			GameGlobals.ultimotiempo = System.currentTimeMillis();
+    			i++;
+    			if(i >= GameGlobals.MAXimages){
+    				i = 0;
+    			}
+    			GameGlobals.A[i].x = GameGlobals.posXardilla;
+    			GameGlobals.A[i].y = GameGlobals.posYardilla;
+    			// El resto aparecen invisibles
+    			for(j = 0; j < i; j++){
+    				GameGlobals.A[j].x = this.escena.width();
+    				GameGlobals.A[j].y = this.escena.height();
+    			}
+    			for(j = i+1; j < GameGlobals.MAXimages; j++){
+    				GameGlobals.A[j].x = this.escena.width();
+    				GameGlobals.A[j].y = this.escena.height();
+    			}
+    		}
+    		
+    		// Cuando deja de hablar se para la animacion y se guarda el momento en el que esto sucede
+    		if(!takeR.isPlaying()){
+    			ultimavez = System.currentTimeMillis();
+    			reproducir = true;
+    			// La ardilla se deja = k al principio
+    			GameGlobals.A[0].x = GameGlobals.posXardilla;
+    			GameGlobals.A[0].y = GameGlobals.posYardilla;
+    			// La 2 y la 3 aparecen inicialmente invisibles
+    			GameGlobals.A[1].x = this.escena.width();
+    			GameGlobals.A[1].y = this.escena.height();
+    			GameGlobals.A[2].x = this.escena.width();
+    			GameGlobals.A[2].y = this.escena.height();
+    		}
+    	}
     	super.Update();
     }
     @Override
