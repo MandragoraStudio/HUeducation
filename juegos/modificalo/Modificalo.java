@@ -897,10 +897,6 @@ public class Modificalo extends Juego {
 			ganaNuez = true;
 			n.setText("" + ganaNuez);
 			GameGlobals.nueces++;
-		} else {
-			ganaNuez = false;
-			n.setText("" + ganaNuez);
-			GameGlobals.nueces--;
 		}
 		
 		return super.touchUp(x, y, pointer, button);
