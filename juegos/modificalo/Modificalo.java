@@ -143,8 +143,8 @@ public class Modificalo extends Juego {
 	    	
 	    	
 	    	collar1 = new Arrastrable("collar1",new TextureRegion(new Texture("imagenes2/modificalo/elemCuadro1.png"),0,840,118,97));
-	    	collar2 = new Arrastrable("collar2",new TextureRegion(new Texture("imagenes2/modificalo/elemCuadro1.png"),118,840,118,107));
-	    	collar3 = new Arrastrable("collar3",new TextureRegion(new Texture("imagenes2/modificalo/elemCuadro1.png"),236,840,118,107));
+	    	collar2 = new Arrastrable("collar2",new TextureRegion(new Texture("imagenes2/modificalo/elemCuadro1.png"),118,840,118,97));
+	    	collar3 = new Arrastrable("collar3",new TextureRegion(new Texture("imagenes2/modificalo/elemCuadro1.png"),236,840,118,97));
 	    	
 	    	bigote1 = new Arrastrable("bigote1",new TextureRegion(new Texture("imagenes2/modificalo/elemCuadro1.png"),0,706,109,107));
 	    	bigote2 = new Arrastrable("bigote2",new TextureRegion(new Texture("imagenes2/modificalo/elemCuadro1.png"),109,706,109,107));
@@ -166,9 +166,9 @@ public class Modificalo extends Juego {
 	    	pos_ini_2_c = 260;
 	    	pos_ini_3_c = 80;
 	    	
-	    	pos_ini_1_b= 470;
-	    	pos_ini_2_b = 290;
-	    	pos_ini_3_b = 90;
+	    	pos_ini_1_b= 440;
+	    	pos_ini_2_b = 250;
+	    	pos_ini_3_b = 60;
 	    	
 	    	
 	   	}
