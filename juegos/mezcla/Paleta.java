@@ -48,7 +48,7 @@ public class Paleta extends Group {
 	Button colorP6 = new Button("CP6");
 	
 	
-	Button bGuardar = new Button("Guardar", new Texture("imagenes2/modificalo.png"));
+	Button bGuardar = new Button("Guardar", new TextureRegion(new Texture("imagenes2/mezcla/guardar1.png")),new TextureRegion(new Texture("imagenes2/mezcla/guardar2.png")));
 	
 	int[][] colores = new int[3][3];
 	

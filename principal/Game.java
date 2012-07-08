@@ -1,8 +1,12 @@
 package principal;
 
+import java.io.OutputStream;
+import java.io.PrintWriter;
+
 import com.badlogic.gdx.ApplicationListener;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.InputProcessor;
+import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
@@ -26,7 +30,21 @@ public class Game implements ApplicationListener, InputProcessor {
 	}
 
 	public void dispose() {
-		// TODO Auto-generated method stub
+		//Guardar
+		FileHandle f = Gdx.files.external("campamentomandrilla/save/data.txt");
+		OutputStream os=f.write(false);
+		PrintWriter pw = new PrintWriter(os);
+		
+		String[] nums = new String[6];
+		nums[0]=String.valueOf(GameGlobals.cuentoFinished);
+		nums[1]=String.valueOf(GameGlobals.emocionesFinished);
+		nums[2]=String.valueOf(GameGlobals.mezclaFinished);
+		nums[3]=String.valueOf(GameGlobals.MuseoFinished);
+		nums[4]=String.valueOf(GameGlobals.ModificaFinished);
+		nums[5]=String.valueOf(GameGlobals.nueces);
+		
+		pw.write(nums[0]+","+nums[1]+","+nums[2]+","+nums[3]+","+nums[4]+","+nums[5]);
+		pw.close();
 
 	}
 
