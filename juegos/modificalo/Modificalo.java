@@ -898,15 +898,12 @@ public class Modificalo extends Juego {
 			genial.play();
 			n.setText("" + ganaNuez);
 			GameGlobals.nueces++;
-<<<<<<< HEAD
 			GameGlobals.ModificaFinished = true;
 			ScreenManager.getScreenManager().setCurrentScreen("menu");  // Quitar
 		} else {
 			ganaNuez = false;
 			n.setText("" + ganaNuez);
 			//GameGlobals.nueces--;
-=======
->>>>>>> origin/master
 		}
 		
 		return super.touchUp(x, y, pointer, button);
