@@ -43,27 +43,54 @@ public class CuentoClasico extends Juego {
 		this.fondoCuento=new Image("fondoCuento",new TextureRegion(new Texture("imagenes2/cuento/Cuento.png"), 
 				0, 0, 960, 600));
 		//aqui van todas las páginas del cuento.
-		paginas.add(new Pagina(0, "A", new Image("hoja1", new TextureRegion(
-				new Texture("imagenes2/cuento/TextureCuento1.png"), 0, 0, 340,
-				500)), new TextureRegion(new Texture(
-				"imagenes2/cuento/TextureCuento1.png"), 0, 520, 170, 500),
+
+		//página 1
+		paginas.add(new Pagina(0, "B", new Image("hoja1", new TextureRegion(
+				new Texture("imagenes2/cuento/TextureCuento1.png"), 0, 0, 360,
+				530)), new TextureRegion(new Texture(
+				"imagenes2/cuento/TextureCuento1.png"), 50, 575, 150, 365),
 				new TextureRegion(new Texture(
-						"imagenes2/cuento/TextureCuento1.png"), 170, 520, 170,
-						500), this));
-		paginas.add(new Pagina(1, "B", new Image("hoja2", new TextureRegion(
-				new Texture("imagenes2/cuento/TextureCuento1.png"), 340, 0,
-				340, 500)), new TextureRegion(new Texture(
-				"imagenes2/cuento/TextureCuento1.png"), 0, 520, 170, 500),
+						"imagenes2/cuento/TextureCuento1.png"), 205, 575, 150,
+						365), this));
+
+		//página 2
+		paginas.add(new Pagina(1, "A", new Image("hoja2", new TextureRegion(
+				new Texture("imagenes2/cuento/TextureCuento1.png"), 440, 0,
+				360, 530)), new TextureRegion(new Texture(
+				"imagenes2/cuento/TextureCuento1.png"), 490, 575, 150, 365),
 				new TextureRegion(new Texture(
-						"imagenes2/cuento/TextureCuento1.png"), 170, 520, 170,
-						500), this));
-		paginas.add(new Pagina(2, "B", new Image("hoja3", new TextureRegion(
-				new Texture("imagenes2/cuento/TextureCuento1.png"), 680, 0,
-				340, 500)), new TextureRegion(new Texture(
-				"imagenes2/cuento/TextureCuento1.png"), 0, 520, 170, 500),
+						"imagenes2/cuento/TextureCuento1.png"), 635, 575, 150,
+						365), this));
+		
+
+		//página 3
+		paginas.add(new Pagina(2, "A", new Image("hoja3", new TextureRegion(
+				new Texture("imagenes2/cuento/TextureCuento3.png"), 15, 20,
+				365, 540)), new TextureRegion(new Texture(
+				"imagenes2/cuento/TextureCuento3.png"), 40, 580, 150, 365),
 				new TextureRegion(new Texture(
-						"imagenes2/cuento/TextureCuento1.png"), 170, 520, 170,
-						500), this));
+						"imagenes2/cuento/TextureCuento3.png"), 220, 580, 150,
+						365), this));
+
+		//página 4
+		paginas.add(new Pagina(3, "A", new Image("hoja4", new TextureRegion(
+				new Texture("imagenes2/cuento/TextureCuento3.png"), 440, 15,
+				365, 540)), new TextureRegion(new Texture(
+				"imagenes2/cuento/TextureCuento3.png"), 465, 575, 150, 365),
+				new TextureRegion(new Texture(
+						"imagenes2/cuento/TextureCuento3.png"), 365, 575, 150,
+						365), this));
+
+		//página 5
+		paginas.add(new Pagina(4, "B", new Image("hoja5", new TextureRegion(
+				new Texture("imagenes2/cuento/TextureCuento3.png"), 0, 0,
+				735, 525)), new TextureRegion(new Texture(
+				"imagenes2/cuento/TextureCuento3.png"), 0, 0, 0, 0),
+				new TextureRegion(new Texture(
+						"imagenes2/cuento/TextureCuento3.png"), 0, 0, 0,
+						0), this));
+
+
 		//se inicializa la página primera
 		paginaActual = paginas.get(0);
 	}
@@ -112,6 +139,7 @@ public class CuentoClasico extends Juego {
 	// pasa pagina hasta que llega a la última
 	public void siguientePagina() {
 		if (paginas.size() - 1 > paginaActual.getNumPPag()) {
+			/*TODO: meter sonido según la página en la que 			estemos*/
 			paginaActual = paginas.get(paginaActual.getNumPPag() + 1);
 			eliminaPagina();
 			dibujaPagina();
