@@ -1,5 +1,6 @@
 package juegos.Cuento;
 
+import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.actors.Button;
 import com.badlogic.gdx.scenes.scene2d.actors.Button.ClickListener;
@@ -14,6 +15,10 @@ public class Pagina {
 	private Image hoja;
 	private CuentoClasico cuento;
 	//meter lista de sonidos que tiene esta página
+	public Music[] take = new Music[3];
+	/*int indice = 0;
+	int MAXtakes = 3;
+	boolean reproducir = true;*/
 	
 	/*public Pagina(int numPPag, String opcCorrecta, Image hoja, TextureRegion opcA, TextureRegion opcB, CuentoClasico cuento, array de sonidos) {
 		
@@ -29,16 +34,19 @@ public class Pagina {
 		setButtons();
 	}*/
 
-	public Pagina(int numPPag, String opcCorrecta, Image hoja, TextureRegion opcA, TextureRegion opcB, CuentoClasico cuento) {
+	public Pagina(int numPPag, String opcCorrecta, Image hoja, TextureRegion opcA, TextureRegion opcB, CuentoClasico cuento, Music take1, Music take2, Music take3) {
 		
 		this.numPPag = numPPag;
 		this.opcCorrecta = opcCorrecta;
 		this.hoja= hoja;
-		this.hoja.x=70;
-		this.hoja.y=50;
+		this.hoja.x=90;
+		this.hoja.y=70;
 		this.opcA=new Button("opcionA", opcA);
 		this.opcB=new Button("opcionB", opcB);
 		this.cuento = cuento;
+		take[0] = take1;
+		take[1] = take2;
+		take[2] = take3;
 		setButtons();
 	}
 	

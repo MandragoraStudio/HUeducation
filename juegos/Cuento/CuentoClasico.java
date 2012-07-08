@@ -115,6 +115,11 @@ public class CuentoClasico extends Juego {
 		}else{
 			if(reproducir == true){
 				take[indice].play();
+				/*if(indice == 2){
+					escena.removeActor(abrirCuento);
+					escena.getRoot().addActorBefore(GameGlobals.A[0], fondoCuento);
+					dibujaPagina();
+				}*/
 				reproducir = false;
 			}
 			
@@ -144,12 +149,14 @@ public class CuentoClasico extends Juego {
 
 		//página 1
 		paginas.add(new Pagina(0, "B", new Image("hoja1", new TextureRegion(
-				new Texture("imagenes2/cuento/TextureCuento1.png"), 0, 0, 360,
-				530)), new TextureRegion(new Texture(
-				"imagenes2/cuento/TextureCuento1.png"), 50, 575, 150, 365),
+				new Texture("imagenes2/cuento/TextureCuento1.png"), 0, 0, 340,
+				500)), new TextureRegion(new Texture(
+				"imagenes2/cuento/TextureCuento1.png"), 0, 525, 150, 500),
 				new TextureRegion(new Texture(
-						"imagenes2/cuento/TextureCuento1.png"), 205, 575, 150,
-						365), this));
+						"imagenes2/cuento/TextureCuento1.png"), 205, 525, 150,
+						500), this, Gdx.audio.newMusic(Gdx.files.internal("sonido/vocesdemandrilla/takescuentacuentos/pag1/take1.wav")),
+						Gdx.audio.newMusic(Gdx.files.internal("sonido/vocesdemandrilla/takescuentacuentos/pag1/take2.wav")),
+						Gdx.audio.newMusic(Gdx.files.internal("sonido/vocesdemandrilla/takescuentacuentos/pag1/take3.wav"))));
 
 		//página 2
 		paginas.add(new Pagina(1, "A", new Image("hoja2", new TextureRegion(
@@ -158,7 +165,9 @@ public class CuentoClasico extends Juego {
 				"imagenes2/cuento/TextureCuento1.png"), 490, 575, 150, 365),
 				new TextureRegion(new Texture(
 						"imagenes2/cuento/TextureCuento1.png"), 635, 575, 150,
-						365), this));
+						365), this, Gdx.audio.newMusic(Gdx.files.internal("sonido/vocesdemandrilla/takescuentacuentos/pag2/take1.wav")),
+						Gdx.audio.newMusic(Gdx.files.internal("sonido/vocesdemandrilla/takescuentacuentos/pag2/take2.wav")),
+						Gdx.audio.newMusic(Gdx.files.internal("sonido/vocesdemandrilla/takescuentacuentos/pag2/take3.wav"))));
 		
 
 		//página 3
@@ -168,7 +177,9 @@ public class CuentoClasico extends Juego {
 				"imagenes2/cuento/TextureCuento3.png"), 40, 580, 150, 365),
 				new TextureRegion(new Texture(
 						"imagenes2/cuento/TextureCuento3.png"), 220, 580, 150,
-						365), this));
+						365), this, Gdx.audio.newMusic(Gdx.files.internal("sonido/vocesdemandrilla/takescuentacuentos/pag3/take1.wav")),
+						Gdx.audio.newMusic(Gdx.files.internal("sonido/vocesdemandrilla/takescuentacuentos/pag3/take2.wav")),
+						Gdx.audio.newMusic(Gdx.files.internal("sonido/vocesdemandrilla/takescuentacuentos/pag3/take3.wav"))));
 
 		//página 4
 		paginas.add(new Pagina(3, "A", new Image("hoja4", new TextureRegion(
@@ -177,7 +188,9 @@ public class CuentoClasico extends Juego {
 				"imagenes2/cuento/TextureCuento3.png"), 465, 575, 150, 365),
 				new TextureRegion(new Texture(
 						"imagenes2/cuento/TextureCuento3.png"), 365, 575, 150,
-						365), this));
+						365), this, Gdx.audio.newMusic(Gdx.files.internal("sonido/vocesdemandrilla/takescuentacuentos/pag4/take1.wav")),
+						Gdx.audio.newMusic(Gdx.files.internal("sonido/vocesdemandrilla/takescuentacuentos/pag4/take2.wav")),
+						Gdx.audio.newMusic(Gdx.files.internal("sonido/vocesdemandrilla/takescuentacuentos/pag4/take3.wav"))));
 
 		//página 5
 		paginas.add(new Pagina(4, "B", new Image("hoja5", new TextureRegion(
@@ -186,7 +199,9 @@ public class CuentoClasico extends Juego {
 				"imagenes2/cuento/TextureCuento3.png"), 0, 0, 0, 0),
 				new TextureRegion(new Texture(
 						"imagenes2/cuento/TextureCuento3.png"), 0, 0, 0,
-						0), this));
+						0), this, Gdx.audio.newMusic(Gdx.files.internal("sonido/vocesdemandrilla/takescuentacuentos/pag5/take1.wav")),
+						Gdx.audio.newMusic(Gdx.files.internal("sonido/vocesdemandrilla/takescuentacuentos/pag5/take2.wav")),
+						Gdx.audio.newMusic(Gdx.files.internal("sonido/vocesdemandrilla/takescuentacuentos/pag5/take3.wav"))));
 
 
 		//se inicializa la página primera
