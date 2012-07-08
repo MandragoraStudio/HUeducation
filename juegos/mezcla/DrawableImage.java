@@ -80,7 +80,7 @@ public class DrawableImage extends Image {
 		}
 		*/
 		
-		// el siguiente codigo NO es compatible con Android
+		// el siguiente codigo NO es compatible con Android, quizas
 		try {
 		    // retrieve image
 		    BufferedImage bi = new BufferedImage(pm.getWidth(),pm.getHeight(),BufferedImage.TYPE_INT_ARGB);
