@@ -69,6 +69,11 @@ public class Arrastrable extends Button {
 		// TODO Auto-generated method stub
 		return super.touchUp(x, y, pointer);
 	}
+	
+	public void addToPixmap(Pixmap destino){
+		//destino.drawPixmap(pixmap, x, y, srcx, srcy, srcWidth, srcHeight)
+		destino.drawPixmap(this.grafico, ((int)x-300),destino.getHeight()-((int) y-80+grafico.getHeight()), 0, 0, grafico.getWidth(), grafico.getHeight());
+	}
 
 	
 }

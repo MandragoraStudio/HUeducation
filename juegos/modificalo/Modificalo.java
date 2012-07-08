@@ -1,5 +1,15 @@
 package juegos.modificalo;
 
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.OutputStream;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+
+import javax.imageio.ImageIO;
+import javax.swing.filechooser.FileSystemView;
+
 import juegos.Juego;
 import principal.Arrastrable;
 import principal.GameGlobals;
@@ -8,8 +18,10 @@ import principal.ScreenManager;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.audio.Music;
-import com.badlogic.gdx.audio.Sound;
+import com.badlogic.gdx.files.FileHandle;
+import com.badlogic.gdx.graphics.Pixmap;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.Pixmap.Format;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.Actor;
@@ -76,6 +88,8 @@ public class Modificalo extends Juego {
 	Boolean pelus_visi = false;
 	Boolean collar_visi = false;
 	Boolean objetos_visi = false;
+	
+	Pixmap pfondo; 
 
 	//Altura de los objetos arrastrables en su panel
 	int pos_ini_1_p = 380;
@@ -144,6 +158,9 @@ public class Modificalo extends Juego {
 	   	if (num_cuadro == 1) {
 	   		//texturas de los objetos para el cuadro uno y el cuadro
 	   		cuadro = new Image("cuadro",new TextureRegion(new Texture("imagenes2/modificalo/elemCuadro2.png"),0,0,318,484));
+	   		Pixmap temp = new Pixmap(Gdx.files.internal("imagenes2/modificalo/elemCuadro2.png"));
+			pfondo = new Pixmap(318,484,Format.RGBA8888);
+			pfondo.drawPixmap(temp, 0, 0, 0, 0, 318,484);
 	   		
 	   		gafa1 = new Arrastrable("gafa1","imagenes2/modificalo/elemCuadro1.png",247,0,120,59);
 	    	gafa2 = new Arrastrable("gafa2","imagenes2/modificalo/elemCuadro1.png",247,61,120,59);
@@ -170,7 +187,11 @@ public class Modificalo extends Juego {
 		if (num_cuadro == 2) {
 			//texturas de los objetos para el cuadro dos y el cuadro
 	   		cuadro = new Image("cuadro",new TextureRegion(new Texture("imagenes2/modificalo/elemCuadro2.png"),318,0,318,484));
-	   		
+	   		Pixmap temp = new Pixmap(Gdx.files.internal("imagenes2/modificalo/elemCuadro2.png"));
+			pfondo = new Pixmap(318,484,Format.RGBA8888);
+			pfondo.drawPixmap(temp, 0, 0, 318,0,318,484);
+			
+			
 	   		gafa1 = new Arrastrable("gafa1","imagenes2/modificalo/elemCuadro1.png",509,280,169,54);
 	    	gafa2 = new Arrastrable("gafa2","imagenes2/modificalo/elemCuadro1.png",681,280,169,54);
 	    	gafa3 = new Arrastrable("gafa3","imagenes2/modificalo/elemCuadro1.png",852,280,169,54);
@@ -502,6 +523,7 @@ public class Modificalo extends Juego {
 		
 		guardar.clickListener=new ClickListener(){
 			public void clicked(Button b){
+				guardarCuadroModificado();
 				if(!genial.isPlaying()){
 					genial.play();
 				}
@@ -898,17 +920,15 @@ public class Modificalo extends Juego {
 			genial.play();
 			n.setText("" + ganaNuez);
 			GameGlobals.nueces++;
-<<<<<<< HEAD
+
 			GameGlobals.ModificaFinished = true;
 			ScreenManager.getScreenManager().setCurrentScreen("menu");  // Quitar
 		} else {
 			ganaNuez = false;
 			n.setText("" + ganaNuez);
 			//GameGlobals.nueces--;
-=======
->>>>>>> origin/master
+
 		}
-		
 		return super.touchUp(x, y, pointer, button);
 	}
 	
@@ -1082,6 +1102,110 @@ public class Modificalo extends Juego {
 		if (actor.equals(objeto3)) {
 			objeto3.action(MoveTo.$(0,pos_ini_3_o,1));
 		}
+	}
+	
+	
+	public void guardarCuadroModificado(){
+		Pixmap aGuardar = new Pixmap(pfondo.getWidth(),pfondo.getHeight(),pfondo.getFormat());
+		aGuardar.drawPixmap(pfondo, 0,0, 0, 0, pfondo.getWidth(),pfondo.getHeight());
+		if (escena.getActors().contains(collar1)) {
+			collar1.addToPixmap(aGuardar);
+		}
+		if(escena.getActors().contains(collar2) ){
+			collar2.addToPixmap(aGuardar);
+		}
+		if(escena.getActors().contains(collar3) ){
+			collar3.addToPixmap(aGuardar);
+		}
+		if (escena.getActors().contains(gafa1)) {
+			gafa1.addToPixmap(aGuardar);
+		}
+		if(escena.getActors().contains(gafa2) ){
+			gafa2.addToPixmap(aGuardar);
+		}
+		if(escena.getActors().contains(gafa3) ){
+			gafa3.addToPixmap(aGuardar);
+		}
+		if (escena.getActors().contains(bigote1)) {
+			bigote1.addToPixmap(aGuardar);
+		}
+		if(escena.getActors().contains(bigote2) ){
+			bigote2.addToPixmap(aGuardar);
+		}
+		if(escena.getActors().contains(bigote3) ){
+			bigote3.addToPixmap(aGuardar);
+		}
+		if (escena.getActors().contains(peluca1)) {
+			peluca1.addToPixmap(aGuardar);
+		}
+		if(escena.getActors().contains(peluca2) ){
+			peluca2.addToPixmap(aGuardar);
+		}
+		if(escena.getActors().contains(peluca3) ){
+			peluca3.addToPixmap(aGuardar);
+		}
+		if (escena.getActors().contains(objeto1)) {
+			objeto1.addToPixmap(aGuardar);
+		}
+		if(escena.getActors().contains(objeto2) ){
+			objeto2.addToPixmap(aGuardar);
+		}
+		if(escena.getActors().contains(objeto3) ){
+			objeto3.addToPixmap(aGuardar);
+		}
+		
+		Date date = Calendar.getInstance().getTime();
+		  SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd.hhmmss");
+		  String nombre = sdf.format(date);
+		FileHandle f = Gdx.files.external("campamentomandrilla/cuadros/"+nombre+".png");
+		f.parent().mkdirs();
+		
+		OutputStream os = f.write(true);
+		try {
+		os.close();
+		} catch (Exception e) {
+		    e.printStackTrace();
+		}
+		/*
+		try {
+			
+			ByteBuffer bb = pm.getPixels();
+			byte[] data =bb.array();
+			os.write(data);
+			os.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		*/
+		
+		// el siguiente codigo NO es compatible con Android, quizas
+		try {
+		    // retrieve image
+		    BufferedImage bi = new BufferedImage(aGuardar.getWidth(),aGuardar.getHeight(),BufferedImage.TYPE_INT_ARGB);
+		    for(int i =0;i<aGuardar.getWidth();i++){
+		    	for(int j =0;j<aGuardar.getHeight();j++){
+		    		if(aGuardar.getPixel(i, j)!=0xffffffff){
+		    			int prueba =aGuardar.getPixel(i, j);
+		    			prueba++;
+		    			prueba--;
+		    		}
+		    		int A = aGuardar.getPixel(i,j)&0x000000ff;
+		    		A=A*0x1000000;
+		    		int resultado = aGuardar.getPixel(i,j)>>8;
+		    		resultado =resultado&0x00ffffff;
+		    		resultado+=A;
+		    		bi.setRGB(i, j, resultado);
+		    		
+		    	}
+		    }
+		    
+		    File outputfile = new File(FileSystemView.getFileSystemView().getHomeDirectory().getParent()+"\\campamentomandrilla\\cuadros\\"+nombre+".png");
+		    ImageIO.write(bi, "png", outputfile);
+		} catch (Exception e) {
+		    e.printStackTrace();
+		}
+		GameGlobals.nueces++;
+		
 	}
 }
 
