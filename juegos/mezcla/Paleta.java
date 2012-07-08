@@ -1,5 +1,7 @@
 package juegos.mezcla;
 
+import principal.GameGlobals;
+
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.audio.Music;
@@ -35,6 +37,10 @@ public class Paleta extends Group {
 			1, 1));
 	Button colorAmarillo = new Button("CAmarillo", Paleta.getColoredTexture(1,
 			1, 0, 1));
+	Button colorBlanco = new Button("CBlanco", Paleta.getColoredTexture(1,
+			1, 1, 1));
+	Button colorNegro = new Button("CNegro", Paleta.getColoredTexture(0,
+			0, 0, 1));
 
 	Button colorRojo = new Button("CRojo");
 	Button colorVerde = new Button("CVerde");
@@ -78,6 +84,10 @@ public class Paleta extends Group {
 			}else if(boton.name.equals("CAzul")){
 				r=0;
 				g=0;
+			}else if(boton.name.equals("CNegro")){
+				r=0;
+				g=0;
+				b=0;
 			}
 			MezclaColores.cambiarColorPincel(r, g, b);
 		}
@@ -116,6 +126,14 @@ public class Paleta extends Group {
 		this.addActor(colorRojo);
 		bGuardar.x=00;
 		bGuardar.y=00;
+		this.addActor(colorBlanco);
+		colorBlanco.x = 325;
+		colorBlanco.y = 100;
+		colorBlanco.clickListener=evento;
+		this.addActor(colorNegro);
+		colorNegro.x = 287;
+		colorNegro.y = 34;
+		colorNegro.clickListener=evento;
 		bGuardar.clickListener=new ClickListener(){
 
 			@Override
@@ -216,24 +234,24 @@ public class Paleta extends Group {
 		case 0:
 			colorVerde=new Button("CVerde", Paleta.getColoredTexture(0,
 					1, 0, 1));
-			colorVerde.x=30;
-			colorVerde.y=240;
+			colorVerde.x=42;
+			colorVerde.y=360;
 			colorVerde.clickListener=evento;
 			this.addActorBefore(Fondo,colorVerde);
 			break;
 		case 1:
 			colorRojo=new Button("CRojo", Paleta.getColoredTexture(1,
 					0, 0, 1));
-			colorRojo.x=190;
-			colorRojo.y=240;
+			colorRojo.x=126;
+			colorRojo.y=351;
 			colorRojo.clickListener=evento;
 			this.addActorBefore(Fondo,colorRojo);
 			break;
 		case 2:
 			colorAzul=new Button("CAzul", Paleta.getColoredTexture(0,
 					0, 1, 1));
-			colorAzul.x=300;
-			colorAzul.y=240;
+			colorAzul.x=206;
+			colorAzul.y=360;
 			colorAzul.clickListener=evento;
 			this.addActorBefore(Fondo,colorAzul);
 			break;
@@ -244,6 +262,7 @@ public class Paleta extends Group {
 		coloresDisponibles++;
 		if(coloresDisponibles == MAXcolores){
 			take6.play();
+			GameGlobals.nueces++;
 		}else{
 			genial.play();
 		}
@@ -252,9 +271,9 @@ public class Paleta extends Group {
 	@Override
 	public void act(float delta){
 		super.act(delta);
-		debugVariable=this.colorAmarillo;
-		debugVariable.x=272;
-		debugVariable.y=393;
+		debugVariable=this.colorNegro;
+		debugVariable.x=287;
+		debugVariable.y=34;
 	}
 	
 	/*@Override

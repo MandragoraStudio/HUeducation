@@ -1,5 +1,15 @@
 package juegos.modificalo;
 
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.OutputStream;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+
+import javax.imageio.ImageIO;
+import javax.swing.filechooser.FileSystemView;
+
 import juegos.Juego;
 import principal.Arrastrable;
 import principal.GameGlobals;
@@ -8,8 +18,10 @@ import principal.ScreenManager;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.audio.Music;
-import com.badlogic.gdx.audio.Sound;
+import com.badlogic.gdx.files.FileHandle;
+import com.badlogic.gdx.graphics.Pixmap;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.Pixmap.Format;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.Actor;
@@ -21,7 +33,6 @@ import com.badlogic.gdx.scenes.scene2d.actors.Image;
 import com.badlogic.gdx.scenes.scene2d.actors.Label;
 
 public class Modificalo extends Juego {
-	Label chivato;
 	
 	Image fondo;
 	Image cuadro;
@@ -76,6 +87,8 @@ public class Modificalo extends Juego {
 	Boolean pelus_visi = false;
 	Boolean collar_visi = false;
 	Boolean objetos_visi = false;
+	
+	Pixmap pfondo; 
 
 	//Altura de los objetos arrastrables en su panel
 	int pos_ini_1_p = 380;
@@ -128,13 +141,6 @@ public class Modificalo extends Juego {
 	boolean oUsado = false;
     boolean pUsado = false;
     boolean bUsado = false;
-    
-	public Label g;
-	public Label b;
-	public Label c;
-	public Label o;
-	public Label p;
-	public Label n;
 
    
    @Override
@@ -144,53 +150,60 @@ public class Modificalo extends Juego {
 	   	if (num_cuadro == 1) {
 	   		//texturas de los objetos para el cuadro uno y el cuadro
 	   		cuadro = new Image("cuadro",new TextureRegion(new Texture("imagenes2/modificalo/elemCuadro2.png"),0,0,318,484));
+	   		Pixmap temp = new Pixmap(Gdx.files.internal("imagenes2/modificalo/elemCuadro2.png"));
+			pfondo = new Pixmap(318,484,Format.RGBA8888);
+			pfondo.drawPixmap(temp, 0, 0, 0, 0, 318,484);
 	   		
-	   		gafa1 = new Arrastrable("gafa1",new TextureRegion(new Texture("imagenes2/modificalo/elemCuadro1.png"),247,0,120,59));
-	    	gafa2 = new Arrastrable("gafa2",new TextureRegion(new Texture("imagenes2/modificalo/elemCuadro1.png"),247,61,120,59));
-	    	gafa3 = new Arrastrable("gafa3",new TextureRegion(new Texture("imagenes2/modificalo/elemCuadro1.png"),247,122,120,59));
+	   		gafa1 = new Arrastrable("gafa1","imagenes2/modificalo/elemCuadro1.png",247,0,120,59);
+	    	gafa2 = new Arrastrable("gafa2","imagenes2/modificalo/elemCuadro1.png",247,61,120,59);
+	    	gafa3 = new Arrastrable("gafa3","imagenes2/modificalo/elemCuadro1.png",247,122,120,59);
 	    	
-	    	bigote1 = new Arrastrable("bigote1",new TextureRegion(new Texture("imagenes2/modificalo/elemCuadro1.png"),174,0,69,36));
-	    	bigote2 = new Arrastrable("bigote2",new TextureRegion(new Texture("imagenes2/modificalo/elemCuadro1.png"),174,38,69,36));
-	    	bigote3 = new Arrastrable("bigote3",new TextureRegion(new Texture("imagenes2/modificalo/elemCuadro1.png"),174,76,69,36));
+	    	bigote1 = new Arrastrable("bigote1","imagenes2/modificalo/elemCuadro1.png",174,0,69,36);
+	    	bigote2 = new Arrastrable("bigote2","imagenes2/modificalo/elemCuadro1.png",174,38,69,36);
+	    	bigote3 = new Arrastrable("bigote3","imagenes2/modificalo/elemCuadro1.png",174,76,69,36);
 	    	
-	    	peluca1 = new Arrastrable("peluca1",new TextureRegion(new Texture("imagenes2/modificalo/elemCuadro1.png"),0,0,164,215));
-	    	peluca2 = new Arrastrable("peluca2",new TextureRegion(new Texture("imagenes2/modificalo/elemCuadro1.png"),0,215,164,215));
-	    	peluca3 = new Arrastrable("peluca3",new TextureRegion(new Texture("imagenes2/modificalo/elemCuadro1.png"),0,430,164,215));
+	    	peluca1 = new Arrastrable("peluca1","imagenes2/modificalo/elemCuadro1.png",0,0,164,215);
+	    	peluca2 = new Arrastrable("peluca2","imagenes2/modificalo/elemCuadro1.png",0,215,164,215);
+	    	peluca3 = new Arrastrable("peluca3","imagenes2/modificalo/elemCuadro1.png",0,430,164,215);
 	    	
-	    	collar1 = new Arrastrable("collar1",new TextureRegion(new Texture("imagenes2/modificalo/elemCuadro1.png"),384,5,110,91));
-	    	collar2 = new Arrastrable("collar2",new TextureRegion(new Texture("imagenes2/modificalo/elemCuadro1.png"),384,98,110,91));
-	    	collar3 = new Arrastrable("collar3",new TextureRegion(new Texture("imagenes2/modificalo/elemCuadro1.png"),384,193,110,91));
+	    	collar1 = new Arrastrable("collar1","imagenes2/modificalo/elemCuadro1.png",384,5,110,91);
+	    	collar2 = new Arrastrable("collar2","imagenes2/modificalo/elemCuadro1.png",384,98,110,91);
+	    	collar3 = new Arrastrable("collar3","imagenes2/modificalo/elemCuadro1.png",384,193,110,91);
 	    	
-	    	objeto1 = new Arrastrable("objeto1",new TextureRegion(new Texture("imagenes2/modificalo/elemCuadro1.png"),220,207,147,127));
-	    	objeto2 = new Arrastrable("objeto2",new TextureRegion(new Texture("imagenes2/modificalo/elemCuadro1.png"),220,342,147,127));
-	    	objeto3 = new Arrastrable("objeto3",new TextureRegion(new Texture("imagenes2/modificalo/elemCuadro1.png"),220,480,147,127));
+	    	objeto1 = new Arrastrable("objeto1","imagenes2/modificalo/elemCuadro1.png",220,207,147,127);
+	    	objeto2 = new Arrastrable("objeto2","imagenes2/modificalo/elemCuadro1.png",220,342,147,127);
+	    	objeto3 = new Arrastrable("objeto3","imagenes2/modificalo/elemCuadro1.png",220,480,147,127);
 	    	
 	   	}
 	   	
 		if (num_cuadro == 2) {
 			//texturas de los objetos para el cuadro dos y el cuadro
 	   		cuadro = new Image("cuadro",new TextureRegion(new Texture("imagenes2/modificalo/elemCuadro2.png"),318,0,318,484));
-	   		
-	   		gafa1 = new Arrastrable("gafa1",new TextureRegion(new Texture("imagenes2/modificalo/elemCuadro1.png"),509,280,169,54));
-	    	gafa2 = new Arrastrable("gafa2",new TextureRegion(new Texture("imagenes2/modificalo/elemCuadro1.png"),681,280,169,54));
-	    	gafa3 = new Arrastrable("gafa3",new TextureRegion(new Texture("imagenes2/modificalo/elemCuadro1.png"),852,280,169,54));
+	   		Pixmap temp = new Pixmap(Gdx.files.internal("imagenes2/modificalo/elemCuadro2.png"));
+			pfondo = new Pixmap(318,484,Format.RGBA8888);
+			pfondo.drawPixmap(temp, 0, 0, 318,0,318,484);
+			
+			
+	   		gafa1 = new Arrastrable("gafa1","imagenes2/modificalo/elemCuadro1.png",509,280,169,54);
+	    	gafa2 = new Arrastrable("gafa2","imagenes2/modificalo/elemCuadro1.png",681,280,169,54);
+	    	gafa3 = new Arrastrable("gafa3","imagenes2/modificalo/elemCuadro1.png",852,280,169,54);
 	    	
-	    	objeto1 = new Arrastrable("objeto1",new TextureRegion(new Texture("imagenes2/modificalo/elemCuadro1.png"),511,334,171,196));
-	    	objeto2 = new Arrastrable("objeto2",new TextureRegion(new Texture("imagenes2/modificalo/elemCuadro1.png"),680,334,171,196));
-	    	objeto3 = new Arrastrable("objeto3",new TextureRegion(new Texture("imagenes2/modificalo/elemCuadro1.png"),852,334,171,196));
+	    	objeto1 = new Arrastrable("objeto1","imagenes2/modificalo/elemCuadro1.png",511,334,171,196);
+	    	objeto2 = new Arrastrable("objeto2","imagenes2/modificalo/elemCuadro1.png",680,334,171,196);
+	    	objeto3 = new Arrastrable("objeto3","imagenes2/modificalo/elemCuadro1.png",852,334,171,196);
 
-	    	peluca1 = new Arrastrable("peluca1",new TextureRegion(new Texture("imagenes2/modificalo/elemCuadro1.png"),508,0,171,259));
-	    	peluca2 = new Arrastrable("peluca2",new TextureRegion(new Texture("imagenes2/modificalo/elemCuadro1.png"),681,0,171,259));
-	    	peluca3 = new Arrastrable("peluca3",new TextureRegion(new Texture("imagenes2/modificalo/elemCuadro1.png"),852,0,171,259));
+	    	peluca1 = new Arrastrable("peluca1","imagenes2/modificalo/elemCuadro1.png",508,0,171,259);
+	    	peluca2 = new Arrastrable("peluca2","imagenes2/modificalo/elemCuadro1.png",681,0,171,259);
+	    	peluca3 = new Arrastrable("peluca3","imagenes2/modificalo/elemCuadro1.png",852,0,171,259);
 	    	
 	    	
-	    	collar1 = new Arrastrable("collar1",new TextureRegion(new Texture("imagenes2/modificalo/elemCuadro1.png"),0,840,118,97));
-	    	collar2 = new Arrastrable("collar2",new TextureRegion(new Texture("imagenes2/modificalo/elemCuadro1.png"),118,840,118,97));
-	    	collar3 = new Arrastrable("collar3",new TextureRegion(new Texture("imagenes2/modificalo/elemCuadro1.png"),236,840,118,97));
+	    	collar1 = new Arrastrable("collar1","imagenes2/modificalo/elemCuadro1.png",0,840,118,97);
+	    	collar2 = new Arrastrable("collar2","imagenes2/modificalo/elemCuadro1.png",118,840,118,97);
+	    	collar3 = new Arrastrable("collar3","imagenes2/modificalo/elemCuadro1.png",236,840,118,97);
 	    	
-	    	bigote1 = new Arrastrable("bigote1",new TextureRegion(new Texture("imagenes2/modificalo/elemCuadro1.png"),0,706,109,107));
-	    	bigote2 = new Arrastrable("bigote2",new TextureRegion(new Texture("imagenes2/modificalo/elemCuadro1.png"),109,706,109,107));
-	    	bigote3 = new Arrastrable("bigote3",new TextureRegion(new Texture("imagenes2/modificalo/elemCuadro1.png"),218,706,109,107));
+	    	bigote1 = new Arrastrable("bigote1","imagenes2/modificalo/elemCuadro1.png",0,706,109,107);
+	    	bigote2 = new Arrastrable("bigote2","imagenes2/modificalo/elemCuadro1.png",109,706,109,107);
+	    	bigote3 = new Arrastrable("bigote3","imagenes2/modificalo/elemCuadro1.png",218,706,109,107);
 	    	
 	    	pos_ini_1_p = 325;
 	    	pos_ini_2_p = 170;
@@ -236,15 +249,6 @@ public class Modificalo extends Juego {
     	bigotes = new Button("btn_bigo",new TextureRegion(new Texture("imagenes2/modificalo/elemCuadro2.png"),322,525,77,36),new TextureRegion(new Texture("imagenes2/modificalo/elemCuadro2.png"),319,485,80,38));
     	collares = new Button("btn_collar",new TextureRegion(new Texture("imagenes2/modificalo/elemCuadro2.png"),328,562,56,36),new TextureRegion(new Texture("imagenes2/modificalo/elemCuadro2.png"),328,598,60,39));
     	objetos = new Button("btn_objto",new TextureRegion(new Texture("imagenes2/modificalo/elemCuadro2.png"),509,492,113,150),new TextureRegion(new Texture("imagenes2/modificalo/elemCuadro2.png"),525,645,108,150));
-    	
-    	chivato = new Label("c",new BitmapFont(),"chivato");
-    	
-    	g = new Label("g",new BitmapFont(),"gafa");
-    	p = new Label("p",new BitmapFont(),"peluca");
-    	c = new Label("c",new BitmapFont(),"collar");
-    	o = new Label("o",new BitmapFont(),"objeto");
-    	b = new Label("b",new BitmapFont(),"bigote");
-    	n = new Label("n",new BitmapFont(),"nuez");
     	
     	bigotes.clickListener=new ClickListener(){
 			public void clicked(Button arg0) {	
@@ -427,24 +431,6 @@ public class Modificalo extends Juego {
 		objeto1.y = pos_ini_1_o;
 		objeto2.y = pos_ini_2_o;
 		objeto3.y = pos_ini_3_o;
-		
-		g.x = 690;
-		g.y = 200;
-		
-		p.x = 690;
-		p.y = 190;
-		
-		b.x = 690;
-		b.y = 180;
-		
-		o.x = 690;
-		o.y = 170;
-		
-		c.x = 690;
-		c.y = 160;
-		
-		n.x = 690;
-		n.y = 150;
 
 		modif_gafas.addActor(gafa1);
 		modif_gafas.addActor(gafa2);
@@ -493,15 +479,10 @@ public class Modificalo extends Juego {
 		this.escena.addActor(modif_objetos);
 		this.escena.addActor(menu_modif);
 		this.escena.addActor(guardar);
-		this.escena.addActor(g);
-		this.escena.addActor(p);
-		this.escena.addActor(b);
-		this.escena.addActor(o);
-		this.escena.addActor(c);
-		this.escena.addActor(n);
 		
 		guardar.clickListener=new ClickListener(){
 			public void clicked(Button b){
+				guardarCuadroModificado();
 				if(!genial.isPlaying()){
 					genial.play();
 				}
@@ -618,10 +599,8 @@ public class Modificalo extends Juego {
 		
 		if (escena.getActors().contains(gafa1) || escena.getActors().contains(gafa2) || escena.getActors().contains(gafa3)) {
 			gUsado = true;
-			g.setText("" + gUsado);
 		} else {
 			gUsado = false;
-			g.setText("" + gUsado);
 		}
 		
 		//GAFAS*****************************************************
@@ -686,10 +665,8 @@ public class Modificalo extends Juego {
 		
 		if (escena.getActors().contains(bigote1) || escena.getActors().contains(bigote2) || escena.getActors().contains(bigote3)) {
 			bUsado = true;
-			b.setText("" + bUsado);
 		} else {
 			bUsado = false;
-			b.setText("" + bUsado);
 		}
 		//BIGOTES***************************************************
 		
@@ -753,10 +730,8 @@ public class Modificalo extends Juego {
 		}
 		if (escena.getActors().contains(peluca1) || escena.getActors().contains(peluca2) || escena.getActors().contains(peluca3)) {
 			pUsado = true;
-			p.setText("" + pUsado);
 		} else {
 			pUsado = false;
-			p.setText("" + pUsado);
 		}
 		//PELUCAS***************************************************
 		
@@ -820,10 +795,8 @@ public class Modificalo extends Juego {
 		
 		if (escena.getActors().contains(collar1) || escena.getActors().contains(collar2) || escena.getActors().contains(collar3)) {
 			cUsado = true;
-			c.setText("" + cUsado);
 		} else {
 			cUsado = false;
-			c.setText("" + cUsado);
 		}
 		//COLLARES***************************************************
 		
@@ -887,25 +860,27 @@ public class Modificalo extends Juego {
 		//OBJETOS***************************************************
 		if (escena.getActors().contains(objeto1) || escena.getActors().contains(objeto2) || escena.getActors().contains(objeto3)) {
 			oUsado = true;
-			o.setText("" + oUsado);
 		} else {
 			oUsado = false;
-			o.setText("" + oUsado);
 		}
 		
 		if(gUsado && bUsado && pUsado&& cUsado&& oUsado) {
-			//ganaNuez = true;
 			genial.play();
-			n.setText("" + ganaNuez);
 			GameGlobals.nueces++;
+<<<<<<< HEAD
+=======
+
+>>>>>>> origin/master
 			GameGlobals.ModificaFinished = true;
 			ScreenManager.getScreenManager().setCurrentScreen("menu");  // Quitar
 		} else {
 			ganaNuez = false;
-			n.setText("" + ganaNuez);
 			//GameGlobals.nueces--;
+<<<<<<< HEAD
+=======
+
+>>>>>>> origin/master
 		}
-		
 		return super.touchUp(x, y, pointer, button);
 	}
 	
@@ -1079,6 +1054,110 @@ public class Modificalo extends Juego {
 		if (actor.equals(objeto3)) {
 			objeto3.action(MoveTo.$(0,pos_ini_3_o,1));
 		}
+	}
+	
+	
+	public void guardarCuadroModificado(){
+		Pixmap aGuardar = new Pixmap(pfondo.getWidth(),pfondo.getHeight(),pfondo.getFormat());
+		aGuardar.drawPixmap(pfondo, 0,0, 0, 0, pfondo.getWidth(),pfondo.getHeight());
+		if (escena.getActors().contains(collar1)) {
+			collar1.addToPixmap(aGuardar);
+		}
+		if(escena.getActors().contains(collar2) ){
+			collar2.addToPixmap(aGuardar);
+		}
+		if(escena.getActors().contains(collar3) ){
+			collar3.addToPixmap(aGuardar);
+		}
+		if (escena.getActors().contains(gafa1)) {
+			gafa1.addToPixmap(aGuardar);
+		}
+		if(escena.getActors().contains(gafa2) ){
+			gafa2.addToPixmap(aGuardar);
+		}
+		if(escena.getActors().contains(gafa3) ){
+			gafa3.addToPixmap(aGuardar);
+		}
+		if (escena.getActors().contains(bigote1)) {
+			bigote1.addToPixmap(aGuardar);
+		}
+		if(escena.getActors().contains(bigote2) ){
+			bigote2.addToPixmap(aGuardar);
+		}
+		if(escena.getActors().contains(bigote3) ){
+			bigote3.addToPixmap(aGuardar);
+		}
+		if (escena.getActors().contains(peluca1)) {
+			peluca1.addToPixmap(aGuardar);
+		}
+		if(escena.getActors().contains(peluca2) ){
+			peluca2.addToPixmap(aGuardar);
+		}
+		if(escena.getActors().contains(peluca3) ){
+			peluca3.addToPixmap(aGuardar);
+		}
+		if (escena.getActors().contains(objeto1)) {
+			objeto1.addToPixmap(aGuardar);
+		}
+		if(escena.getActors().contains(objeto2) ){
+			objeto2.addToPixmap(aGuardar);
+		}
+		if(escena.getActors().contains(objeto3) ){
+			objeto3.addToPixmap(aGuardar);
+		}
+		
+		Date date = Calendar.getInstance().getTime();
+		  SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd.hhmmss");
+		  String nombre = sdf.format(date);
+		FileHandle f = Gdx.files.external("campamentomandrilla/cuadros/"+nombre+".png");
+		f.parent().mkdirs();
+		
+		OutputStream os = f.write(true);
+		try {
+		os.close();
+		} catch (Exception e) {
+		    e.printStackTrace();
+		}
+		/*
+		try {
+			
+			ByteBuffer bb = pm.getPixels();
+			byte[] data =bb.array();
+			os.write(data);
+			os.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		*/
+		
+		// el siguiente codigo NO es compatible con Android, quizas
+		try {
+		    // retrieve image
+		    BufferedImage bi = new BufferedImage(aGuardar.getWidth(),aGuardar.getHeight(),BufferedImage.TYPE_INT_ARGB);
+		    for(int i =0;i<aGuardar.getWidth();i++){
+		    	for(int j =0;j<aGuardar.getHeight();j++){
+		    		if(aGuardar.getPixel(i, j)!=0xffffffff){
+		    			int prueba =aGuardar.getPixel(i, j);
+		    			prueba++;
+		    			prueba--;
+		    		}
+		    		int A = aGuardar.getPixel(i,j)&0x000000ff;
+		    		A=A*0x1000000;
+		    		int resultado = aGuardar.getPixel(i,j)>>8;
+		    		resultado =resultado&0x00ffffff;
+		    		resultado+=A;
+		    		bi.setRGB(i, j, resultado);
+		    		
+		    	}
+		    }
+		    
+		    File outputfile = new File(FileSystemView.getFileSystemView().getHomeDirectory().getParent()+"\\campamentomandrilla\\cuadros\\"+nombre+".png");
+		    ImageIO.write(bi, "png", outputfile);
+		} catch (Exception e) {
+		    e.printStackTrace();
+		}
+		GameGlobals.nueces++;
+		
 	}
 }
 

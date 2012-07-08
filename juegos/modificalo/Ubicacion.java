@@ -1,5 +1,7 @@
 package juegos.modificalo;
 
+import com.badlogic.gdx.graphics.Pixmap;
+
 public class Ubicacion {
 	public String elemento;
 	public int mx1;
@@ -19,6 +21,5 @@ public class Ubicacion {
 		this.mx2 = xF + modificador;
 		this.my1 = yF - modificador;
 		this.my2 = yF + modificador;
-		
 	}
 }
