@@ -32,6 +32,7 @@ public class Museo extends Juego {
 	private float cuadro2Pos = 530;
 	
 	private ArrayList<Cuadro> cuadros;
+	int contador = 0;
 	
 	// Ardilla
 	private int i = 0;
@@ -176,62 +177,62 @@ public class Museo extends Juego {
 	public void Update() {
 		
 		// Animacion ardilla
-				if(System.currentTimeMillis() - GameGlobals.ultimotiempo >= GameGlobals.changetime && !saliendo && Yardilla > -GameGlobals.A[0].height){
-					GameGlobals.ultimotiempo = System.currentTimeMillis();
-					i++;
-					if(i >= GameGlobals.MAXimages){
-						i = 0;
-					}
-					GameGlobals.A[i].x = Xardilla;
-					GameGlobals.A[i].y = Yardilla;
-					// El resto aparecen invisibles
-					for(j = 0; j < i; j++){
-						GameGlobals.A[j].x = this.escena.width();
-						GameGlobals.A[j].y = this.escena.height();
-					}
-					for(j = i+1; j < GameGlobals.MAXimages; j++){
-						GameGlobals.A[j].x = this.escena.width();
-						GameGlobals.A[j].y = this.escena.height();
-					}
-				}
+		if(System.currentTimeMillis() - GameGlobals.ultimotiempo >= GameGlobals.changetime && !saliendo && Yardilla > -GameGlobals.A[0].height){
+			GameGlobals.ultimotiempo = System.currentTimeMillis();
+			i++;
+			if(i >= GameGlobals.MAXimages){
+				i = 0;
+			}
+			GameGlobals.A[i].x = Xardilla;
+			GameGlobals.A[i].y = Yardilla;
+			// El resto aparecen invisibles
+			for(j = 0; j < i; j++){
+				GameGlobals.A[j].x = this.escena.width();
+				GameGlobals.A[j].y = this.escena.height();
+			}
+			for(j = i+1; j < GameGlobals.MAXimages; j++){
+				GameGlobals.A[j].x = this.escena.width();
+				GameGlobals.A[j].y = this.escena.height();
+			}
+		}
+		
+		// Animacion de la ardilla haciendose llendose
+		if(saliendo){
+			for(Image img: GameGlobals.A){
+				img.y -= img.height/this.tiempoSalida;
 				
-				// Animacion de la ardilla haciendose llendose
-				if(saliendo){
-					for(Image img: GameGlobals.A){
-						img.y -= img.height/this.tiempoSalida;
-						
-						if(img.y <= -img.height){
-							saliendo = false;
-						}
-					}
-					Yardilla = (int) GameGlobals.A[0].y;
-					Xardilla = (int) GameGlobals.A[0].x;
+				if(img.y <= -img.height){
+					saliendo = false;
 				}
-				
-				// Se van reproduciendo los takes (uno detras de otro)
-				// Si se pulsa escape o en la pantalla (click) se salta el splash
-				if(indice >= MAXtakes){
-					// La ardilla se va
-					saliendo = true;
-				}else{
-					if(reproducir == true){
-						take[indice].play();
-						reproducir = false;
-					}
-					
-					if(!take[indice].isPlaying()){
-						reproducir = true;
-							indice++;
-					}
-				}
-				if(Gdx.input.isTouched() || Gdx.input.isKeyPressed(Input.Keys.ESCAPE)){
-					if(indice < MAXtakes){
-						reproducir = false;
-						take[indice].stop();
-					}
-					// La ardilla se va
-					saliendo = true;
-				}
+			}
+			Yardilla = (int) GameGlobals.A[0].y;
+			Xardilla = (int) GameGlobals.A[0].x;
+		}
+		
+		// Se van reproduciendo los takes (uno detras de otro)
+		// Si se pulsa escape o en la pantalla (click) se salta el splash
+		if(indice >= MAXtakes){
+			// La ardilla se va
+			saliendo = true;
+		}else{
+			if(reproducir == true){
+				take[indice].play();
+				reproducir = false;
+			}
+			
+			if(!take[indice].isPlaying()){
+				reproducir = true;
+					indice++;
+			}
+		}
+		if(Gdx.input.isTouched() || Gdx.input.isKeyPressed(Input.Keys.ESCAPE)){
+			if(indice < MAXtakes){
+				reproducir = false;
+				take[indice].stop();
+			}
+			// La ardilla se va
+			saliendo = true;
+		}
 		super.Update();
 
 	}
@@ -247,6 +248,9 @@ public class Museo extends Juego {
 			
 				cuadros.add(new Cuadro(boton, marcoChico,(i%2 == 0? this.cuadro1Pos: this.cuadro2Pos) + GameGlobals.ScreenWidth*(i/2), 170, this.factorDeReduccionX, this.factorDeReduccionY));
 				i++;
+		}
+		if(i>=5){
+			GameGlobals.MuseoFinished = true;
 		}
 	}
 	

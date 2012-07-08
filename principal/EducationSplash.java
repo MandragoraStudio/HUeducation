@@ -24,6 +24,9 @@ public class EducationSplash extends Screen {
 	Image modificalo;
 	Image museo;
 	Image mezcla;
+	
+	// Imagen del contador
+	Image contador;
 
 	@Override
 	public void Update(){
@@ -55,6 +58,8 @@ public class EducationSplash extends Screen {
 			if(reproducir == true){
 				switch(indice){
 				case 3:
+					contador.scaleX = 1.0f;
+					contador.scaleY = 1.0f;
 					break;
 				case 5:
 					cuento.scaleX = 1.2f;
@@ -80,6 +85,8 @@ public class EducationSplash extends Screen {
 			if(!take[indice].isPlaying()){
 				switch(indice){
 				case 3:
+					contador.scaleX = 0.00001f;
+					contador.scaleY = 0.00001f;
 					break;
 				case 5:
 					cuento.scaleX = 0.00001f;
@@ -166,6 +173,14 @@ public class EducationSplash extends Screen {
 		mezcla.y=397;
 		mezcla.scaleX = 0.00001f;
 		mezcla.scaleY = 0.00001f;
+		
+		// Imagen del contador
+		contador = new Image("contador",new TextureRegion(new Texture("imagenes2/Menu/contadorresaltado.png")));
+		this.escena.addActor(contador);
+		contador.x = this.escena.width() - contador.width - 4;
+		contador.y = this.escena.height() - contador.height-1;
+		contador.scaleX = 0.00001f;
+		contador.scaleY = 0.00001f;
 	}
 	
 	
