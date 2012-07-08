@@ -23,7 +23,9 @@ public class PCuadro {
 		}
 		if (c == 2) {
 			uGafa = new Ubicacion("gafa", 388, 400, 80);
+			uBigote = new Ubicacion("bigote", 415, 320, 120);
 			uPeluca = new Ubicacion("peluca", 398, 288, 110);
+			uCollar = new Ubicacion("collar", 415, 245, 100);
 			uObjeto = new Ubicacion("objeto", 399, 118, 110);
 		}
 	}
