@@ -12,6 +12,8 @@ import java.util.Date;
 import javax.imageio.ImageIO;
 import javax.swing.filechooser.FileSystemView;
 
+import principal.GameGlobals;
+
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.Pixmap;
@@ -106,6 +108,7 @@ public class DrawableImage extends Image {
 		} catch (Exception e) {
 		    e.printStackTrace();
 		}
+		GameGlobals.nueces++;
 	}
 
 }

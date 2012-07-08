@@ -137,25 +137,25 @@ public class Modificalo extends Juego {
 	   		//texturas de los objetos para el cuadro uno y el cuadro
 	   		cuadro = new Image("cuadro",new TextureRegion(new Texture("imagenes2/modificalo/elemCuadro2.png"),0,0,318,484));
 	   		
-	   		gafa1 = new Arrastrable("gafa1",new TextureRegion(new Texture("imagenes2/modificalo/elemCuadro1.png"),247,0,120,59));
-	    	gafa2 = new Arrastrable("gafa2",new TextureRegion(new Texture("imagenes2/modificalo/elemCuadro1.png"),247,61,120,59));
-	    	gafa3 = new Arrastrable("gafa3",new TextureRegion(new Texture("imagenes2/modificalo/elemCuadro1.png"),247,122,120,59));
+	   		gafa1 = new Arrastrable("gafa1","imagenes2/modificalo/elemCuadro1.png",247,0,120,59);
+	    	gafa2 = new Arrastrable("gafa2","imagenes2/modificalo/elemCuadro1.png",247,61,120,59);
+	    	gafa3 = new Arrastrable("gafa3","imagenes2/modificalo/elemCuadro1.png",247,122,120,59);
 	    	
-	    	bigote1 = new Arrastrable("bigote1",new TextureRegion(new Texture("imagenes2/modificalo/elemCuadro1.png"),174,0,69,36));
-	    	bigote2 = new Arrastrable("bigote2",new TextureRegion(new Texture("imagenes2/modificalo/elemCuadro1.png"),174,38,69,36));
-	    	bigote3 = new Arrastrable("bigote3",new TextureRegion(new Texture("imagenes2/modificalo/elemCuadro1.png"),174,76,69,36));
+	    	bigote1 = new Arrastrable("bigote1","imagenes2/modificalo/elemCuadro1.png",174,0,69,36);
+	    	bigote2 = new Arrastrable("bigote2","imagenes2/modificalo/elemCuadro1.png",174,38,69,36);
+	    	bigote3 = new Arrastrable("bigote3","imagenes2/modificalo/elemCuadro1.png",174,76,69,36);
 	    	
-	    	peluca1 = new Arrastrable("peluca1",new TextureRegion(new Texture("imagenes2/modificalo/elemCuadro1.png"),0,0,164,215));
-	    	peluca2 = new Arrastrable("peluca2",new TextureRegion(new Texture("imagenes2/modificalo/elemCuadro1.png"),0,215,164,215));
-	    	peluca3 = new Arrastrable("peluca3",new TextureRegion(new Texture("imagenes2/modificalo/elemCuadro1.png"),0,430,164,215));
+	    	peluca1 = new Arrastrable("peluca1","imagenes2/modificalo/elemCuadro1.png",0,0,164,215);
+	    	peluca2 = new Arrastrable("peluca2","imagenes2/modificalo/elemCuadro1.png",0,215,164,215);
+	    	peluca3 = new Arrastrable("peluca3","imagenes2/modificalo/elemCuadro1.png",0,430,164,215);
 	    	
-	    	collar1 = new Arrastrable("collar1",new TextureRegion(new Texture("imagenes2/modificalo/elemCuadro1.png"),384,5,110,91));
-	    	collar2 = new Arrastrable("collar2",new TextureRegion(new Texture("imagenes2/modificalo/elemCuadro1.png"),384,98,110,91));
-	    	collar3 = new Arrastrable("collar3",new TextureRegion(new Texture("imagenes2/modificalo/elemCuadro1.png"),384,193,110,91));
+	    	collar1 = new Arrastrable("collar1","imagenes2/modificalo/elemCuadro1.png",384,5,110,91);
+	    	collar2 = new Arrastrable("collar2","imagenes2/modificalo/elemCuadro1.png",384,98,110,91);
+	    	collar3 = new Arrastrable("collar3","imagenes2/modificalo/elemCuadro1.png",384,193,110,91);
 	    	
-	    	objeto1 = new Arrastrable("objeto1",new TextureRegion(new Texture("imagenes2/modificalo/elemCuadro1.png"),220,207,147,127));
-	    	objeto2 = new Arrastrable("objeto2",new TextureRegion(new Texture("imagenes2/modificalo/elemCuadro1.png"),220,342,147,127));
-	    	objeto3 = new Arrastrable("objeto3",new TextureRegion(new Texture("imagenes2/modificalo/elemCuadro1.png"),220,480,147,127));
+	    	objeto1 = new Arrastrable("objeto1","imagenes2/modificalo/elemCuadro1.png",220,207,147,127);
+	    	objeto2 = new Arrastrable("objeto2","imagenes2/modificalo/elemCuadro1.png",220,342,147,127);
+	    	objeto3 = new Arrastrable("objeto3","imagenes2/modificalo/elemCuadro1.png",220,480,147,127);
 	    	
 	   	}
 	   	
@@ -163,26 +163,26 @@ public class Modificalo extends Juego {
 			//texturas de los objetos para el cuadro dos y el cuadro
 	   		cuadro = new Image("cuadro",new TextureRegion(new Texture("imagenes2/modificalo/elemCuadro2.png"),318,0,318,484));
 	   		
-	   		gafa1 = new Arrastrable("gafa1",new TextureRegion(new Texture("imagenes2/modificalo/elemCuadro1.png"),509,280,169,54));
-	    	gafa2 = new Arrastrable("gafa2",new TextureRegion(new Texture("imagenes2/modificalo/elemCuadro1.png"),681,280,169,54));
-	    	gafa3 = new Arrastrable("gafa3",new TextureRegion(new Texture("imagenes2/modificalo/elemCuadro1.png"),852,280,169,54));
+	   		gafa1 = new Arrastrable("gafa1","imagenes2/modificalo/elemCuadro1.png",509,280,169,54);
+	    	gafa2 = new Arrastrable("gafa2","imagenes2/modificalo/elemCuadro1.png",681,280,169,54);
+	    	gafa3 = new Arrastrable("gafa3","imagenes2/modificalo/elemCuadro1.png",852,280,169,54);
 	    	
-	    	objeto1 = new Arrastrable("objeto1",new TextureRegion(new Texture("imagenes2/modificalo/elemCuadro1.png"),511,334,171,196));
-	    	objeto2 = new Arrastrable("objeto2",new TextureRegion(new Texture("imagenes2/modificalo/elemCuadro1.png"),680,334,171,196));
-	    	objeto3 = new Arrastrable("objeto3",new TextureRegion(new Texture("imagenes2/modificalo/elemCuadro1.png"),852,334,171,196));
+	    	objeto1 = new Arrastrable("objeto1","imagenes2/modificalo/elemCuadro1.png",511,334,171,196);
+	    	objeto2 = new Arrastrable("objeto2","imagenes2/modificalo/elemCuadro1.png",680,334,171,196);
+	    	objeto3 = new Arrastrable("objeto3","imagenes2/modificalo/elemCuadro1.png",852,334,171,196);
 
-	    	peluca1 = new Arrastrable("peluca1",new TextureRegion(new Texture("imagenes2/modificalo/elemCuadro1.png"),508,0,171,259));
-	    	peluca2 = new Arrastrable("peluca2",new TextureRegion(new Texture("imagenes2/modificalo/elemCuadro1.png"),681,0,171,259));
-	    	peluca3 = new Arrastrable("peluca3",new TextureRegion(new Texture("imagenes2/modificalo/elemCuadro1.png"),852,0,171,259));
+	    	peluca1 = new Arrastrable("peluca1","imagenes2/modificalo/elemCuadro1.png",508,0,171,259);
+	    	peluca2 = new Arrastrable("peluca2","imagenes2/modificalo/elemCuadro1.png",681,0,171,259);
+	    	peluca3 = new Arrastrable("peluca3","imagenes2/modificalo/elemCuadro1.png",852,0,171,259);
 	    	
 	    	
-	    	collar1 = new Arrastrable("collar1",new TextureRegion(new Texture("imagenes2/modificalo/elemCuadro1.png"),0,840,118,97));
-	    	collar2 = new Arrastrable("collar2",new TextureRegion(new Texture("imagenes2/modificalo/elemCuadro1.png"),118,840,118,97));
-	    	collar3 = new Arrastrable("collar3",new TextureRegion(new Texture("imagenes2/modificalo/elemCuadro1.png"),236,840,118,97));
+	    	collar1 = new Arrastrable("collar1","imagenes2/modificalo/elemCuadro1.png",0,840,118,97);
+	    	collar2 = new Arrastrable("collar2","imagenes2/modificalo/elemCuadro1.png",118,840,118,97);
+	    	collar3 = new Arrastrable("collar3","imagenes2/modificalo/elemCuadro1.png",236,840,118,97);
 	    	
-	    	bigote1 = new Arrastrable("bigote1",new TextureRegion(new Texture("imagenes2/modificalo/elemCuadro1.png"),0,706,109,107));
-	    	bigote2 = new Arrastrable("bigote2",new TextureRegion(new Texture("imagenes2/modificalo/elemCuadro1.png"),109,706,109,107));
-	    	bigote3 = new Arrastrable("bigote3",new TextureRegion(new Texture("imagenes2/modificalo/elemCuadro1.png"),218,706,109,107));
+	    	bigote1 = new Arrastrable("bigote1","imagenes2/modificalo/elemCuadro1.png",0,706,109,107);
+	    	bigote2 = new Arrastrable("bigote2","imagenes2/modificalo/elemCuadro1.png",109,706,109,107);
+	    	bigote3 = new Arrastrable("bigote3","imagenes2/modificalo/elemCuadro1.png",218,706,109,107);
 	    	
 	    	pos_ini_1_p = 325;
 	    	pos_ini_2_p = 170;
