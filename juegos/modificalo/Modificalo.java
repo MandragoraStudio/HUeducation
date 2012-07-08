@@ -894,13 +894,16 @@ public class Modificalo extends Juego {
 		}
 		
 		if(gUsado && bUsado && pUsado&& cUsado&& oUsado) {
-			ganaNuez = true;
+			//ganaNuez = true;
+			genial.play();
 			n.setText("" + ganaNuez);
 			GameGlobals.nueces++;
+			GameGlobals.ModificaFinished = true;
+			ScreenManager.getScreenManager().setCurrentScreen("menu");  // Quitar
 		} else {
 			ganaNuez = false;
 			n.setText("" + ganaNuez);
-			GameGlobals.nueces--;
+			//GameGlobals.nueces--;
 		}
 		
 		return super.touchUp(x, y, pointer, button);
