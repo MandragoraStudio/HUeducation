@@ -13,14 +13,29 @@ public class Pagina {
 	private Button opcB;
 	private Image hoja;
 	private CuentoClasico cuento;
+	//meter lista de sonidos que tiene esta página
 	
-	public Pagina(int numPPag, String opcCorrecta, Image hoja, TextureRegion opcA, TextureRegion opcB, CuentoClasico cuento) {
+	/*public Pagina(int numPPag, String opcCorrecta, Image hoja, TextureRegion opcA, TextureRegion opcB, CuentoClasico cuento, array de sonidos) {
 		
 		this.numPPag = numPPag;
 		this.opcCorrecta = opcCorrecta;
 		this.hoja= hoja;
 		this.hoja.x=90;
 		this.hoja.y=70;
+		this.opcA=new Button("opcionA", opcA);
+		this.opcB=new Button("opcionB", opcB);
+		this.cuento = cuento;
+		this.arraySonidos = arraySonidos;
+		setButtons();
+	}*/
+
+	public Pagina(int numPPag, String opcCorrecta, Image hoja, TextureRegion opcA, TextureRegion opcB, CuentoClasico cuento) {
+		
+		this.numPPag = numPPag;
+		this.opcCorrecta = opcCorrecta;
+		this.hoja= hoja;
+		this.hoja.x=70;
+		this.hoja.y=50;
 		this.opcA=new Button("opcionA", opcA);
 		this.opcB=new Button("opcionB", opcB);
 		this.cuento = cuento;
@@ -50,10 +65,11 @@ public class Pagina {
 	
 	private void compruebaOpc(String opc){
 		if(opc.equals(this.opcCorrecta)){
+			//TODO: poner sonido de que lo has exo bien
 			//pasar siguiente pagina
 			this.cuento.siguientePagina();
 		}else{
-			//mensaje error
+			//TODO: mensaje error SONIDO JUANMAAAAAAAAAAA
 			
 		}
 	}
