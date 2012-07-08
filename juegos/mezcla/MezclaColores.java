@@ -131,8 +131,8 @@ public class MezclaColores extends Juego {
     	
 		// Boton atras
 		BAtras = new Button("salir",new TextureRegion(new Texture("imagenes2/Menu/atras sin pulsar.png")),new TextureRegion(new Texture("imagenes2/Menu/atras pulsado.png")));
-		BAtras.x = this.escena.width() - BAtras.width -20;
-		BAtras.y = this.escena.height() - BAtras.height -20;
+		BAtras.x = this.escena.width() - BAtras.width;
+		BAtras.y = this.escena.height() - BAtras.height;
 		this.escena.addActor(BAtras);
 		BAtras.clickListener=new ClickListener(){
 			public void clicked(Button b){
