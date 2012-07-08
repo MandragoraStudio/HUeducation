@@ -71,7 +71,7 @@ public class Modificalo extends Juego {
 	Boolean collar_visi = false;
 	Boolean objetos_visi = false;
 
-	//Altura de los objetos en el panel de uso.
+	//Altura de los objetos arrastrables en su panel
 	int pos_ini_1_p = 380;
 	int pos_ini_2_p = 180;
 	int pos_ini_3_p = 0;
@@ -100,6 +100,7 @@ public class Modificalo extends Juego {
    @Override
 	public void Load(){
 	   	if (num_cuadro == 1) {
+	   		//texturas de los objetos para el cuadro uno y el cuadro
 	   		cuadro = new Image("cuadro",new TextureRegion(new Texture("imagenes2/modificalo/elemCuadro2.png"),0,0,318,484));
 	   		
 	   		gafa1 = new Arrastrable("gafa1",new TextureRegion(new Texture("imagenes2/modificalo/elemCuadro1.png"),247,0,120,59));
@@ -125,6 +126,7 @@ public class Modificalo extends Juego {
 	   	}
 	   	
 		if (num_cuadro == 2) {
+			//texturas de los objetos para el cuadro dos y el cuadro
 	   		cuadro = new Image("cuadro",new TextureRegion(new Texture("imagenes2/modificalo/elemCuadro2.png"),318,0,318,484));
 	   		
 	   		gafa1 = new Arrastrable("gafa1",new TextureRegion(new Texture("imagenes2/modificalo/elemCuadro1.png"),509,280,169,54));
@@ -140,13 +142,13 @@ public class Modificalo extends Juego {
 	    	peluca3 = new Arrastrable("peluca3",new TextureRegion(new Texture("imagenes2/modificalo/elemCuadro1.png"),852,0,171,259));
 	    	
 	    	
-	    	collar1 = new Arrastrable("collar1",new TextureRegion(new Texture("imagenes2/modificalo/elemCuadro1.png"),340,0,178,215));
-	    	collar2 = new Arrastrable("collar2",new TextureRegion(new Texture("imagenes2/modificalo/elemCuadro1.png"),340,215,178,215));
-	    	collar3 = new Arrastrable("collar3",new TextureRegion(new Texture("imagenes2/modificalo/elemCuadro1.png"),340,430,178,215));
+	    	collar1 = new Arrastrable("collar1",new TextureRegion(new Texture("imagenes2/modificalo/elemCuadro1.png"),0,840,118,97));
+	    	collar2 = new Arrastrable("collar2",new TextureRegion(new Texture("imagenes2/modificalo/elemCuadro1.png"),118,840,118,107));
+	    	collar3 = new Arrastrable("collar3",new TextureRegion(new Texture("imagenes2/modificalo/elemCuadro1.png"),236,840,118,107));
 	    	
-	    	bigote1 = new Arrastrable("bigote1",new TextureRegion(new Texture("imagenes2/modificalo/elemCuadro1.png"),510,0,165,215));
-	    	bigote2 = new Arrastrable("bigote2",new TextureRegion(new Texture("imagenes2/modificalo/elemCuadro1.png"),510,215,165,215));
-	    	bigote3 = new Arrastrable("bigote3",new TextureRegion(new Texture("imagenes2/modificalo/elemCuadro1.png"),510,430,165,215));
+	    	bigote1 = new Arrastrable("bigote1",new TextureRegion(new Texture("imagenes2/modificalo/elemCuadro1.png"),0,706,109,107));
+	    	bigote2 = new Arrastrable("bigote2",new TextureRegion(new Texture("imagenes2/modificalo/elemCuadro1.png"),109,706,109,107));
+	    	bigote3 = new Arrastrable("bigote3",new TextureRegion(new Texture("imagenes2/modificalo/elemCuadro1.png"),218,706,109,107));
 	    	
 	    	pos_ini_1_p = 325;
 	    	pos_ini_2_p = 170;
@@ -160,9 +162,18 @@ public class Modificalo extends Juego {
 	    	pos_ini_2_o = 230;
 	    	pos_ini_3_o = 40;
 	    	
+	    	pos_ini_1_c = 440;
+	    	pos_ini_2_c = 260;
+	    	pos_ini_3_c = 80;
+	    	
+	    	pos_ini_1_b= 470;
+	    	pos_ini_2_b = 290;
+	    	pos_ini_3_b = 90;
+	    	
 	    	
 	   	}
 		
+		//Fondo de juego
 		fondo = new Image("fondo",new TextureRegion(new Texture("imagenes2/modificalo/elemCuadro3.png"),0,0,1024,600));
    		pCuadro = new PCuadro(num_cuadro);
    		
@@ -288,9 +299,6 @@ public class Modificalo extends Juego {
 		collares.x = 810;
 		collares.y = 240;
 		gafas.x = 880;
-		if (num_cuadro == 2){
-			gafas.x = 800;
-		}
 		gafas.y = 240;
 		
 		objetos.x = 860;
@@ -348,10 +356,8 @@ public class Modificalo extends Juego {
 		menu_modif.addActor(pelucas);
 		menu_modif.addActor(gafas);
 		menu_modif.addActor(objetos);
-		if (num_cuadro == 1) {
 			menu_modif.addActor(bigotes);
 			menu_modif.addActor(collares);
-		}
 	
 		
 		this.escena.addActor(fondo);
