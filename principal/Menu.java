@@ -12,10 +12,12 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.actors.Button;
 import com.badlogic.gdx.scenes.scene2d.actors.Button.ClickListener;
 import com.badlogic.gdx.scenes.scene2d.actors.Image;
+import com.badlogic.gdx.scenes.scene2d.actors.Label;
 
 
 public class Menu extends Screen {
@@ -27,7 +29,11 @@ public class Menu extends Screen {
 	Button BMuseo;
 	//Button BSalir;
 	Image fondo;
+	
+	// Nueces
 	Image contador;
+	Label Lnueces;
+	private BitmapFont font;
 	
 	private long ultimavez=0;
 	private long ardillatime=30000;
@@ -60,6 +66,12 @@ public class Menu extends Screen {
 		this.escena.addActor(contador);
 		contador.x = this.escena.width() - contador.width;
 		contador.y = this.escena.height() - contador.height;
+		font = new BitmapFont(Gdx.files.internal("fuentes/fuente.fnt"), false);
+		Lnueces = new Label("nueces", font);
+		Lnueces.setText(Integer.toString(GameGlobals.nueces));
+		Lnueces.x = contador.x+20;
+		Lnueces.y = contador.y+20;
+		this.escena.addActor(Lnueces);
 	}
 	
 	private void setButtons(){
