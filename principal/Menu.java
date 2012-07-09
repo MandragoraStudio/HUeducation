@@ -39,7 +39,13 @@ public class Menu extends Screen {
 	private boolean reproducir = true;
 	private int i = 0;
 	private int j = 0;
+	private int k = 0;
 	Music takeR;
+	
+	// Sonidos cuando completas el juego
+	Music []completado = new Music[4];
+	private boolean repro = true;
+	private int MAXTakes = 4;
 	
 	@Override
 	public void Initialize(){
@@ -71,6 +77,12 @@ public class Menu extends Screen {
 		Lnueces.x = contador.x+20;
 		Lnueces.y = contador.y+20;
 		this.escena.addActor(Lnueces);
+		
+		// Sonidos cuando completas el juego
+		completado[0] = Gdx.audio.newMusic(Gdx.files.internal("sonido/vocesdemandrilla/takesfinales/Take 1.wav"));
+		completado[1] = Gdx.audio.newMusic(Gdx.files.internal("sonido/vocesdemandrilla/takesfinales/Take 2.wav"));
+		completado[2] = Gdx.audio.newMusic(Gdx.files.internal("sonido/vocesdemandrilla/takesfinales/Take 3.wav"));
+		completado[3] = Gdx.audio.newMusic(Gdx.files.internal("sonido/vocesdemandrilla/takesfinales/Take 4.wav"));
 	}
 	
 	private void setButtons(){
@@ -182,8 +194,7 @@ public class Menu extends Screen {
     	if(System.currentTimeMillis() - ultimavez >= ardillatime){
     		if(reproducir){
     			takeR.play();
-    			reproducir = false;
-    			
+    			reproducir = false;    			
     		}
 
     		// mientras la ardilla hable se reproduce la animacion
@@ -220,6 +231,38 @@ public class Menu extends Screen {
     			GameGlobals.A[2].y = this.escena.height();
     		}
     	}
+    	
+    	// Si es la primera vez que el se completa el juego se reproducen lo sonidos 
+    	if(k >= MAXTakes){
+    		GameGlobals.JuegoFinished = true;
+		}else{
+			if(reproducir == true){
+				completado[k].play();
+				reproducir = false;
+			}
+			
+			if(!completado[k].isPlaying()){
+				reproducir = true;
+					k++;
+			}
+		}
+    	
+    	// Si es la primera vez que el se completa el juego se reproducen lo sonidos 
+    	/*if(GameGlobals.cuentoFinished && GameGlobals.mezclaFinished && GameGlobals.ModificaFinished && GameGlobals.MuseoFinished && !GameGlobals.JuegoFinished){
+    		if(!completado[k].isPlaying() && k < 4){
+    			completado[k].play();
+    			repro = false;
+    			k++;
+    		}
+    		if(k-1 >= 0){
+    			if(!completado[k-1].isPlaying()){
+    				repro = true;
+    			}
+    		}
+    		if(k > 3){
+    			GameGlobals.JuegoFinished = true;
+    		}
+    	}*/
     	super.Update();
     }
     @Override
