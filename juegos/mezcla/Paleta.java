@@ -3,7 +3,6 @@ package juegos.mezcla;
 import principal.GameGlobals;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.Input;
 import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.graphics.Pixmap;
 import com.badlogic.gdx.graphics.Pixmap.Format;
@@ -19,7 +18,7 @@ import com.badlogic.gdx.scenes.scene2d.actors.Image;
 public class Paleta extends Group {
 	
 	
-	public static Button debugVariable;
+	//public static Button debugVariable;
 	
 	public int coloresDisponibles = 0;
 	public int MAXcolores = 10;		// Cambialo antonio
@@ -28,6 +27,9 @@ public class Paleta extends Group {
 	private Music genial = Gdx.audio.newMusic(Gdx.files.internal("sonido/vocesdemandrilla/takesdeacciones/genial.wav"));
 	// Sonido reproducido cuando se tienen todos los colores
 	private Music take6 = Gdx.audio.newMusic(Gdx.files.internal("sonido/vocesdemandrilla/takesmezcladecolor/Take 6.wav"));
+	
+	private Music nono = Gdx.audio.newMusic(Gdx.files.internal("sonido/vocesdemandrilla/takesdeacciones/mal.wav"));
+	
 	
 	Image Fondo = new Image("fondo", new Texture(
 			"imagenes2/mezcla/Paleta.png"));
@@ -65,7 +67,7 @@ public class Paleta extends Group {
 	
 	float[][] colores = new float[3][3];
 	
-	Button sacaMezclador = new Button("sacaMezclador",new TextureRegion(new Texture("imagenes/mezcla/pruebaboton.png"),20,20,20,20),new TextureRegion(new Texture("imagenes/mezcla/pruebaboton.png")));
+	Button sacaMezclador = new Button("sacaMezclador",new TextureRegion(new Texture("imagenes2/mezcla/mezclar1.png")),new TextureRegion(new Texture("imagenes2/mezcla/mezclar2.png")));
 	
 	MezcladorBasico mezcladorBasico; 
 	
@@ -203,10 +205,8 @@ public class Paleta extends Group {
 		colorP6.clickListener=evento;
 		*/
 		this.addActor(sacaMezclador);
-		sacaMezclador.height=100;
-		sacaMezclador.width=100;
-		sacaMezclador.x=190;
-		sacaMezclador.y=100;
+		sacaMezclador.x=290;
+		sacaMezclador.y=200;
 		sacaMezclador.clickListener=new ClickListener(){
 			@Override
 			public void clicked(Button boton) {
@@ -347,6 +347,10 @@ public class Paleta extends Group {
 			break;
 		
 		}
+	}
+	public void colorFallido(){
+
+		nono.play();
 	}
 	public void colorAcertado(){
 		switch(coloresDisponibles){
