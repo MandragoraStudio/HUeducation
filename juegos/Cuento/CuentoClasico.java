@@ -217,19 +217,6 @@ public class CuentoClasico extends Juego {
 						"imagenes2/cuento/op8.png")), this, Gdx.audio.newMusic(Gdx.files.internal("sonido/vocesdemandrilla/takescuentacuentos/pag4/take1.wav")),
 						Gdx.audio.newMusic(Gdx.files.internal("sonido/vocesdemandrilla/takescuentacuentos/pag4/take2.wav")),
 						Gdx.audio.newMusic(Gdx.files.internal("sonido/vocesdemandrilla/takescuentacuentos/pag4/take3.wav"))));
-
-		//página 5
-		/*paginas.add(new Pagina(4, "B", new Image("hoja5", new TextureRegion(
-				new Texture("imagenes2/cuento/TextureCuento4.png"), 0, 0,
-				730, 520)), new TextureRegion(new Texture(
-				"imagenes2/cuento/TextureCuento4.png"),0, 0, 370, 520),
-				new TextureRegion(new Texture(
-						"imagenes2/cuento/TextureCuento4.png"), 0, 0, 0,
-						0), this, Gdx.audio.newMusic(Gdx.files.internal("sonido/vocesdemandrilla/takescuentacuentos/pag5/take1.wav")),
-						Gdx.audio.newMusic(Gdx.files.internal("sonido/vocesdemandrilla/takescuentacuentos/pag5/take2.wav")),
-						Gdx.audio.newMusic(Gdx.files.internal("sonido/vocesdemandrilla/takescuentacuentos/pag5/take3.wav"))));*/
-
-
 		//se inicializa la página primera
 		paginaActual = paginas.get(0);
 	}
@@ -257,6 +244,10 @@ public class CuentoClasico extends Juego {
 		this.escena.addActor(BAtras);
 		BAtras.clickListener=new ClickListener(){
 			public void clicked(Button b){
+				if(contando){
+					paginaActual.take[indice].stop();
+				}
+				
 				ScreenManager.getScreenManager().setCurrentScreen("menu");
 			}
 		};
@@ -311,6 +302,7 @@ public class CuentoClasico extends Juego {
 				paginaActual.take[indice].stop();
 		}
 		indice = 0;
+		reproducir = true;
 		if(paginas.size()-1 > paginaActual.getNumPPag()) {
 			eliminaPagina();
 			paginaActual = paginas.get(paginaActual.getNumPPag() + 1);		

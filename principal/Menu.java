@@ -34,7 +34,7 @@ public class Menu extends Screen {
 	Label Lnueces;
 	private BitmapFont font;
 	
-	private boolean hablando = true;
+	private boolean hablando = false;
 	private long ultimavez=0;
 	private long ardillatime=30000;
 	private boolean reproducir = true;
@@ -199,7 +199,7 @@ public class Menu extends Screen {
     		}
 
     		// mientras la ardilla hable se reproduce la animacion
-    		if((System.currentTimeMillis() - GameGlobals.ultimotiempo >= GameGlobals.changetime) || hablando){
+    		if((System.currentTimeMillis() - GameGlobals.ultimotiempo >= GameGlobals.changetime)){
     			GameGlobals.ultimotiempo = System.currentTimeMillis();
     			i++;
     			if(i >= GameGlobals.MAXimages){
@@ -233,37 +233,46 @@ public class Menu extends Screen {
     		}
     	}
     	
-    	// Si es la primera vez que el se completa el juego se reproducen lo sonidos 
-    	if(k >= MAXTakes){
-    		GameGlobals.JuegoFinished = true;
-		}else{
-			if(reproducir == true){
-				completado[k].play();
-				reproducir = false;
+    	// Si es la primera vez que el se completa el juego se reproducen lo sonidos
+    	if(GameGlobals.cuentoFinished && GameGlobals.mezclaFinished && GameGlobals.ModificaFinished && GameGlobals.MuseoFinished && !GameGlobals.JuegoFinished){
+    		if(!hablando){
+    			hablando = true;
+    		}
+	    	if(k >= MAXTakes){
+	    		GameGlobals.JuegoFinished = true;
+	    		hablando = false;
+			}else{
+				if(reproducir == true){
+					completado[k].play();
+					reproducir = false;
+				}
+				
+				if(!completado[k].isPlaying()){
+					reproducir = true;
+						k++;
+				}
 			}
-			
-			if(!completado[k].isPlaying()){
-				reproducir = true;
-					k++;
+    	}
+    	// Mientras, habla
+    	// se reproduce la animacion
+		if((System.currentTimeMillis() - GameGlobals.ultimotiempo >= GameGlobals.changetime && hablando)){
+			GameGlobals.ultimotiempo = System.currentTimeMillis();
+			i++;
+			if(i >= GameGlobals.MAXimages){
+				i = 0;
+			}
+			GameGlobals.A[i].x = GameGlobals.posXardilla;
+			GameGlobals.A[i].y = GameGlobals.posYardilla;
+			// El resto aparecen invisibles
+			for(j = 0; j < i; j++){
+				GameGlobals.A[j].x = this.escena.width();
+				GameGlobals.A[j].y = this.escena.height();
+			}
+			for(j = i+1; j < GameGlobals.MAXimages; j++){
+				GameGlobals.A[j].x = this.escena.width();
+				GameGlobals.A[j].y = this.escena.height();
 			}
 		}
-    	
-    	// Si es la primera vez que el se completa el juego se reproducen lo sonidos 
-    	/*if(GameGlobals.cuentoFinished && GameGlobals.mezclaFinished && GameGlobals.ModificaFinished && GameGlobals.MuseoFinished && !GameGlobals.JuegoFinished){
-    		if(!completado[k].isPlaying() && k < 4){
-    			completado[k].play();
-    			repro = false;
-    			k++;
-    		}
-    		if(k-1 >= 0){
-    			if(!completado[k-1].isPlaying()){
-    				repro = true;
-    			}
-    		}
-    		if(k > 3){
-    			GameGlobals.JuegoFinished = true;
-    		}
-    	}*/
     	super.Update();
     }
     @Override
