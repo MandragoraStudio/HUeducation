@@ -18,6 +18,7 @@ import com.badlogic.gdx.scenes.scene2d.actors.Button.ClickListener;
 public class MezclaColores extends Juego {
 
 	Image fondo;
+	Image caballete;
 	static DrawableImage lienzo;
 	Paleta paleta;
 	private Button BAtras;
@@ -109,6 +110,10 @@ public class MezclaColores extends Juego {
     
     public void Load(){
     	fondo =new Image("fondo",new Texture("imagenes2/mezcla/fondo.png"));
+    	caballete = new Image("caballete",new Texture("imagenes2/mezcla/caballete.png"));
+    	caballete.touchable=false;
+    	caballete.x=5;
+    	
     	Texture papel = new Texture(550,500,Format.RGBA8888);
     	Pixmap blanco = new Pixmap(550,500,Format.RGBA8888);
     	blanco.setColor(1,1,1,1);
@@ -126,6 +131,7 @@ public class MezclaColores extends Juego {
     public void Initialize(){
     	super.Initialize();
     	this.escena.addActor(fondo);
+    	this.escena.addActor(caballete);
     	this.escena.addActor(lienzo);
     	this.escena.addActor(paleta);
     	

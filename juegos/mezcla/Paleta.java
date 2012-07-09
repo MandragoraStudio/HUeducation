@@ -22,7 +22,7 @@ public class Paleta extends Group {
 	public static Button debugVariable;
 	
 	public int coloresDisponibles = 0;
-	public int MAXcolores = 3;		// Cambialo antonio
+	public int MAXcolores = 10;		// Cambialo antonio
 	
 	// Musica reproducida cuando se consigue un nuevo color
 	private Music genial = Gdx.audio.newMusic(Gdx.files.internal("sonido/vocesdemandrilla/takesdeacciones/genial.wav"));
@@ -45,6 +45,13 @@ public class Paleta extends Group {
 	Button colorRojo = new Button("CRojo");
 	Button colorVerde = new Button("CVerde");
 	Button colorAzul = new Button("CAzul");
+	Button colorNaranja = new Button("CNaranja");
+	Button colorMorado = new Button("CMorado");
+	Button colorTurquesa = new Button("CTurquesa");
+	Button colorMarron = new Button("CMarron");
+	Button colorGris = new Button("CGris");
+	Button colorRosa = new Button("CRosa");
+	Button colorRosita = new Button("CRosita");
 
 	Button colorP1 = new Button("CP1");
 	Button colorP2 = new Button("CP2");
@@ -56,7 +63,7 @@ public class Paleta extends Group {
 	
 	Button bGuardar = new Button("Guardar", new TextureRegion(new Texture("imagenes2/mezcla/guardar1.png")),new TextureRegion(new Texture("imagenes2/mezcla/guardar2.png")));
 	
-	int[][] colores = new int[3][3];
+	float[][] colores = new float[3][3];
 	
 	Button sacaMezclador = new Button("sacaMezclador",new TextureRegion(new Texture("imagenes/mezcla/pruebaboton.png"),20,20,20,20),new TextureRegion(new Texture("imagenes/mezcla/pruebaboton.png")));
 	
@@ -88,6 +95,34 @@ public class Paleta extends Group {
 				r=0;
 				g=0;
 				b=0;
+			}else if(boton.name.equals("CNaranja")){
+				r=1;
+				g=0.5f;
+				b=0;
+			}else if(boton.name.equals("CMorado")){
+				r=0.5f;
+				g=0;
+				b=0.5f;
+			}else if(boton.name.equals("CTurquesa")){
+				r=0;
+				g=0.5f;
+				b=0.5f;
+			}else if(boton.name.equals("CMarron")){
+				r=0.5f;
+				g=0.25f;
+				b=0;
+			}else if(boton.name.equals("CGris")){
+				r=0.5f;
+				g=0.5f;
+				b=0.5f;
+			}else if(boton.name.equals("CRosa")){
+				r=1f;
+				g=0.5f;
+				b=0.5f;
+			}else if(boton.name.equals("CRosita")){
+				r=1f;
+				g=0.5f;
+				b=1f;
 			}
 			MezclaColores.cambiarColorPincel(r, g, b);
 		}
@@ -226,6 +261,90 @@ public class Paleta extends Group {
 			colores[2][1]=0;
 			colores[2][2]=1;
 			break;
+		case 3:
+			//naranja
+			colores[0][0]=1;
+			colores[0][1]=0;
+			colores[0][2]=0;
+			colores[1][0]=1;
+			colores[1][1]=1;
+			colores[1][2]=0;
+			colores[2][0]=1;
+			colores[2][1]=0.5f;
+			colores[2][2]=0;
+			break;
+		case 4:
+			//morado
+			colores[0][0]=1;
+			colores[0][1]=0;
+			colores[0][2]=0;
+			colores[1][0]=0;
+			colores[1][1]=0;
+			colores[1][2]=1;
+			colores[2][0]=0.5f;
+			colores[2][1]=0;
+			colores[2][2]=0.5f;
+			break;
+		case 5:
+			//turquesa
+			colores[0][0]=0;
+			colores[0][1]=1;
+			colores[0][2]=0;
+			colores[1][0]=0;
+			colores[1][1]=0;
+			colores[1][2]=1;
+			colores[2][0]=0;
+			colores[2][1]=0.5f;
+			colores[2][2]=0.5f;
+			break;
+		case 6:
+			//marron (si, claro)
+			colores[0][0]=1;
+			colores[0][1]=0.5f;
+			colores[0][2]=0;
+			colores[1][0]=0;
+			colores[1][1]=0;
+			colores[1][2]=0.5f;
+			colores[2][0]=0.5f;
+			colores[2][1]=0.25f;
+			colores[2][2]=0;
+			break;
+		case 7:
+			//gris
+			colores[0][0]=1;
+			colores[0][1]=1;
+			colores[0][2]=1;
+			colores[1][0]=0;
+			colores[1][1]=0;
+			colores[1][2]=0;
+			colores[2][0]=0.5f;
+			colores[2][1]=0.5f;
+			colores[2][2]=0.5f;
+			break;
+		case 8:
+			//rosa
+			colores[0][0]=1;
+			colores[0][1]=0;
+			colores[0][2]=0;
+			colores[1][0]=1;
+			colores[1][1]=1;
+			colores[1][2]=1;
+			colores[2][0]=1;
+			colores[2][1]=0.5f;
+			colores[2][2]=0.5f;
+			break;
+		case 9:
+			//otro rosa
+			colores[0][0]=1;
+			colores[0][1]=0;
+			colores[0][2]=1;
+			colores[1][0]=1;
+			colores[1][1]=1;
+			colores[1][2]=1;
+			colores[2][0]=1;
+			colores[2][1]=0.5f;
+			colores[2][2]=1;
+			break;
 		
 		}
 	}
@@ -255,6 +374,62 @@ public class Paleta extends Group {
 			colorAzul.clickListener=evento;
 			this.addActorBefore(Fondo,colorAzul);
 			break;
+		case 3:
+			colorNaranja=new Button("CNaranja", Paleta.getColoredTexture(1,
+					0.5f, 0, 1));
+			colorNaranja.x=17;
+			colorNaranja.y=281;
+			colorNaranja.clickListener=evento;
+			this.addActorBefore(Fondo,colorNaranja);
+			break;
+		case 4:
+			colorMorado=new Button("CMorado", Paleta.getColoredTexture(0.5f,
+					0, 0.5f, 1));
+			colorMorado.x=91;
+			colorMorado.y=283;
+			colorMorado.clickListener=evento;
+			this.addActorBefore(Fondo,colorMorado);
+			break;
+		case 5:
+			colorTurquesa=new Button("CTurquesa", Paleta.getColoredTexture(0,
+					0.5f, 0.5f, 1));
+			colorTurquesa.x=178;
+			colorTurquesa.y=281;
+			colorTurquesa.clickListener=evento;
+			this.addActorBefore(Fondo,colorTurquesa);
+			break;
+		case 6:
+			colorMarron=new Button("CMarron", Paleta.getColoredTexture(0.5f,
+					0.25f, 0, 1));
+			colorMarron.x=261;
+			colorMarron.y=298;
+			colorMarron.clickListener=evento;
+			this.addActorBefore(Fondo,colorMarron);
+			break;
+		case 7:
+			colorGris=new Button("CGris", Paleta.getColoredTexture(0.5f,
+					0.5f, 0.5f, 1));
+			colorGris.x=35;
+			colorGris.y=207;
+			colorGris.clickListener=evento;
+			this.addActorBefore(Fondo,colorGris);
+			break;
+		case 8:
+			colorRosa=new Button("CRosa", Paleta.getColoredTexture(1,
+					0.5f, 0.5f, 1));
+			colorRosa.x=130;
+			colorRosa.y=210;
+			colorRosa.clickListener=evento;
+			this.addActorBefore(Fondo,colorRosa);
+			break;
+		case 9:
+			colorRosita=new Button("CRosita", Paleta.getColoredTexture(1,
+					0.5f, 1f, 1));
+			colorRosita.x=83;
+			colorRosita.y=144;
+			colorRosita.clickListener=evento;
+			this.addActorBefore(Fondo,colorRosita);
+			break;
 		default:
 			coloresDisponibles--;
 			break;
@@ -262,6 +437,7 @@ public class Paleta extends Group {
 		coloresDisponibles++;
 		if(coloresDisponibles == MAXcolores){
 			take6.play();
+			GameGlobals.mezclaFinished=true;
 			GameGlobals.nueces++;
 		}else{
 			genial.play();
@@ -271,9 +447,12 @@ public class Paleta extends Group {
 	@Override
 	public void act(float delta){
 		super.act(delta);
-		debugVariable=this.colorNegro;
-		debugVariable.x=287;
-		debugVariable.y=34;
+		/*
+		debugVariable=this.colorRosita;
+		debugVariable.x=83;
+		debugVariable.y=144;
+		
+		*/
 	}
 	
 	/*@Override
