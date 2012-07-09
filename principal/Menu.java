@@ -44,7 +44,7 @@ public class Menu extends Screen {
 	@Override
 	public void Initialize(){
 		super.Initialize();
-		fondo = new Image("fondo", new TextureRegion(new Texture("imagenes2/Menu/fondoMenu.png"), 0, 0, 1024, 600));
+		fondo = new Image("fondo", new TextureRegion(new Texture("imagenes2/Menu/fondo.png")));
 		this.escena.addActor(fondo);
 		ultimavez=System.currentTimeMillis();
 		// Imagenes de las ardillas hablando

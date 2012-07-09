@@ -32,8 +32,9 @@ public class CuentoClasico extends Juego {
 	private Music ultsound;
 	private Button ultpag;
 
+	
 	public CuentoClasico() {
-		this.paginas = new LinkedList();
+		CuentoClasico.paginas = new LinkedList<Pagina>();
 	}
 	
 	// Ardilla

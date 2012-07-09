@@ -1,11 +1,10 @@
 package juegos.museo;
 
-import java.io.File;
 import java.util.ArrayList;
 
+import juegos.Juego;
 import principal.GameGlobals;
 import principal.ScreenManager;
-import juegos.Juego;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;

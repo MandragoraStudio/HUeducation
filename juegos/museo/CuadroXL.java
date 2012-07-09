@@ -3,7 +3,6 @@ package juegos.museo;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.actors.Button;
-import com.badlogic.gdx.scenes.scene2d.actors.Image;
 
 public class CuadroXL extends Button {
 	

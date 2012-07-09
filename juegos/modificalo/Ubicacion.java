@@ -1,6 +1,5 @@
 package juegos.modificalo;
 
-import com.badlogic.gdx.graphics.Pixmap;
 
 public class Ubicacion {
 	public String elemento;
