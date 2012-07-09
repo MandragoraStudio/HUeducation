@@ -35,13 +35,14 @@ public class Game implements ApplicationListener, InputProcessor {
 		OutputStream os=f.write(false);
 		PrintWriter pw = new PrintWriter(os);
 		
-		String[] nums = new String[6];
+		String[] nums = new String[7];
 		nums[0]=String.valueOf(GameGlobals.cuentoFinished);
 		nums[1]=String.valueOf(GameGlobals.emocionesFinished);
 		nums[2]=String.valueOf(GameGlobals.mezclaFinished);
 		nums[3]=String.valueOf(GameGlobals.MuseoFinished);
 		nums[4]=String.valueOf(GameGlobals.ModificaFinished);
 		nums[5]=String.valueOf(GameGlobals.nueces);
+		nums[6]=String.valueOf(GameGlobals.ModificaFinished);
 		
 		pw.write(nums[0]+","+nums[1]+","+nums[2]+","+nums[3]+","+nums[4]+","+nums[5]);
 		pw.close();

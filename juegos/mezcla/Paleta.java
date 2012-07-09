@@ -440,12 +440,17 @@ public class Paleta extends Group {
 		}
 		coloresDisponibles++;
 		if(coloresDisponibles == MAXcolores){
-			take6.play();
+			genial.play();
 			GameGlobals.mezclaFinished=true;
 			GameGlobals.nueces++;
+		}else if(coloresDisponibles ==3){
+			take6.play();
+			GameGlobals.nueces++;
 		}else{
+			GameGlobals.nueces++;
 			genial.play();
 		}
+		
 	}
 	
 	@Override
