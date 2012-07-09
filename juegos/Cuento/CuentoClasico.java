@@ -259,9 +259,9 @@ public class CuentoClasico extends Juego {
 		};
 		
 		// Ultima pagina
-		ultpag = new Button("ultimapagina",new TextureRegion(new Texture("imagenes2/cuento/TextureCuento4.png"), 0, 0, 1000, 600));
-		ultpag.x = 0;
-		ultpag.y = 0;
+		ultpag = new Button("ultimapagina",new TextureRegion(new Texture("imagenes2/cuento/TextureCuento4.png")));
+		ultpag.x = 82;
+		ultpag.y = 49;
 		ultpag.clickListener=new ClickListener(){
 			public void clicked(Button b){
 				if(GameGlobals.cuentoFinished==false){
@@ -304,14 +304,11 @@ public class CuentoClasico extends Juego {
 		reproducir = true;
 		indice = 0;
 		if (paginas.size() - 1 > paginaActual.getNumPPag()) {
-			/*TODO: meter sonido según la página en la que 			estemos*/
-
-			paginaActual = paginas.get(paginaActual.getNumPPag() + 1);
 			eliminaPagina();
+			paginaActual = paginas.get(paginaActual.getNumPPag() + 1);			
 			dibujaPagina();
 
 		}else{			// Cuando se acaba el juego// Ultima pagina		
-
 				ultsound.play();
 				this.escena.addActor(ultpag);
 			
