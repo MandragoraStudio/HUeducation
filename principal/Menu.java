@@ -3,7 +3,6 @@ package principal;
 
 import juegos.Juego;
 import juegos.Cuento.CuentoClasico;
-import juegos.emocionesPintadas.EmocionesPintadas;
 import juegos.mezcla.MezclaColores;
 import juegos.modificalo.SeleccionCuadro;
 import juegos.museo.Museo;
@@ -161,7 +160,7 @@ public class Menu extends Screen {
 		
 	}
 	
-	private void Salir(){
+	public void Salir(){
 		Game.salir();
 	}
 	private void JuegoCuento(){
