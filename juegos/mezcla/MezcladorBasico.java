@@ -21,9 +21,9 @@ public class MezcladorBasico extends Group {
 	//Image Color2;
 	Texture ColorObjetivo;
 	Button imagenObjetivo;
-	Image mesa = new Image("mesa",new Texture("imagenes/mezcla/mesa.png"));
-	Image mancha1 = new Image("mesa",new Sprite(new Texture("imagenes/mezcla/mancha.png")));
-	Image mancha2 = new Image("mesa",new Sprite(new Texture("imagenes/mezcla/mancha.png")));
+	Image mesa = new Image("mesa",new Texture("imagenes2/mezcla/mesa.png"));
+	Image mancha1 = new Image("mesa",new Sprite(new Texture("imagenes2/mezcla/mancha.png")));
+	Image mancha2 = new Image("mesa",new Sprite(new Texture("imagenes2/mezcla/mancha.png")));
 	int colorcorrecto;
 	ClickListener comprobador = new ClickListener(){
 		public void clicked(Button button) {
