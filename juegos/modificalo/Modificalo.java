@@ -397,7 +397,7 @@ public class Modificalo extends Juego {
 		cuadro.y = 80;
 		
 		guardar.x = 824;
-		guardar.y = 0;
+		guardar.y = 100;
 		
 		//posicion de los botones activadores de los modificadores.
 		pelucas.x = 720;
@@ -464,8 +464,8 @@ public class Modificalo extends Juego {
 		menu_modif.addActor(pelucas);
 		menu_modif.addActor(gafas);
 		menu_modif.addActor(objetos);
-			menu_modif.addActor(bigotes);
-			menu_modif.addActor(collares);
+		menu_modif.addActor(bigotes);
+		menu_modif.addActor(collares);
 	
 		
 		this.escena.addActor(fondo);
@@ -492,7 +492,7 @@ public class Modificalo extends Juego {
 		// Boton atras
 		BAtras = new Button("salir",new TextureRegion(new Texture("imagenes2/Menu/atras sin pulsar.png")),new TextureRegion(new Texture("imagenes2/Menu/atras pulsado.png")));
 		BAtras.x = 824-BAtras.width - 50;
-		BAtras.y = 0;
+		BAtras.y = 110;
 		this.escena.addActor(BAtras);
 		BAtras.clickListener=new ClickListener(){
 			public void clicked(Button b){
@@ -865,7 +865,6 @@ public class Modificalo extends Juego {
 		}
 		
 		if(gUsado && bUsado && pUsado&& cUsado&& oUsado && ganaNuez == true) {
-			genial.play();
 			GameGlobals.nueces++;
 			GameGlobals.ModificaFinished = true;
 			ganaNuez = false;
