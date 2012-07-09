@@ -139,7 +139,7 @@ public class Paleta extends Group {
 			@Override
 			public void clicked(Button arg0) {
 				MezclaColores.lienzo.guardarCuadro();
-				
+				genial.play();
 			}
 			
 		};
