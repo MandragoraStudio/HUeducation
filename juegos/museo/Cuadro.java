@@ -9,7 +9,8 @@ import com.badlogic.gdx.scenes.scene2d.actors.Image;
 import com.badlogic.gdx.scenes.scene2d.actors.Button.ClickListener;
 
 public class Cuadro {
-	private Button cuadro;
+	public Button cuadro;
+	//private Image fondo;
 	private Image marco;
 	private float Xreducida;
 	private float Yreducida;
@@ -93,7 +94,7 @@ public class Cuadro {
 		cuadro.y = m.getMarcoGrande().y + (m.getMarcoGrande().height - cuadro.height)/2;
 		m.escena.removeActor(cuadro);
 		m.escena.addActor(cuadro);
-		m.mostrarMarcoGrande();
+		m.mostrarMarcoGrande(this.cuadro);
 	}
 
 	public float getXreducida() {
