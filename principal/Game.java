@@ -42,9 +42,9 @@ public class Game implements ApplicationListener, InputProcessor {
 		nums[3]=String.valueOf(GameGlobals.MuseoFinished);
 		nums[4]=String.valueOf(GameGlobals.ModificaFinished);
 		nums[5]=String.valueOf(GameGlobals.nueces);
-		nums[6]=String.valueOf(GameGlobals.ModificaFinished);
+		nums[6]=String.valueOf(GameGlobals.JuegoFinished);
 		
-		pw.write(nums[0]+","+nums[1]+","+nums[2]+","+nums[3]+","+nums[4]+","+nums[5]);
+		pw.write(nums[0]+","+nums[1]+","+nums[2]+","+nums[3]+","+nums[4]+","+nums[5]+","+nums[6]);
 		pw.close();
 
 	}

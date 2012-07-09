@@ -29,10 +29,11 @@ public class CargaInicio extends Thread {
 			GameGlobals.MuseoFinished =Boolean.valueOf(nums[3]);
 			GameGlobals.ModificaFinished =Boolean.valueOf(nums[4]);
 			GameGlobals.nueces = Integer.valueOf(nums[5]);
+			GameGlobals.JuegoFinished = Boolean.valueOf(nums[6]);
 		}else{
 			OutputStream os=f.write(false);
 			PrintWriter pw = new PrintWriter(os);
-			pw.write("0,0,0,0,0,0");
+			pw.write("false,false,false,false,false,0,false");
 			pw.close();
 		}
 		
