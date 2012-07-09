@@ -134,7 +134,7 @@ public class Modificalo extends Juego {
 	
 	private Music genial;
 	
-	boolean ganaNuez = false;
+	boolean ganaNuez = true;
 	
 	boolean gUsado = false;
 	boolean cUsado = false;
@@ -864,16 +864,14 @@ public class Modificalo extends Juego {
 			oUsado = false;
 		}
 		
-		if(gUsado && bUsado && pUsado&& cUsado&& oUsado) {
+		if(gUsado && bUsado && pUsado&& cUsado&& oUsado && ganaNuez == true) {
 			genial.play();
 			GameGlobals.nueces++;
-
 			GameGlobals.ModificaFinished = true;
-			ScreenManager.getScreenManager().setCurrentScreen("menu");  // Quitar
-		} else {
 			ganaNuez = false;
+		} else {
+			
 			//GameGlobals.nueces--;
-
 		}
 		return super.touchUp(x, y, pointer, button);
 	}
@@ -1149,9 +1147,7 @@ public class Modificalo extends Juego {
 		    ImageIO.write(bi, "png", outputfile);
 		} catch (Exception e) {
 		    e.printStackTrace();
-		}
-		GameGlobals.nueces++;
-		
+		}		
 	}
 }
 
