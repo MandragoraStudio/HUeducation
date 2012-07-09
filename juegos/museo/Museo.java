@@ -139,8 +139,9 @@ public class Museo extends Juego {
 		// Se añade a la escena el marco chico y el cuadro
 		for(Cuadro cuadro:cuadros){
 			
-			this.escena.addActor(cuadro.getMarco());
-			this.escena.addActor(cuadro.getCuadro());	
+			cuadro.getMarco().touchable=false;
+			this.escena.addActor(cuadro.getCuadro());
+			this.escena.addActor(cuadro.getMarco());	
 		}
 		
 		// Boton atras
@@ -243,7 +244,7 @@ public class Museo extends Juego {
 		
 		for(FileHandle c: carpeta.list()){
 			boton = new Button("cuadro" + Integer.toString(i), 
-					new TextureRegion(new Texture(c), 0, 0, 737, 484));
+					new TextureRegion(new Texture(c)));
 			
 				cuadros.add(new Cuadro(boton, marcoChico,(i%2 == 0? this.cuadro1Pos: this.cuadro2Pos) + GameGlobals.ScreenWidth*(i/2), 170, this.factorDeReduccionX, this.factorDeReduccionY));
 				i++;
