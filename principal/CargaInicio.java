@@ -21,6 +21,7 @@ public class CargaInicio extends Thread {
 		FileHandle f = Gdx.files.external("campamentomandrilla/save/data.txt");
 		f.parent().mkdirs();
 		if(f.exists()){
+			try {
 			String data = f.readString();
 			String[] nums = data.split(",");
 			GameGlobals.cuentoFinished =Boolean.valueOf(nums[0]);
@@ -30,6 +31,9 @@ public class CargaInicio extends Thread {
 			GameGlobals.ModificaFinished =Boolean.valueOf(nums[4]);
 			GameGlobals.nueces = Integer.valueOf(nums[5]);
 			GameGlobals.JuegoFinished = Boolean.valueOf(nums[6]);
+			}catch(Exception e){
+				//e.printStackTrace();
+			}
 		}else{
 			OutputStream os=f.write(false);
 			PrintWriter pw = new PrintWriter(os);
