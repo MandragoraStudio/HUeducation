@@ -39,8 +39,8 @@ public class Pagina {
 		this.numPPag = numPPag;
 		this.opcCorrecta = opcCorrecta;
 		this.hoja= hoja;
-		this.hoja.x=90;
-		this.hoja.y=70;
+		this.hoja.x=75;
+		this.hoja.y=35;
 		this.opcA=new Button("opcionA", opcA);
 		this.opcB=new Button("opcionB", opcB);
 		this.cuento = cuento;
@@ -51,8 +51,8 @@ public class Pagina {
 	}
 	
 	private void setButtons(){
-		opcA.x=460;
-		opcA.y=70;
+		opcA.x=470;
+		opcA.y=90;
 		opcA.clickListener=new ClickListener(){
 		
 			public void clicked(Button arg0) {
@@ -74,10 +74,12 @@ public class Pagina {
 	private void compruebaOpc(String opc){
 		if(opc.equals(this.opcCorrecta)){
 			//TODO: poner sonido de que lo has exo bien
+			cuento.bien.play();
 			//pasar siguiente pagina
 			this.cuento.siguientePagina();
 		}else{
 			//TODO: mensaje error SONIDO JUANMAAAAAAAAAAA
+			cuento.mal.play();
 			
 		}
 	}
