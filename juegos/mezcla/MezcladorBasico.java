@@ -28,12 +28,10 @@ public class MezcladorBasico extends Group {
 	ClickListener comprobador = new ClickListener(){
 		public void clicked(Button button) {
 			if(compruebaColor(Integer.parseInt(button.name.substring(1)))){
-				//TODO: el niño ha acertado el color, mostrar animacion o audio de acierto
-				
 				action(MoveTo.$(-600,-600,2));
 				paleta.colorAcertado();
 			}else{
-				//TODO: Mostrar animacion de la Ardilla diciendo que ese color no era
+				paleta.colorFallido();
 			}
 		}
 		
@@ -140,7 +138,7 @@ public class MezcladorBasico extends Group {
 
 	public void setColorObjetivo(float r, float g, float b, float a) {
 		ColorObjetivo = MezcladorBasico.getColoredTexture(100, 100, r, g, b, a);
-		Button cambio = null;
+		//Button cambio = null;
 		int i = (int) (Math.random() * 6);
 		i++;
 		this.colorcorrecto=i;
