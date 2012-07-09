@@ -34,6 +34,7 @@ public class Menu extends Screen {
 	Label Lnueces;
 	private BitmapFont font;
 	
+	private boolean hablando = true;
 	private long ultimavez=0;
 	private long ardillatime=30000;
 	private boolean reproducir = true;
@@ -198,7 +199,7 @@ public class Menu extends Screen {
     		}
 
     		// mientras la ardilla hable se reproduce la animacion
-    		if(System.currentTimeMillis() - GameGlobals.ultimotiempo >= GameGlobals.changetime){
+    		if((System.currentTimeMillis() - GameGlobals.ultimotiempo >= GameGlobals.changetime) || hablando){
     			GameGlobals.ultimotiempo = System.currentTimeMillis();
     			i++;
     			if(i >= GameGlobals.MAXimages){

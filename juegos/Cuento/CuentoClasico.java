@@ -184,8 +184,8 @@ public class CuentoClasico extends Juego {
 		//página 1
 		paginas.add(new Pagina(0, "B", new Image("hoja1", new TextureRegion(
 				new Texture("imagenes2/cuento/hoja1.png"))), new TextureRegion(new Texture(
-				"imagenes2/cuento/op1.png")),
-				new TextureRegion(new Texture("imagenes2/cuento/op2.png")), this, Gdx.audio.newMusic(Gdx.files.internal("sonido/vocesdemandrilla/takescuentacuentos/pag1/take1.wav")),
+				"imagenes2/cuento/op2.png")),
+				new TextureRegion(new Texture("imagenes2/cuento/op1.png")), this, Gdx.audio.newMusic(Gdx.files.internal("sonido/vocesdemandrilla/takescuentacuentos/pag1/take1.wav")),
 						Gdx.audio.newMusic(Gdx.files.internal("sonido/vocesdemandrilla/takescuentacuentos/pag1/take2.wav")),
 						Gdx.audio.newMusic(Gdx.files.internal("sonido/vocesdemandrilla/takescuentacuentos/pag1/take3.wav"))));
 
