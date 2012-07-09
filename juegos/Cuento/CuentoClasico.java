@@ -10,6 +10,7 @@ import principal.ScreenManager;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.audio.Music;
+import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.actors.Button;
@@ -26,6 +27,10 @@ public class CuentoClasico extends Juego {
 	private Image fondo;
 	private Image fondoCuento;
 	private Button BAtras;
+	
+	private boolean contando = false;
+	private Music ultsound;
+	private Button ultpag;
 
 	public CuentoClasico() {
 		this.paginas = new LinkedList();
@@ -45,6 +50,10 @@ public class CuentoClasico extends Juego {
 	private boolean saliendo = false;
 	
 	boolean reproducir = true;
+	
+	// Sonidos bien y mal
+	public Sound bien;
+	public Sound mal;
 
 	@Override
 	public void Initialize() {
@@ -69,7 +78,14 @@ public class CuentoClasico extends Juego {
 		// Sonidos de la ardilla hablando
 		take[0] = Gdx.audio.newMusic(Gdx.files.internal("sonido/vocesdemandrilla/takescuentacuentos/Take 1.wav"));
 		take[1] = Gdx.audio.newMusic(Gdx.files.internal("sonido/vocesdemandrilla/takescuentacuentos/Take 2.wav"));
-		take[2] = Gdx.audio.newMusic(Gdx.files.internal("sonido/vocesdemandrilla/takescuentacuentos/Take 3.wav"));		
+		take[2] = Gdx.audio.newMusic(Gdx.files.internal("sonido/vocesdemandrilla/takescuentacuentos/Take 3.wav"));
+		
+		// Sonidos bien y mal
+		bien = Gdx.audio.newSound(Gdx.files.internal("sonido/vocesdemandrilla/takesdeacciones/genial.wav"));
+		mal = Gdx.audio.newSound(Gdx.files.internal("sonido/vocesdemandrilla/takesdeacciones/mal.wav"));
+		
+		// ultimo sonido
+		ultsound = Gdx.audio.newMusic(Gdx.files.internal("sonido/vocesdemandrilla/takescuentacuentos/pag5/takefinal.wav"));
 	}
 	
 	public void Update() {
@@ -109,32 +125,46 @@ public class CuentoClasico extends Juego {
 		
 		// Se van reproduciendo los takes (uno detras de otro)
 		// Si se pulsa escape o en la pantalla (click) se salta el splash
-		if(indice >= MAXtakes){
-			// La ardilla se va
-			saliendo = true;
+		if(!contando){
+			if(indice >= MAXtakes){
+				// La ardilla se va
+				saliendo = true;
+			}else{
+				if(reproducir == true){
+					take[indice].play();
+					reproducir = false;
+				}
+				
+				if(!take[indice].isPlaying()){
+					reproducir = true;
+						indice++;
+				}
+			}
+			if(Gdx.input.isTouched() || Gdx.input.isKeyPressed(Input.Keys.ESCAPE)){
+				if(indice < MAXtakes){
+					reproducir = false;
+					take[indice].stop();
+				}
+				// La ardilla se va
+				saliendo = true;
+			}
 		}else{
-			if(reproducir == true){
-				take[indice].play();
-				/*if(indice == 2){
-					escena.removeActor(abrirCuento);
-					escena.getRoot().addActorBefore(GameGlobals.A[0], fondoCuento);
-					dibujaPagina();
-				}*/
+		
+		// CONTANDO LOS CUENTOS
+			if(indice >= MAXtakes){
 				reproducir = false;
+			}else{
+				if(reproducir == true){
+					paginaActual.take[indice].play();
+					reproducir = false;
+				}
+				
+				if(!paginaActual.take[indice].isPlaying()){
+					reproducir = true;
+						indice++;
+				}
 			}
 			
-			if(!take[indice].isPlaying()){
-				reproducir = true;
-					indice++;
-			}
-		}
-		if(Gdx.input.isTouched() || Gdx.input.isKeyPressed(Input.Keys.ESCAPE)){
-			if(indice < MAXtakes){
-				reproducir = false;
-				take[indice].stop();
-			}
-			// La ardilla se va
-			saliendo = true;
 		}
 		super.Update();
 
@@ -149,59 +179,51 @@ public class CuentoClasico extends Juego {
 
 		//página 1
 		paginas.add(new Pagina(0, "B", new Image("hoja1", new TextureRegion(
-				new Texture("imagenes2/cuento/TextureCuento1.png"), 0, 0, 340,
-				500)), new TextureRegion(new Texture(
-				"imagenes2/cuento/TextureCuento1.png"), 0, 525, 150, 500),
-				new TextureRegion(new Texture(
-						"imagenes2/cuento/TextureCuento1.png"), 205, 525, 150,
-						500), this, Gdx.audio.newMusic(Gdx.files.internal("sonido/vocesdemandrilla/takescuentacuentos/pag1/take1.wav")),
+				new Texture("imagenes2/cuento/hoja1.png"))), new TextureRegion(new Texture(
+				"imagenes2/cuento/op1.png")),
+				new TextureRegion(new Texture("imagenes2/cuento/op2.png")), this, Gdx.audio.newMusic(Gdx.files.internal("sonido/vocesdemandrilla/takescuentacuentos/pag1/take1.wav")),
 						Gdx.audio.newMusic(Gdx.files.internal("sonido/vocesdemandrilla/takescuentacuentos/pag1/take2.wav")),
 						Gdx.audio.newMusic(Gdx.files.internal("sonido/vocesdemandrilla/takescuentacuentos/pag1/take3.wav"))));
 
 		//página 2
 		paginas.add(new Pagina(1, "A", new Image("hoja2", new TextureRegion(
-				new Texture("imagenes2/cuento/TextureCuento1.png"), 440, 0,
-				360, 530)), new TextureRegion(new Texture(
-				"imagenes2/cuento/TextureCuento1.png"), 490, 575, 150, 365),
+				new Texture("imagenes2/cuento/hoja2.png"))), new TextureRegion(new Texture(
+				"imagenes2/cuento/op3.png")),
 				new TextureRegion(new Texture(
-						"imagenes2/cuento/TextureCuento1.png"), 635, 575, 150,
-						365), this, Gdx.audio.newMusic(Gdx.files.internal("sonido/vocesdemandrilla/takescuentacuentos/pag2/take1.wav")),
+						"imagenes2/cuento/op4.png")), this, Gdx.audio.newMusic(Gdx.files.internal("sonido/vocesdemandrilla/takescuentacuentos/pag2/take1.wav")),
 						Gdx.audio.newMusic(Gdx.files.internal("sonido/vocesdemandrilla/takescuentacuentos/pag2/take2.wav")),
 						Gdx.audio.newMusic(Gdx.files.internal("sonido/vocesdemandrilla/takescuentacuentos/pag2/take3.wav"))));
 		
 
 		//página 3
 		paginas.add(new Pagina(2, "A", new Image("hoja3", new TextureRegion(
-				new Texture("imagenes2/cuento/TextureCuento3.png"), 15, 20,
+				new Texture("imagenes2/cuento/hoja3.png"), 15, 20,
 				365, 540)), new TextureRegion(new Texture(
-				"imagenes2/cuento/TextureCuento3.png"), 40, 580, 150, 365),
+				"imagenes2/cuento/op5.png")),
 				new TextureRegion(new Texture(
-						"imagenes2/cuento/TextureCuento3.png"), 220, 580, 150,
-						365), this, Gdx.audio.newMusic(Gdx.files.internal("sonido/vocesdemandrilla/takescuentacuentos/pag3/take1.wav")),
+						"imagenes2/cuento/op6.png")), this, Gdx.audio.newMusic(Gdx.files.internal("sonido/vocesdemandrilla/takescuentacuentos/pag3/take1.wav")),
 						Gdx.audio.newMusic(Gdx.files.internal("sonido/vocesdemandrilla/takescuentacuentos/pag3/take2.wav")),
 						Gdx.audio.newMusic(Gdx.files.internal("sonido/vocesdemandrilla/takescuentacuentos/pag3/take3.wav"))));
 
 		//página 4
 		paginas.add(new Pagina(3, "A", new Image("hoja4", new TextureRegion(
-				new Texture("imagenes2/cuento/TextureCuento3.png"), 440, 15,
-				365, 540)), new TextureRegion(new Texture(
-				"imagenes2/cuento/TextureCuento3.png"), 465, 575, 150, 365),
+				new Texture("imagenes2/cuento/hoja4.png"))), new TextureRegion(new Texture(
+				"imagenes2/cuento/op7.png")),
 				new TextureRegion(new Texture(
-						"imagenes2/cuento/TextureCuento3.png"), 365, 575, 150,
-						365), this, Gdx.audio.newMusic(Gdx.files.internal("sonido/vocesdemandrilla/takescuentacuentos/pag4/take1.wav")),
+						"imagenes2/cuento/op8.png")), this, Gdx.audio.newMusic(Gdx.files.internal("sonido/vocesdemandrilla/takescuentacuentos/pag4/take1.wav")),
 						Gdx.audio.newMusic(Gdx.files.internal("sonido/vocesdemandrilla/takescuentacuentos/pag4/take2.wav")),
 						Gdx.audio.newMusic(Gdx.files.internal("sonido/vocesdemandrilla/takescuentacuentos/pag4/take3.wav"))));
 
 		//página 5
-		paginas.add(new Pagina(4, "B", new Image("hoja5", new TextureRegion(
-				new Texture("imagenes2/cuento/TextureCuento3.png"), 0, 0,
-				735, 525)), new TextureRegion(new Texture(
-				"imagenes2/cuento/TextureCuento3.png"), 0, 0, 0, 0),
+		/*paginas.add(new Pagina(4, "B", new Image("hoja5", new TextureRegion(
+				new Texture("imagenes2/cuento/TextureCuento4.png"), 0, 0,
+				730, 520)), new TextureRegion(new Texture(
+				"imagenes2/cuento/TextureCuento4.png"),0, 0, 370, 520),
 				new TextureRegion(new Texture(
-						"imagenes2/cuento/TextureCuento3.png"), 0, 0, 0,
+						"imagenes2/cuento/TextureCuento4.png"), 0, 0, 0,
 						0), this, Gdx.audio.newMusic(Gdx.files.internal("sonido/vocesdemandrilla/takescuentacuentos/pag5/take1.wav")),
 						Gdx.audio.newMusic(Gdx.files.internal("sonido/vocesdemandrilla/takescuentacuentos/pag5/take2.wav")),
-						Gdx.audio.newMusic(Gdx.files.internal("sonido/vocesdemandrilla/takescuentacuentos/pag5/take3.wav"))));
+						Gdx.audio.newMusic(Gdx.files.internal("sonido/vocesdemandrilla/takescuentacuentos/pag5/take3.wav"))));*/
 
 
 		//se inicializa la página primera
@@ -219,6 +241,8 @@ public class CuentoClasico extends Juego {
 				escena.removeActor(abrirCuento);
 				escena.addActor(fondoCuento);
 				dibujaPagina();
+				contando = true;
+				indice = 0;
 			}
 		};
 		
@@ -232,6 +256,28 @@ public class CuentoClasico extends Juego {
 				ScreenManager.getScreenManager().setCurrentScreen("menu");
 			}
 		};
+		
+		// Ultima pagina
+		ultpag = new Button("ultimapagina",new TextureRegion(new Texture("imagenes2/cuento/TextureCuento4.png"), 0, 0, 1000, 600));
+		ultpag.x = 0;
+		ultpag.y = 0;
+		ultpag.clickListener=new ClickListener(){
+			public void clicked(Button b){
+				if(GameGlobals.cuentoFinished==false){
+					GameGlobals.cuentoFinished=true;
+					GameGlobals.nueces++;
+				}
+				// para el sonido
+				if(indice < MAXtakes){
+					paginaActual.take[indice].stop();
+				}
+				if(ultsound.isPlaying()){
+					ultsound.stop();
+				}
+				ScreenManager.getScreenManager().setCurrentScreen("menu");
+			}
+		};
+		
 	}
 
 	// meto la pagina nueva
@@ -251,15 +297,23 @@ public class CuentoClasico extends Juego {
 
 	// pasa pagina hasta que llega a la última
 	public void siguientePagina() {
+		if(indice < MAXtakes){
+				paginaActual.take[indice].stop();
+		}
+		reproducir = true;
+		indice = 0;
 		if (paginas.size() - 1 > paginaActual.getNumPPag()) {
 			/*TODO: meter sonido según la página en la que 			estemos*/
+
 			paginaActual = paginas.get(paginaActual.getNumPPag() + 1);
 			eliminaPagina();
 			dibujaPagina();
-		} else {
+
+		}else{			// Cuando se acaba el juego// Ultima pagina		
+
+				ultsound.play();
+				this.escena.addActor(ultpag);
 			
-			GameGlobals.cuentoFinished=true;
-			ScreenManager.getScreenManager().setCurrentScreen("menu");
 		}
 	}
 }
