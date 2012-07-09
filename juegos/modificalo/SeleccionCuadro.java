@@ -41,11 +41,11 @@ public class SeleccionCuadro extends Juego{
 	public void Initialize(){
 		super.Initialize();
 		
-		p1.x = 0;
-		p1.y = 80;
+		p1.x = 150;
+		p1.y = 60;
 		
-		p2.x = 340;
-		p2.y = 80;
+		p2.x = 550;
+		p2.y = 60;
 		
 		this.escena.addActor(p1);
 		this.escena.addActor(p2);
