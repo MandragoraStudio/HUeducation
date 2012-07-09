@@ -31,6 +31,8 @@ public class CuentoClasico extends Juego {
 	private boolean contando = false;
 	private Music ultsound;
 	private Button ultpag;
+	
+	private boolean pagFinal = false;
 
 	
 	public CuentoClasico() {
@@ -126,6 +128,7 @@ public class CuentoClasico extends Juego {
 		
 		// Se van reproduciendo los takes (uno detras de otro)
 		// Si se pulsa escape o en la pantalla (click) se salta el splash
+		if(!pagFinal){
 		if(!contando){
 			if(indice >= MAXtakes){
 				// La ardilla se va
@@ -164,8 +167,8 @@ public class CuentoClasico extends Juego {
 					reproducir = true;
 						indice++;
 				}
-			}
-			
+			}			
+		}
 		}
 		super.Update();
 
@@ -259,14 +262,14 @@ public class CuentoClasico extends Juego {
 		};
 		
 		// Ultima pagina
-		ultpag = new Button("ultimapagina",new TextureRegion(new Texture("imagenes2/cuento/TextureCuento4.png"), 0, 0, 1000, 600));
-		ultpag.x = 0;
-		ultpag.y = 0;
+		ultpag = new Button("ultimapagina",new TextureRegion(new Texture("imagenes2/cuento/TextureCuento4.png")));
+		ultpag.x = 82;
+		ultpag.y = 49;
 		ultpag.clickListener=new ClickListener(){
 			public void clicked(Button b){
 				if(GameGlobals.cuentoFinished==false){
 					GameGlobals.cuentoFinished=true;
-					GameGlobals.nueces++;
+					GameGlobals.nueces += 15;
 				}
 				// para el sonido
 				if(indice < MAXtakes){
@@ -291,9 +294,15 @@ public class CuentoClasico extends Juego {
 	// elimina una pagina, se supone que se borra de la memoria al salir de la
 	// escena
 	public void eliminaPagina() {
+		paginaActual.getOpcA().x = this.escena.width();
+		paginaActual.getOpcA().y = this.escena.height();
+		paginaActual.getOpcB().x = this.escena.width();
+		paginaActual.getOpcB().y = this.escena.height();
+		paginaActual.getHoja().x = this.escena.width();
+		paginaActual.getHoja().y = this.escena.height();
 		this.escena.removeActor(paginaActual.getOpcA());
 		this.escena.removeActor(paginaActual.getOpcB());
-		this.escena.removeActor(paginaActual.getHoja());
+		this.escena.removeActor(paginaActual.getHoja());		
 	}
 
 	// pasa pagina hasta que llega a la última
@@ -301,19 +310,17 @@ public class CuentoClasico extends Juego {
 		if(indice < MAXtakes){
 				paginaActual.take[indice].stop();
 		}
-		reproducir = true;
 		indice = 0;
-		if (paginas.size() - 1 > paginaActual.getNumPPag()) {
-			/*TODO: meter sonido según la página en la que 			estemos*/
-
-			paginaActual = paginas.get(paginaActual.getNumPPag() + 1);
+		if(paginas.size()-1 > paginaActual.getNumPPag()) {
 			eliminaPagina();
+			paginaActual = paginas.get(paginaActual.getNumPPag() + 1);		
 			dibujaPagina();
 
 		}else{			// Cuando se acaba el juego// Ultima pagina		
-
-				ultsound.play();
-				this.escena.addActor(ultpag);
+			eliminaPagina();
+			ultsound.play();
+			pagFinal = true;
+			this.escena.addActor(ultpag);
 			
 		}
 	}

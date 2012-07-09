@@ -20,6 +20,7 @@ public class GameGlobals {
     public static boolean mezclaFinished =false;
     public static boolean MuseoFinished =false;
     public static boolean ModificaFinished =false;
+    public static boolean JuegoFinished = false;
     public static int nueces = 0;
     
 	// Ardilla Hablando
