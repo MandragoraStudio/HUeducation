@@ -45,7 +45,7 @@ public class Menu extends Screen {
 	
 	// Sonidos cuando completas el juego
 	Music []completado = new Music[4];
-	private boolean repro = true;
+	public boolean repro = true;
 	private int MAXTakes = 4;
 	
 	@Override
