@@ -12,6 +12,7 @@ import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.actions.MoveTo;
 import com.badlogic.gdx.scenes.scene2d.actors.Button;
 import com.badlogic.gdx.scenes.scene2d.actors.Button.ClickListener;
@@ -254,8 +255,8 @@ public class Museo extends Juego {
 		}
 	}
 	
-	public void mostrarMarcoGrande(){
-		this.escena.addActor(marcoGrande);
+	public void mostrarMarcoGrande(Actor cuadro){
+		this.escena.getRoot().addActorBefore(cuadro,marcoGrande);
 	}
 	
 	public void ocultarMarcoGrande(){
