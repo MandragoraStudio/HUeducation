@@ -4,8 +4,7 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.actors.Image;
 
-public class MandragoraSplash extends Screen {
-
+public class HuelvaSplash extends Screen {
 	private boolean iniciado = false;
 	CargaInicio c;
 	//private Calendar calendario;
@@ -17,7 +16,7 @@ public class MandragoraSplash extends Screen {
 	public void Initialize(){
 		super.Initialize();
 
-		Image i = new Image("imagen", new TextureRegion(new Texture("imagenes2/splash/mandragora1024.png"), 0, 0, 1024, 600));
+		Image i = new Image("imagen", new TextureRegion(new Texture("imagenes2/logoycreditos/logohuelva.png")));
 		//calendario = Calendar.getInstance();
 		this.escena.addActor(i);
 		
@@ -27,16 +26,16 @@ public class MandragoraSplash extends Screen {
 	@Override
 	public void Update() {
 		// en la primera ejecucion iniciamos el hilo de carga del menu
-		/*if (!iniciado) {
+		if (!iniciado) {
 			c = new CargaInicio();
 			c.start();
 			iniciado = true;
-		}*/
+		}
 		// aqui el update de la pantalla
 		tiempoaux = System.currentTimeMillis();
 		// finalmente pasamos a la pantalla EducationSplash
-		if (/*c.terminado &&*/ fin<=tiempoaux-tiempoini) {
-			ScreenManager.getScreenManager().setCurrentScreen("creditos");
+		if (c.terminado && fin<=tiempoaux-tiempoini) {
+			ScreenManager.getScreenManager().setCurrentScreen("mcs");
 		}
 	}
 	
@@ -45,5 +44,4 @@ public class MandragoraSplash extends Screen {
 		escena.removeActor(escena.findActor("imagen"));
 		super.Dispose();
 	}
-
 }

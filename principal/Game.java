@@ -20,9 +20,9 @@ public class Game implements ApplicationListener, InputProcessor {
 
 	public void create() {
 		this.screenManager = ScreenManager.getScreenManager();
-
-		screenManager.addScreen("mcs", new MandragoraSplash());
-		screenManager.setCurrentScreen("mcs");
+		
+		screenManager.addScreen("logohuelva", new HuelvaSplash());
+		screenManager.setCurrentScreen("logohuelva");
 		this.spriteBatch = new SpriteBatch();
 		Gdx.input.setInputProcessor(this);
 		Gdx.input.setCatchBackKey(true);

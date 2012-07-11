@@ -4,7 +4,7 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.actors.Image;
 
-public class MandragoraSplash extends Screen {
+public class Creditos extends Screen{
 
 	private boolean iniciado = false;
 	CargaInicio c;
@@ -17,7 +17,7 @@ public class MandragoraSplash extends Screen {
 	public void Initialize(){
 		super.Initialize();
 
-		Image i = new Image("imagen", new TextureRegion(new Texture("imagenes2/splash/mandragora1024.png"), 0, 0, 1024, 600));
+		Image i = new Image("imagen", new TextureRegion(new Texture("imagenes2/logoycreditos/creditos.png")));
 		//calendario = Calendar.getInstance();
 		this.escena.addActor(i);
 		
@@ -36,7 +36,7 @@ public class MandragoraSplash extends Screen {
 		tiempoaux = System.currentTimeMillis();
 		// finalmente pasamos a la pantalla EducationSplash
 		if (/*c.terminado &&*/ fin<=tiempoaux-tiempoini) {
-			ScreenManager.getScreenManager().setCurrentScreen("creditos");
+			ScreenManager.getScreenManager().setCurrentScreen("esplash");
 		}
 	}
 	

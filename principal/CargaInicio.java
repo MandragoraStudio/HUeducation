@@ -13,6 +13,8 @@ public class CargaInicio extends Thread {
 		ScreenManager sm = ScreenManager.getScreenManager();
 		
 		//Carga el menu principal aqui
+		sm.addScreen("mcs", new MandragoraSplash());
+		sm.addScreen("creditos", new Creditos());
 		sm.addScreen("esplash", new EducationSplash());
 		sm.addScreen("menu",new Menu());
 		
