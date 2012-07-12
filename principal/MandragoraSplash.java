@@ -6,7 +6,7 @@ import com.badlogic.gdx.scenes.scene2d.actors.Image;
 
 public class MandragoraSplash extends Screen {
 
-	private boolean iniciado = false;
+	public boolean iniciado = false;
 	CargaInicio c;
 	//private Calendar calendario;
 	private long tiempoini=0;
