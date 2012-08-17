@@ -85,8 +85,8 @@ public class Paleta extends Group {
 			}else if(boton.name.equals("CAmarillo")){
 				b=0;
 			}else if(boton.name.equals("CVerde")){
-				r=0;
-				b=0;
+				r=0.5f;
+				b=0.5f;
 			}else if(boton.name.equals("CRojo")){
 				g=0;
 				b=0;
@@ -102,9 +102,9 @@ public class Paleta extends Group {
 				g=0.5f;
 				b=0;
 			}else if(boton.name.equals("CMorado")){
-				r=0.5f;
-				g=0;
-				b=0.5f;
+				r=0.75f;
+				g=0.5f;
+				b=0.75f;
 			}else if(boton.name.equals("CTurquesa")){
 				r=0;
 				g=0.5f;
@@ -229,17 +229,19 @@ public class Paleta extends Group {
 	public void eligeColores(){
 		switch(coloresDisponibles){
 		case 0:
+			//verde
 			colores[0][0]=0;
 			colores[0][1]=1;
 			colores[0][2]=1;
 			colores[1][0]=1;
 			colores[1][1]=1;
 			colores[1][2]=0;
-			colores[2][0]=0;
+			colores[2][0]=0.5f;
 			colores[2][1]=1;
-			colores[2][2]=0;
+			colores[2][2]=0.5f;
 			break;
 		case 1:
+			//rojo
 			colores[0][0]=1;
 			colores[0][1]=0;
 			colores[0][2]=1;
@@ -251,6 +253,7 @@ public class Paleta extends Group {
 			colores[2][2]=0;
 			break;
 		case 2:
+			//azul
 			colores[0][0]=1;
 			colores[0][1]=0;
 			colores[0][2]=1;
@@ -281,9 +284,9 @@ public class Paleta extends Group {
 			colores[1][0]=0;
 			colores[1][1]=0;
 			colores[1][2]=1;
-			colores[2][0]=0.5f;
-			colores[2][1]=0;
-			colores[2][2]=0.5f;
+			colores[2][0]=0.75f;
+			colores[2][1]=0.5f;
+			colores[2][2]=0.75f;
 			break;
 		case 5:
 			//turquesa
@@ -355,8 +358,8 @@ public class Paleta extends Group {
 	public void colorAcertado(){
 		switch(coloresDisponibles){
 		case 0:
-			colorVerde=new Button("CVerde", Paleta.getColoredTexture(0,
-					1, 0, 1));
+			colorVerde=new Button("CVerde", Paleta.getColoredTexture(0.5f,
+					1, 0.5f, 1));
 			colorVerde.x=42;
 			colorVerde.y=360;
 			colorVerde.clickListener=evento;
@@ -387,8 +390,8 @@ public class Paleta extends Group {
 			this.addActorBefore(Fondo,colorNaranja);
 			break;
 		case 4:
-			colorMorado=new Button("CMorado", Paleta.getColoredTexture(0.5f,
-					0, 0.5f, 1));
+			colorMorado=new Button("CMorado", Paleta.getColoredTexture(0.75f,
+					0.5f, 0.75f, 1));
 			colorMorado.x=91;
 			colorMorado.y=283;
 			colorMorado.clickListener=evento;
