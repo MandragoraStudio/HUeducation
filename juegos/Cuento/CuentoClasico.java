@@ -33,7 +33,9 @@ public class CuentoClasico extends Juego {
 	private Button ultpag;
 	
 	private boolean pagFinal = false;
-
+	
+	public static long ultimoClick = 0;
+	public static  long tiempoEspera = 1400;
 	
 	public CuentoClasico() {
 		CuentoClasico.paginas = new LinkedList<Pagina>();

@@ -74,12 +74,18 @@ public class Pagina {
 	private void compruebaOpc(String opc){
 		if(opc.equals(this.opcCorrecta)){
 			//TODO: poner sonido de que lo has exo bien
-			cuento.bien.play();
+			if(System.currentTimeMillis() >= (CuentoClasico.ultimoClick + CuentoClasico.tiempoEspera)){
+				cuento.bien.play();
+				CuentoClasico.ultimoClick = System.currentTimeMillis();
+			}
 			//pasar siguiente pagina
 			this.cuento.siguientePagina();
 		}else{
 			//TODO: mensaje error SONIDO JUANMAAAAAAAAAAA
-			cuento.mal.play();
+			if(System.currentTimeMillis() >= (CuentoClasico.ultimoClick + CuentoClasico.tiempoEspera)){
+				cuento.mal.play();
+				CuentoClasico.ultimoClick = System.currentTimeMillis();
+			}
 			
 		}
 	}
