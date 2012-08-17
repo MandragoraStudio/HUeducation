@@ -224,7 +224,8 @@ public class CuentoClasico extends Juego {
 	private void setButtons() {
 		//creo el boton a abrir cuento (portada) y lo coloco
 		abrirCuento = new Button("abrirCuento", new TextureRegion(new Texture(
-				"imagenes2/cuento/cerrado.png"), 0, 0, 1024, 600));
+				"imagenes2/cuento/cerrado.png"), 0, 0, 428, 586));
+		abrirCuento.x = 480;
 		this.escena.addActor(abrirCuento);
 		abrirCuento.clickListener = new ClickListener() {
 
@@ -245,7 +246,10 @@ public class CuentoClasico extends Juego {
 		BAtras.clickListener=new ClickListener(){
 			public void clicked(Button b){
 				if(contando){
-					paginaActual.take[indice].stop();
+					if(indice < MAXtakes){
+						if(paginaActual.take[indice].isPlaying())
+							paginaActual.take[indice].stop();
+					}
 				}
 				
 				ScreenManager.getScreenManager().setCurrentScreen("menu");
@@ -275,7 +279,7 @@ public class CuentoClasico extends Juego {
 		
 	}
 
-	// meto la pagina nueva
+	// Meto la pagina nueva
 	public void dibujaPagina() {
 		this.escena.addActor(paginaActual.getOpcA());
 		this.escena.addActor(paginaActual.getOpcB());
